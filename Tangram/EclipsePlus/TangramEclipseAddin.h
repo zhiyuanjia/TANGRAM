@@ -39,23 +39,6 @@ namespace TangramEclipsePlus
 			CString m_strURL;
 			CTangramEclipseWnd* m_pNewWnd;
 
-			//static char* BasicToCharString(const BSTR inBasicString)
-			//{
-			//	char* charString = NULL;
-			//	const size_t charStrSize = ::SysStringLen(inBasicString) + 1;
-			//	if (charStrSize > 1)
-			//	{
-			//		charString = new char[charStrSize];
-			//		size_t convertedSize;
-			//		::wcstombs_s(&convertedSize, charString, charStrSize, inBasicString, charStrSize);
-			//	}
-			//	else
-			//	{
-			//		charString = ::_strdup("");
-			//	}
-			//	return charString;
-			//}
-
 		private:
 			bool bLoadConfig(CMarkup* pXml);
 			bool bFindNode(CMarkup* pXml, LPCTSTR lpName);

@@ -37,8 +37,7 @@ extern "C"
 		return v;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_release
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_release(JNIEnv *env, jobject _this)
 	{
 		jclass clazz = env->GetObjectClass(_this);
 		jfieldID jf = env->GetFieldID(clazz, VARIANT_FLD, "J");
@@ -65,8 +64,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_init
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_init(JNIEnv *env, jobject _this)
 	{
 		jclass clazz = env->GetObjectClass(_this);
 		jfieldID jf = env->GetFieldID(clazz, VARIANT_FLD, "J");
@@ -107,8 +105,7 @@ extern "C"
 	 * The unmarshalling part of this doesn't work but it was left in
 	 * with the hope that someone will want to fix this later
 	 **/
-	JNIEXPORT jbyteArray JNICALL Java_com_tangram_Variant_SerializationWriteToBytes
-		(JNIEnv *env, jobject _this) {
+	JNIEXPORT jbyteArray JNICALL Java_com_tangram_Variant_SerializationWriteToBytes(JNIEnv *env, jobject _this) {
 		VARIANT *v = extractVariant(env, _this);
 		if (v)
 		{
@@ -139,8 +136,7 @@ extern "C"
 	 *
 	 * It probably needs a custom handler.
 	 **/
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_SerializationReadFromBytes
-		(JNIEnv *env, jobject _this, jbyteArray ba) {
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_SerializationReadFromBytes(JNIEnv *env, jobject _this, jbyteArray ba) {
 
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -159,8 +155,7 @@ extern "C"
 	/**
 	 * Converts the data to a Enum Variant object and then returns it as a Dispatch
 	 */
-	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_toEnumVariant
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_toEnumVariant(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v)
@@ -191,8 +186,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantNull
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantNull(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -201,15 +195,13 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_cloneIndirect
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_cloneIndirect(JNIEnv *env, jobject _this)
 	{
 		return NULL;
 	}
 
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantShortRef
-		(JNIEnv *env, jobject _this, jshort s)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantShortRef(JNIEnv *env, jobject _this, jshort s)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -221,8 +213,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantIntRef
-		(JNIEnv *env, jobject _this, jint s)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantIntRef(JNIEnv *env, jobject _this, jint s)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -234,8 +225,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDoubleRef
-		(JNIEnv *env, jobject _this, jdouble s)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDoubleRef(JNIEnv *env, jobject _this, jdouble s)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -246,8 +236,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDateRef
-		(JNIEnv *env, jobject _this, jdouble s)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDateRef(JNIEnv *env, jobject _this, jdouble s)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -260,8 +249,7 @@ extern "C"
 	}
 
 	// SF 1065533  added unicode support
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantStringRef
-		(JNIEnv *env, jobject _this, jstring s)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantStringRef(JNIEnv *env, jobject _this, jstring s)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -284,8 +272,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT jshort JNICALL Java_com_tangram_Variant_getVariantShortRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jshort JNICALL Java_com_tangram_Variant_getVariantShortRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -297,8 +284,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jint JNICALL Java_com_tangram_Variant_getVariantIntRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_Variant_getVariantIntRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -310,8 +296,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantShort
-		(JNIEnv *env, jobject _this, jshort s)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantShort(JNIEnv *env, jobject _this, jshort s)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -321,8 +306,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT jshort JNICALL Java_com_tangram_Variant_getVariantShort
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jshort JNICALL Java_com_tangram_Variant_getVariantShort(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -334,8 +318,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jdouble JNICALL Java_com_tangram_Variant_getVariantDoubleRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jdouble JNICALL Java_com_tangram_Variant_getVariantDoubleRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -347,8 +330,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jdouble JNICALL Java_com_tangram_Variant_getVariantDateRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jdouble JNICALL Java_com_tangram_Variant_getVariantDateRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -360,8 +342,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jstring JNICALL Java_com_tangram_Variant_getVariantStringRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jstring JNICALL Java_com_tangram_Variant_getVariantStringRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -378,8 +359,7 @@ extern "C"
 	/**
 	 * cover for underlying C VariantClear function
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_VariantClear
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_VariantClear(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -390,8 +370,7 @@ extern "C"
 	/**
 	 * Converts the data to a Dispatch object and then returns it as a Dispatch
 	 */
-	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_toVariantDispatch
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_toVariantDispatch(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -413,8 +392,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_clone
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_clone(JNIEnv *env, jobject _this)
 	{
 		return NULL;
 	}
@@ -424,8 +402,7 @@ extern "C"
 	 * Otherwise it will return null (no conversion done)
 	 */
 
-	JNIEXPORT jint JNICALL Java_com_tangram_Variant_getVariantInt
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_Variant_getVariantInt(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -442,8 +419,7 @@ extern "C"
 	 * Otherwise it will return null (no conversion done)
 	 */
 
-	JNIEXPORT jdouble JNICALL Java_com_tangram_Variant_getVariantDate
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jdouble JNICALL Java_com_tangram_Variant_getVariantDate(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -455,8 +431,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantInt
-		(JNIEnv *env, jobject _this, jint i)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantInt(JNIEnv *env, jobject _this, jint i)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -466,8 +441,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDate
-		(JNIEnv *env, jobject _this, jdouble date)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDate(JNIEnv *env, jobject _this, jdouble date)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -481,8 +455,7 @@ extern "C"
 	 * Returns the value of this Variant as a Boolea if it is of that type.
 	 * Otherwise it will return null (no conversion done)
 	 */
-	JNIEXPORT jboolean JNICALL Java_com_tangram_Variant_getVariantBoolean
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jboolean JNICALL Java_com_tangram_Variant_getVariantBoolean(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -498,8 +471,7 @@ extern "C"
 	 * Returns the value of this Variant as a Byte if it is of that type.
 	 * Otherwise it will return null (no conversion done)
 	 */
-	JNIEXPORT jbyte JNICALL Java_com_tangram_Variant_getVariantByte
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jbyte JNICALL Java_com_tangram_Variant_getVariantByte(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -511,8 +483,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantBoolean
-		(JNIEnv *env, jobject _this, jboolean b)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantBoolean(JNIEnv *env, jobject _this, jboolean b)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -523,8 +494,7 @@ extern "C"
 		else ThrowComFail(env, "putVariantBoolean failed", -1);
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantByte
-		(JNIEnv *env, jobject _this, jbyte b)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantByte(JNIEnv *env, jobject _this, jbyte b)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -535,8 +505,7 @@ extern "C"
 		else ThrowComFail(env, "putVariantByte failed", -1);
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantEmpty
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantEmpty(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -548,8 +517,7 @@ extern "C"
 	/**
 	 * Sets the variant type to dispatch with no value object
 	 **/
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantNothing
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantNothing(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -614,8 +582,7 @@ extern "C"
 		else ThrowComFail(env, "putVariantCurrency failed", -1);
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantLong
-		(JNIEnv *env, jobject _this, jlong longValue)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantLong(JNIEnv *env, jobject _this, jlong longValue)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -631,8 +598,7 @@ extern "C"
 	 * There is currently no way to pass NULL into this method
 	 * to create something like "NOTHING" from VB
 	 * */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDispatch
-		(JNIEnv *env, jobject _this, jobject _that)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDispatch(JNIEnv *env, jobject _this, jobject _that)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		IDispatch *disp = extractDispatch(env, _that);
@@ -648,8 +614,7 @@ extern "C"
 		else ThrowComFail(env, "putObject failed", -1);
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDouble
-		(JNIEnv *env, jobject _this, jdouble d)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDouble(JNIEnv *env, jobject _this, jdouble d)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -663,8 +628,7 @@ extern "C"
 	 * Returns the value of this Variant as a long if it is of that type.
 	 * Otherwise it will return null (no conversion done)
 	 */
-	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantCurrency
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantCurrency(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -693,8 +657,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantFloatRef
-		(JNIEnv *env, jobject _this, jfloat val)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantFloatRef(JNIEnv *env, jobject _this, jfloat val)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -706,8 +669,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantCurrencyRef
-		(JNIEnv *env, jobject _this, jlong cur)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantCurrencyRef(JNIEnv *env, jobject _this, jlong cur)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -719,8 +681,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantLongRef
-		(JNIEnv *env, jobject _this, jlong longValue)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantLongRef(JNIEnv *env, jobject _this, jlong longValue)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -732,8 +693,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantErrorRef
-		(JNIEnv *env, jobject _this, jint i)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantErrorRef(JNIEnv *env, jobject _this, jint i)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -743,8 +703,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantBooleanRef
-		(JNIEnv *env, jobject _this, jboolean b)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantBooleanRef(JNIEnv *env, jobject _this, jboolean b)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -756,8 +715,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantByteRef
-		(JNIEnv *env, jobject _this, jbyte b)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantByteRef(JNIEnv *env, jobject _this, jbyte b)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -791,8 +749,7 @@ extern "C"
 	/**
 	 * SF 1065533  added unicode support
 	 * */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantString
-		(JNIEnv *env, jobject _this, jstring s)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantString(JNIEnv *env, jobject _this, jstring s)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -814,8 +771,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT jfloat JNICALL Java_com_tangram_Variant_getVariantFloatRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jfloat JNICALL Java_com_tangram_Variant_getVariantFloatRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -827,8 +783,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantCurrencyRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantCurrencyRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -844,8 +799,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantLongRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantLongRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -857,8 +811,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jint JNICALL Java_com_tangram_Variant_getVariantErrorRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_Variant_getVariantErrorRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -870,8 +823,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT jboolean JNICALL Java_com_tangram_Variant_getVariantBooleanRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jboolean JNICALL Java_com_tangram_Variant_getVariantBooleanRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -884,8 +836,7 @@ extern "C"
 	}
 
 
-	JNIEXPORT jbyte JNICALL Java_com_tangram_Variant_getVariantByteRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jbyte JNICALL Java_com_tangram_Variant_getVariantByteRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -900,8 +851,7 @@ extern "C"
 	/**
 	 * Converts the data to a Safe Array object and then returns it as a Dispatch
 	 */
-	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_toVariantSafeArray
-		(JNIEnv *env, jobject _this, jboolean deepCopy)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_toVariantSafeArray(JNIEnv *env, jobject _this, jboolean deepCopy)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -922,8 +872,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantSafeArrayRef
-		(JNIEnv *env, jobject _this, jobject sa)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantSafeArrayRef(JNIEnv *env, jobject _this, jobject sa)
 	{
 		SAFEARRAY *psa = extractSA(env, sa);
 		if (psa)
@@ -945,8 +894,7 @@ extern "C"
 		return;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantSafeArray
-		(JNIEnv *env, jobject _this, jobject sa)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantSafeArray(JNIEnv *env, jobject _this, jobject sa)
 	{
 		SAFEARRAY *psa = extractSA(env, sa);
 		if (psa)
@@ -969,8 +917,7 @@ extern "C"
 	/**
 	 * sets the type to VT_ERROR and the error message to DISP_E_PARAMNOTFOIUND
 	 * */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantNoParam
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantNoParam(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -985,8 +932,7 @@ extern "C"
 	 * Returns the value of this Variant as a Float if it is of that type.
 	 * Otherwise it will return null (no conversion done)
 	 */
-	JNIEXPORT jfloat JNICALL Java_com_tangram_Variant_getVariantFloat
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jfloat JNICALL Java_com_tangram_Variant_getVariantFloat(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -998,8 +944,7 @@ extern "C"
 		return NULL;
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantFloat
-		(JNIEnv *env, jobject _this, jfloat val)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantFloat(JNIEnv *env, jobject _this, jfloat val)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -1012,8 +957,7 @@ extern "C"
 	/**
 	 * changes the type of the underlying variant data
 	 * */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_changeVariantType
-		(JNIEnv *env, jobject _this, jshort t)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_changeVariantType(JNIEnv *env, jobject _this, jshort t)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -1025,8 +969,7 @@ extern "C"
 	 * returns the variant type if it is set, otherwise
 	 * returns null
 	 * */
-	JNIEXPORT jshort JNICALL Java_com_tangram_Variant_getVariantType
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jshort JNICALL Java_com_tangram_Variant_getVariantType(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -1042,8 +985,7 @@ extern "C"
 	 * the variant type is
 	 * 	VT_EMPTY, VT_NULL, VT_ERROR or VT_DISPATCH with no dispatch object
 	 * */
-	JNIEXPORT jboolean JNICALL Java_com_tangram_Variant_isVariantConsideredNull
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jboolean JNICALL Java_com_tangram_Variant_isVariantConsideredNull(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (!v) return JNI_TRUE;
@@ -1078,8 +1020,7 @@ extern "C"
 	 * Added 1.12 pre 6
 	 *
 	 * */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantVariant
-		(JNIEnv *env, jobject _this, jobject var)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantVariant(JNIEnv *env, jobject _this, jobject var)
 	{
 
 		VARIANT *vVar = extractVariant(env, var);
@@ -1099,8 +1040,7 @@ extern "C"
 	 * Added 1.12 pre 6
 	 *
 	 * */
-	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantVariant
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jlong JNICALL Java_com_tangram_Variant_getVariantVariant(JNIEnv *env, jobject _this)
 	{
 
 		VARIANT *v = extractVariant(env, _this);
@@ -1127,8 +1067,7 @@ extern "C"
 	 * puts a VT_DECIMAL by reference
 	 * Added 1.13M4
 	 * */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDecRef
-		(JNIEnv *env, jobject _this, jint signum, jbyte scale, jint lo, jint mid, jint hi)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDecRef(JNIEnv *env, jobject _this, jint signum, jbyte scale, jint lo, jint mid, jint hi)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -1154,8 +1093,7 @@ extern "C"
 	 * puts a VT_DECIMAL
 	 * Added 1.13M4
 	 * */
-	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDec
-		(JNIEnv *env, jobject _this, jint signum, jbyte scale, jint lo, jint mid, jint hi)
+	JNIEXPORT void JNICALL Java_com_tangram_Variant_putVariantDec(JNIEnv *env, jobject _this, jint signum, jbyte scale, jint lo, jint mid, jint hi)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		DECIMAL *d;
@@ -1179,8 +1117,7 @@ extern "C"
 	/**
 	 * utility method used by the getVariantXXX() methods to convert VT_DECIMAL to BigDecimal
 	 * */
-	jobject extractDecimal
-		(JNIEnv *env, DECIMAL* d)
+	jobject extractDecimal(JNIEnv *env, DECIMAL* d)
 	{
 		jclass bigIntegerClass;
 		jclass bigDecimalClass;
@@ -1253,8 +1190,7 @@ extern "C"
 	  * gets a VT_DECIMAL by ref as a BigDecimal
 	  * Added 1.13M4
 	  * */
-	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_getVariantDecRef
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_getVariantDecRef(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {
@@ -1270,8 +1206,7 @@ extern "C"
 	  * gets a VT_DECIMAL as a BigDecimal
 	  * Added 1.13M4
 	  * */
-	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_getVariantDec
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Variant_getVariantDec(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractVariant(env, _this);
 		if (v) {

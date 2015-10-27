@@ -25,8 +25,7 @@
 extern "C"
 {
 
-	JNIEXPORT void JNICALL Java_com_tangram_STA_doMessagePump
-		(JNIEnv *env, jobject obj)
+	JNIEXPORT void JNICALL Java_com_tangram_STA_doMessagePump(JNIEnv *env, jobject obj)
 	{
 		// store the current thread id so we can kill it
 		jclass argClass = env->GetObjectClass(obj);
@@ -45,13 +44,11 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL Java_com_tangram_STA_quitMessagePump
-		(JNIEnv *env, jobject obj)
+	JNIEXPORT void JNICALL Java_com_tangram_STA_quitMessagePump(JNIEnv *env, jobject obj)
 	{
 		jclass argClass = env->GetObjectClass(obj);
 		jfieldID ajf = env->GetFieldID(argClass, "threadID", "I");
 		jint threadID = env->GetIntField(obj, ajf);
 		PostThreadMessage((DWORD)threadID, WM_QUIT, 0, 0);
 	}
-
 }

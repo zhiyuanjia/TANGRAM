@@ -22,12 +22,15 @@
 #include <objbase.h>
 #include "Dispatch.h"
 #include "util.h"
+#include "..\Tangram\EclipsePlus\TangramEclipseAddin.h"
 
+using namespace TangramEclipsePlus;
+using namespace TangramEclipsePlus::EclipsePlus;
 extern "C"
 {
 #define DISP_FLD "m_pDispatch"
 	// extract a IDispatch from a jobject
-	IDispatch *extractDispatch(JNIEnv *env, jobject arg)
+	IDispatch* extractDispatch(JNIEnv *env, jobject arg)
 	{
 		jclass argClass = env->GetObjectClass(arg);
 		jfieldID ajf = env->GetFieldID(argClass, DISP_FLD, "J");
@@ -42,8 +45,7 @@ extern "C"
 	 * in the event callback thread of a JWS client where the root class loader
 	 * does not have com.tangram.Dispatch in its classpath
 	 */
-	JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_QueryInterface
-		(JNIEnv *env, jobject _this, jstring _iid)
+	JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_QueryInterface(JNIEnv *env, jobject _this, jstring _iid)
 	{
 		// get the current IDispatch
 		IDispatch *pIDispatch = extractDispatch(env, _this);
@@ -83,8 +85,7 @@ extern "C"
 	 * and connects to it.  does special code if the progid
 	 * is of the alternate format (with ":")
 	 **/
-	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_createInstanceNative
-		(JNIEnv *env, jobject _this, jstring _progid)
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_createInstanceNative(JNIEnv *env, jobject _this, jstring _progid)
 	{
 		jclass clazz = env->GetObjectClass(_this);
 		jfieldID jf = env->GetFieldID(clazz, DISP_FLD, "J");
@@ -94,7 +95,7 @@ extern "C"
 		CLSID clsid;
 		HRESULT hr;
 		IUnknown *punk = NULL;
-		IDispatch *pIDispatch;
+		IDispatch *pIDispatch = NULL;
 		USES_CONVERSION;
 		LPOLESTR bsProgId = A2W(progid);
 		if (strchr(progid, ':'))
@@ -120,18 +121,32 @@ extern "C"
 			pIClass->Release();
 			goto doDisp;
 		}
-		env->ReleaseStringUTFChars(_progid, progid);
-		// Now, try to find an IDispatch interface for progid
-		hr = CLSIDFromProgID(bsProgId, &clsid);
-		if (FAILED(hr)) {
-			ThrowComFail(env, "Can't get object clsid from progid", hr);
-			return;
+		else
+		{
+			if (strchr(progid, ','))
+			{
+				env->ReleaseStringUTFChars(_progid, progid);
+				CTangramEclipseAddin* pAddin = (CTangramEclipseAddin*)theApp.m_pTangramCore;
+				pAddin->CreateCLRObj(bsProgId, &pIDispatch);
+				env->SetLongField(_this, jf, (jlong)pIDispatch);
+				return;
+			}
 		}
-		// standard creation
-		hr = CoCreateInstance(clsid, NULL, CLSCTX_LOCAL_SERVER | CLSCTX_INPROC_SERVER, IID_IUnknown, (void **)&punk);
-		if (!SUCCEEDED(hr)) {
-			ThrowComFail(env, "Can't co-create object", hr);
-			return;
+		env->ReleaseStringUTFChars(_progid, progid);
+		if (pIDispatch == NULL)
+		{
+			// Now, try to find an IDispatch interface for progid
+			hr = CLSIDFromProgID(bsProgId, &clsid);
+			if (FAILED(hr)) {
+				ThrowComFail(env, "Can't get object clsid from progid", hr);
+				return;
+			}
+			// standard creation
+			hr = CoCreateInstance(clsid, NULL, CLSCTX_LOCAL_SERVER | CLSCTX_INPROC_SERVER, IID_IUnknown, (void **)&punk);
+			if (!SUCCEEDED(hr)) {
+				ThrowComFail(env, "Can't co-create object", hr);
+				return;
+			}
 		}
 	doDisp:
 
@@ -150,8 +165,7 @@ extern "C"
 	 * attempts to connect to an running instance of the requested program
 	 * This exists solely for the factory method connectToActiveInstance.
 	 **/
-	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_getActiveInstanceNative
-		(JNIEnv *env, jobject _this, jstring _progid)
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_getActiveInstanceNative(JNIEnv *env, jobject _this, jstring _progid)
 	{
 		jclass clazz = env->GetObjectClass(_this);
 		jfieldID jf = env->GetFieldID(clazz, DISP_FLD, "J");
@@ -160,41 +174,50 @@ extern "C"
 		const char *progid = env->GetStringUTFChars(_progid, NULL);
 		CLSID clsid;
 		HRESULT hr;
-		IUnknown *punk = NULL;
-		IDispatch *pIDispatch;
+		IUnknown* punk = NULL;
+		IDispatch* pIDispatch = NULL;
 		USES_CONVERSION;
 		LPOLESTR bsProgId = A2W(progid);
-		env->ReleaseStringUTFChars(_progid, progid);
-		// Now, try to find an IDispatch interface for progid
-		hr = CLSIDFromProgID(bsProgId, &clsid);
-		if (FAILED(hr)) {
-			ThrowComFail(env, "Can't get object clsid from progid", hr);
-			return;
+		if (strchr(progid, ','))
+		{
+			env->ReleaseStringUTFChars(_progid, progid);
+			CTangramEclipseAddin* pAddin = (CTangramEclipseAddin*)theApp.m_pTangramCore;
+			pAddin->CreateCLRObj(bsProgId, &pIDispatch);
+			env->SetLongField(_this, jf, (jlong)pIDispatch);
 		}
-		// standard connection
-		//printf("trying to connect to running %ls\n",bsProgId);
-		hr = GetActiveObject(clsid, NULL, &punk);
-		if (!SUCCEEDED(hr)) {
-			ThrowComFail(env, "Can't get active object", hr);
-			return;
+		else
+		{
+			env->ReleaseStringUTFChars(_progid, progid);
+			// Now, try to find an IDispatch interface for progid
+			hr = CLSIDFromProgID(bsProgId, &clsid);
+			if (FAILED(hr)) {
+				ThrowComFail(env, "Can't get object clsid from progid", hr);
+				return;
+			}
+			// standard connection
+			//printf("trying to connect to running %ls\n",bsProgId);
+			hr = GetActiveObject(clsid, NULL, &punk);
+			if (!SUCCEEDED(hr)) {
+				ThrowComFail(env, "Can't get active object", hr);
+				return;
+			}
+			// now get an IDispatch pointer from the IUnknown
+			hr = punk->QueryInterface(IID_IDispatch, (void **)&pIDispatch);
+			if (!SUCCEEDED(hr)) {
+				ThrowComFail(env, "Can't QI object for IDispatch", hr);
+				return;
+			}
+			// GetActiveObject called AddRef
+			punk->Release();
+			env->SetLongField(_this, jf, (jlong)pIDispatch);
 		}
-		// now get an IDispatch pointer from the IUnknown
-		hr = punk->QueryInterface(IID_IDispatch, (void **)&pIDispatch);
-		if (!SUCCEEDED(hr)) {
-			ThrowComFail(env, "Can't QI object for IDispatch", hr);
-			return;
-		}
-		// GetActiveObject called AddRef
-		punk->Release();
-		env->SetLongField(_this, jf, (jlong)pIDispatch);
 	}
 
 	/**
 	 * starts up a new instance of the requested program (progId).
 	 * This exists solely for the factory method connectToActiveInstance.
 	 **/
-	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_coCreateInstanceNative
-		(JNIEnv *env, jobject _this, jstring _progid)
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_coCreateInstanceNative(JNIEnv *env, jobject _this, jstring _progid)
 	{
 		jclass clazz = env->GetObjectClass(_this);
 		jfieldID jf = env->GetFieldID(clazz, DISP_FLD, "J");
@@ -204,9 +227,17 @@ extern "C"
 		CLSID clsid;
 		HRESULT hr;
 		IUnknown *punk = NULL;
-		IDispatch *pIDispatch;
+		IDispatch *pIDispatch = NULL;
 		USES_CONVERSION;
 		LPOLESTR bsProgId = A2W(progid);
+		if (strchr(progid, ','))
+		{
+			env->ReleaseStringUTFChars(_progid, progid);
+			CTangramEclipseAddin* pAddin = (CTangramEclipseAddin*)theApp.m_pTangramCore;
+			pAddin->CreateCLRObj(bsProgId, &pIDispatch);
+			env->SetLongField(_this, jf, (jlong)pIDispatch);
+			return;
+		}		
 		env->ReleaseStringUTFChars(_progid, progid);
 		// Now, try to find an IDispatch interface for progid
 		hr = CLSIDFromProgID(bsProgId, &clsid);
@@ -234,8 +265,7 @@ extern "C"
 	/**
 	 * release method
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_release
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_release(JNIEnv *env, jobject _this)
 	{
 		jclass clazz = env->GetObjectClass(_this);
 		jfieldID jf = env->GetFieldID(clazz, DISP_FLD, "J");
@@ -248,8 +278,7 @@ extern "C"
 		}
 	}
 
-	static HRESULT
-		name2ID(IDispatch *pIDispatch, const char *prop, DISPID *dispid, long lcid)
+	static HRESULT name2ID(IDispatch *pIDispatch, const char *prop, DISPID *dispid, long lcid)
 	{
 		HRESULT     hresult;
 		USES_CONVERSION;
@@ -258,8 +287,7 @@ extern "C"
 		return hresult;
 	}
 
-	JNIEXPORT jintArray JNICALL Java_com_tangram_Dispatch_getIDsOfNames
-		(JNIEnv *env, jclass clazz, jobject disp, jint lcid, jobjectArray names)
+	JNIEXPORT jintArray JNICALL Java_com_tangram_Dispatch_getIDsOfNames(JNIEnv *env, jclass clazz, jobject disp, jint lcid, jobjectArray names)
 	{
 		IDispatch *pIDispatch = extractDispatch(env, disp);
 		if (!pIDispatch) return NULL;
@@ -304,23 +332,6 @@ extern "C"
 		CoTaskMemFree(dispid);
 		return iarr;
 	}
-
-	//static char* BasicToCharString(const BSTR inBasicString)
-	//{
-	//	char* charString = NULL;
-	//	const size_t charStrSize = ::SysStringLen(inBasicString) + 1;
-	//	if (charStrSize > 1)
-	//	{
-	//		charString = new char[charStrSize];
-	//		size_t convertedSize;
-	//		::wcstombs_s(&convertedSize, charString, charStrSize, inBasicString, charStrSize);
-	//	}
-	//	else
-	//	{
-	//		charString = ::_strdup("");
-	//	}
-	//	return charString;
-	//}
 
 	static wchar_t* CreateErrorMsgFromResult(HRESULT inResult)
 	{
@@ -411,9 +422,7 @@ extern "C"
 
 #define SETNOPARAMS(dp) SETDISPPARAMS(dp, 0, NULL, 0, NULL)
 
-	JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_invokev
-		(JNIEnv *env, jclass clazz,
-			jobject disp, jstring name, jint dispid,
+	JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_invokev	(JNIEnv *env, jclass clazz,	jobject disp, jstring name, jint dispid,
 			jint lcid, jint wFlags, jobjectArray vArg, jintArray uArgErr)
 	{
 		DISPPARAMS  dispparams;
@@ -563,8 +572,8 @@ extern "C"
 	/*
 	 * Wait method added so folks could wait until a com server terminated
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_Dispatch_hasExited
-		(JNIEnv *env, jclass clazz, jobject disp, jint dispid, jint lcid) {
+	JNIEXPORT jint JNICALL Java_com_tangram_Dispatch_hasExited(JNIEnv *env, jclass clazz, jobject disp, jint dispid, jint lcid) 
+	{
 		IDispatch *pIDispatch = extractDispatch(env, disp);
 		if (!pIDispatch) {
 			// should we return 0?

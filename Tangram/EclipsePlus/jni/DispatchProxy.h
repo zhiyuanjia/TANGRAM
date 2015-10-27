@@ -26,29 +26,26 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-/*
- * Class:     com_tangram_DispatchProxy
- * Method:    MarshalIntoStream
- * Signature: (Lcom/tangram/Dispatch;)V
- */
-JNIEXPORT void JNICALL Java_com_tangram_DispatchProxy_MarshalIntoStream
-  (JNIEnv *, jobject, jobject);
+	/*
+	 * Class:     com_tangram_DispatchProxy
+	 * Method:    MarshalIntoStream
+	 * Signature: (Lcom/tangram/Dispatch;)V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_DispatchProxy_MarshalIntoStream(JNIEnv *, jobject, jobject);
 
-/*
- * Class:     com_tangram_DispatchProxy
- * Method:    MarshalFromStream
- * Signature: ()Lcom/tangram/Dispatch;
- */
-JNIEXPORT jobject JNICALL Java_com_tangram_DispatchProxy_MarshalFromStream
-  (JNIEnv *, jobject);
+	/*
+	 * Class:     com_tangram_DispatchProxy
+	 * Method:    MarshalFromStream
+	 * Signature: ()Lcom/tangram/Dispatch;
+	 */
+	JNIEXPORT jobject JNICALL Java_com_tangram_DispatchProxy_MarshalFromStream(JNIEnv *, jobject);
 
-/*
- * Class:     com_tangram_DispatchProxy
- * Method:    release
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_tangram_DispatchProxy_release
-  (JNIEnv *, jobject);
+	/*
+	 * Class:     com_tangram_DispatchProxy
+	 * Method:    release
+	 * Signature: ()V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_DispatchProxy_release(JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }

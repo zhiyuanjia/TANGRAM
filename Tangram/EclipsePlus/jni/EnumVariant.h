@@ -26,37 +26,33 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-/*
- * Class:     com_tangram_EnumVariant
- * Method:    Next
- * Signature: ([Lcom/tangram/Variant;)I
- */
-JNIEXPORT jint JNICALL Java_com_tangram_EnumVariant_Next
-  (JNIEnv *, jobject, jobjectArray);
+	/*
+	 * Class:     com_tangram_EnumVariant
+	 * Method:    Next
+	 * Signature: ([Lcom/tangram/Variant;)I
+	 */
+	JNIEXPORT jint JNICALL Java_com_tangram_EnumVariant_Next(JNIEnv *, jobject, jobjectArray);
 
-/*
- * Class:     com_tangram_EnumVariant
- * Method:    Release
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_release
-  (JNIEnv *, jobject);
+	/*
+	 * Class:     com_tangram_EnumVariant
+	 * Method:    Release
+	 * Signature: ()V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_release(JNIEnv *, jobject);
 
-/*
- * Class:     com_tangram_EnumVariant
- * Method:    Reset
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_Reset
-  (JNIEnv *, jobject);
+	/*
+	 * Class:     com_tangram_EnumVariant
+	 * Method:    Reset
+	 * Signature: ()V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_Reset(JNIEnv *, jobject);
 
-/*
- * Class:     com_tangram_EnumVariant
- * Method:    Skip
- * Signature: (I)V
- */
-JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_Skip
-  (JNIEnv *, jobject, jint);
+	/*
+	 * Class:     com_tangram_EnumVariant
+	 * Method:    Skip
+	 * Signature: (I)V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_Skip(JNIEnv *, jobject, jint);
 
 #ifdef __cplusplus
 }

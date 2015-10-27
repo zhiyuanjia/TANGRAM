@@ -92,8 +92,7 @@ extern "C"
 		return (jint)fetchCount;
 	}
 
-	JNIEXPORT void JNICALL
-		Java_com_tangram_EnumVariant_release(JNIEnv* env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_release(JNIEnv* env, jobject _this)
 	{
 		IEnumVARIANT* self = extractEnumVariant(env, _this);
 		if (self != NULL)
@@ -106,8 +105,7 @@ extern "C"
 		}
 	}
 
-	JNIEXPORT void JNICALL
-		Java_com_tangram_EnumVariant_Reset(JNIEnv* env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_Reset(JNIEnv* env, jobject _this)
 	{
 		IEnumVARIANT* self = extractEnumVariant(env, _this);
 		if (self == NULL)
@@ -118,8 +116,7 @@ extern "C"
 			ThrowComFail(env, "IEnumVARIANT::Reset", hr);
 	}
 
-	JNIEXPORT void JNICALL
-		Java_com_tangram_EnumVariant_Skip(JNIEnv* env, jobject _this, jint count)
+	JNIEXPORT void JNICALL Java_com_tangram_EnumVariant_Skip(JNIEnv* env, jobject _this, jint count)
 	{
 		IEnumVARIANT* self = extractEnumVariant(env, _this);
 		if (self == NULL)

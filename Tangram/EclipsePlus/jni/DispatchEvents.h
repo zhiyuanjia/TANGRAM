@@ -27,19 +27,19 @@
 extern "C" {
 #endif
 
-/*
- * Class:     com_tangram_DispatchEvents
- * Method:    init3
- * Signature: (Lcom/tangram/Dispatch;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
- */
-JNIEXPORT void JNICALL Java_com_tangram_DispatchEvents_init3(JNIEnv *, jobject, jobject, jobject, jstring, jstring);
+	/*
+	 * Class:     com_tangram_DispatchEvents
+	 * Method:    init3
+	 * Signature: (Lcom/tangram/Dispatch;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_DispatchEvents_init3(JNIEnv *, jobject, jobject, jobject, jstring, jstring);
 
-/*
- * Class:     DispatchEvents
- * Method:    release
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_tangram_DispatchEvents_release(JNIEnv *, jobject);
+	/*
+	 * Class:     DispatchEvents
+	 * Method:    release
+	 * Signature: ()V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_DispatchEvents_release(JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }

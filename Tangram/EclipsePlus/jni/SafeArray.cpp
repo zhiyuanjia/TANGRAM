@@ -129,8 +129,7 @@ extern "C"
 	 * Method:    init
 	 * Signature: (I[I[I)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_init
-		(JNIEnv *env, jobject _this, jint vt, jintArray lb, jintArray cel)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_init(JNIEnv *env, jobject _this, jint vt, jintArray lb, jintArray cel)
 	{
 		jint *lbounds = env->GetIntArrayElements(lb, NULL);
 		jint *celems = env->GetIntArrayElements(cel, NULL);
@@ -153,8 +152,7 @@ extern "C"
 	 * Method:    clone
 	 * Signature: ()Ljava/lang/Object;
 	 */
-	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_clone
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_clone(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa)
@@ -176,8 +174,7 @@ extern "C"
 	 * Method:    destroy
 	 * Signature: ()V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_destroy
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_destroy(JNIEnv *env, jobject _this)
 	{
 		VARIANT *v = extractWrapper(env, _this);
 		if (v) {
@@ -197,8 +194,7 @@ extern "C"
 	 * Method:    getvt
 	 * Signature: ()I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getvt
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getvt(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -214,8 +210,7 @@ extern "C"
 	 * Method:    reinit
 	 * Signature: (LSafeArray;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_reinit
-		(JNIEnv *env, jobject _this, jobject sa)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_reinit(JNIEnv *env, jobject _this, jobject sa)
 	{
 		// what to do here?
 	}
@@ -225,8 +220,7 @@ extern "C"
 	 * Method:    reinterpretType
 	 * Signature: (I)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_reinterpretType
-		(JNIEnv *env, jobject _this, jint vt)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_reinterpretType(JNIEnv *env, jobject _this, jint vt)
 	{
 	}
 
@@ -235,8 +229,7 @@ extern "C"
 	 * Method:    getLBound
 	 * Signature: ()I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getLBound__
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getLBound__(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -252,8 +245,7 @@ extern "C"
 	 * Method:    getLBound
 	 * Signature: (I)I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getLBound__I
-		(JNIEnv *env, jobject _this, jint dim)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getLBound__I(JNIEnv *env, jobject _this, jint dim)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -269,8 +261,7 @@ extern "C"
 	 * Method:    getUBound
 	 * Signature: ()I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getUBound__
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getUBound__(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -286,8 +277,7 @@ extern "C"
 	 * Method:    getUBound
 	 * Signature: (I)I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getUBound__I
-		(JNIEnv *env, jobject _this, jint dim)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getUBound__I(JNIEnv *env, jobject _this, jint dim)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -303,8 +293,7 @@ extern "C"
 	 * Method:    getNumDim
 	 * Signature: ()I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getNumDim
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getNumDim(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -318,8 +307,7 @@ extern "C"
 	 * Method:    getFeatures
 	 * Signature: ()I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getFeatures
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getFeatures(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -336,8 +324,7 @@ extern "C"
 	 * Method:    getElemSize
 	 * Signature: ()I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getElemSize
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getElemSize(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (psa) {
@@ -365,8 +352,7 @@ extern "C"
 	 * Method:    fromCharArray
 	 * Signature: ([C)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromCharArray
-		(JNIEnv *env, jobject _this, jcharArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromCharArray(JNIEnv *env, jobject _this, jcharArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -410,8 +396,7 @@ extern "C"
 	 * Method:    fromIntArray
 	 * Signature: ([I)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromIntArray
-		(JNIEnv *env, jobject _this, jintArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromIntArray(JNIEnv *env, jobject _this, jintArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -455,8 +440,7 @@ extern "C"
 	 * Method:    fromLongArray
 	 * Signature: ([L)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromLongArray
-		(JNIEnv *env, jobject _this, jlongArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromLongArray(JNIEnv *env, jobject _this, jlongArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -501,8 +485,7 @@ extern "C"
 	 * Method:    fromShortArray
 	 * Signature: ([S)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromShortArray
-		(JNIEnv *env, jobject _this, jshortArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromShortArray(JNIEnv *env, jobject _this, jshortArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -546,8 +529,7 @@ extern "C"
 	 * Method:    fromDoubleArray
 	 * Signature: ([D)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromDoubleArray
-		(JNIEnv *env, jobject _this, jdoubleArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromDoubleArray(JNIEnv *env, jobject _this, jdoubleArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -591,8 +573,7 @@ extern "C"
 	 * Method:    fromStringArray
 	 * Signature: ([Ljava/lang/String;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromStringArray
-		(JNIEnv *env, jobject _this, jobjectArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromStringArray(JNIEnv *env, jobject _this, jobjectArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -650,8 +631,7 @@ extern "C"
 	 * Method:    fromByteArray
 	 * Signature: ([B)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromByteArray
-		(JNIEnv *env, jobject _this, jbyteArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromByteArray(JNIEnv *env, jobject _this, jbyteArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -695,8 +675,7 @@ extern "C"
 	 * Method:    fromFloatArray
 	 * Signature: ([F)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromFloatArray
-		(JNIEnv *env, jobject _this, jfloatArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromFloatArray(JNIEnv *env, jobject _this, jfloatArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -740,8 +719,7 @@ extern "C"
 	 * Method:    fromBooleanArray
 	 * Signature: ([Z)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromBooleanArray
-		(JNIEnv *env, jobject _this, jbooleanArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromBooleanArray(JNIEnv *env, jobject _this, jbooleanArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -788,8 +766,7 @@ extern "C"
 	 * Method:    fromVariantArray
 	 * Signature: ([LVariant;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromVariantArray
-		(JNIEnv *env, jobject _this, jobjectArray a)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_fromVariantArray(JNIEnv *env, jobject _this, jobjectArray a)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -822,8 +799,7 @@ extern "C"
 	 * Method:    toCharArray
 	 * Signature: ()[C
 	 */
-	JNIEXPORT jcharArray JNICALL Java_com_tangram_SafeArray_toCharArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jcharArray JNICALL Java_com_tangram_SafeArray_toCharArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -867,8 +843,7 @@ extern "C"
 	 * Method:    toIntArray
 	 * Signature: ()[I
 	 */
-	JNIEXPORT jintArray JNICALL Java_com_tangram_SafeArray_toIntArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jintArray JNICALL Java_com_tangram_SafeArray_toIntArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -913,8 +888,7 @@ extern "C"
 	 * Method:    toLongArray
 	 * Signature: ()[L
 	 */
-	JNIEXPORT jlongArray JNICALL Java_com_tangram_SafeArray_toLongArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jlongArray JNICALL Java_com_tangram_SafeArray_toLongArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -959,8 +933,7 @@ extern "C"
 	 * Method:    toShortArray
 	 * Signature: ()[S
 	 */
-	JNIEXPORT jshortArray JNICALL Java_com_tangram_SafeArray_toShortArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jshortArray JNICALL Java_com_tangram_SafeArray_toShortArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1004,8 +977,7 @@ extern "C"
 	 * Method:    toDoubleArray
 	 * Signature: ()[D
 	 */
-	JNIEXPORT jdoubleArray JNICALL Java_com_tangram_SafeArray_toDoubleArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jdoubleArray JNICALL Java_com_tangram_SafeArray_toDoubleArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1049,8 +1021,7 @@ extern "C"
 	 * Method:    toStringArray
 	 * Signature: ()[Ljava/lang/String;
 	 */
-	JNIEXPORT jobjectArray JNICALL Java_com_tangram_SafeArray_toStringArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobjectArray JNICALL Java_com_tangram_SafeArray_toStringArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1102,8 +1073,7 @@ extern "C"
 	 * Method:    toByteArray
 	 * Signature: ()[B
 	 */
-	JNIEXPORT jbyteArray JNICALL Java_com_tangram_SafeArray_toByteArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jbyteArray JNICALL Java_com_tangram_SafeArray_toByteArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1147,8 +1117,7 @@ extern "C"
 	 * Method:    toFloatArray
 	 * Signature: ()[F
 	 */
-	JNIEXPORT jfloatArray JNICALL Java_com_tangram_SafeArray_toFloatArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jfloatArray JNICALL Java_com_tangram_SafeArray_toFloatArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1192,8 +1161,7 @@ extern "C"
 	 * Method:    toBooleanArray
 	 * Signature: ()[Z
 	 */
-	JNIEXPORT jbooleanArray JNICALL Java_com_tangram_SafeArray_toBooleanArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jbooleanArray JNICALL Java_com_tangram_SafeArray_toBooleanArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1241,8 +1209,7 @@ extern "C"
 	 * Method:    toVariantArray
 	 * Signature: ()[LVariant;
 	 */
-	JNIEXPORT jobjectArray JNICALL Java_com_tangram_SafeArray_toVariantArray
-		(JNIEnv *env, jobject _this)
+	JNIEXPORT jobjectArray JNICALL Java_com_tangram_SafeArray_toVariantArray(JNIEnv *env, jobject _this)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1461,8 +1428,7 @@ extern "C"
 	 * Method:    getChar
 	 * Signature: (II)C
 	 */
-	JNIEXPORT jchar JNICALL Java_com_tangram_SafeArray_getChar__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jchar JNICALL Java_com_tangram_SafeArray_getChar__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		GET2DCODE(VT_UI2, V_UI2, jchar)
 	}
@@ -1473,8 +1439,7 @@ extern "C"
 	 * Method:    setChar
 	 * Signature: (IC)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setChar__IC
-		(JNIEnv *env, jobject _this, jint idx, jchar c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setChar__IC(JNIEnv *env, jobject _this, jint idx, jchar c)
 	{
 		SET1DCODE(VT_UI2, V_UI2);
 	}
@@ -1484,8 +1449,7 @@ extern "C"
 	 * Method:    setChar
 	 * Signature: (IIC)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setChar__IIC
-		(JNIEnv *env, jobject _this, jint i, jint j, jchar c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setChar__IIC(JNIEnv *env, jobject _this, jint i, jint j, jchar c)
 	{
 		SET2DCODE(VT_UI2, V_UI2);
 	}
@@ -1495,8 +1459,7 @@ extern "C"
 	 * Method:    getChars
 	 * Signature: (II[CI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getChars
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jcharArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getChars(JNIEnv *env, jobject _this, jint idx, jint nelem, jcharArray ja, jint ja_start)
 	{
 		GETARRAYCODE(VT_UI2, VT_I2, V_UI2, jchar, SetCharArrayRegion);
 	}
@@ -1506,8 +1469,7 @@ extern "C"
 	 * Method:    setChars
 	 * Signature: (II[CI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setChars
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jcharArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setChars(JNIEnv *env, jobject _this, jint idx, jint nelem, jcharArray ja, jint ja_start)
 	{
 		SETARRAYCODE(VT_UI2, VT_I2, V_UI2, jchar,
 			GetCharArrayElements, ReleaseCharArrayElements);
@@ -1520,8 +1482,7 @@ extern "C"
 	 * Method:    getInt
 	 * Signature: (I)I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getInt__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getInt__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		GET1DCODE(VT_I4, V_I4, jint)
 	}
@@ -1531,8 +1492,7 @@ extern "C"
 	 * Method:    getInt
 	 * Signature: (II)I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getInt__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getInt__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		GET2DCODE(VT_I4, V_I4, jint)
 	}
@@ -1542,8 +1502,7 @@ extern "C"
 	 * Method:    setInt
 	 * Signature: (II)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInt__II
-		(JNIEnv *env, jobject _this, jint idx, jint c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInt__II(JNIEnv *env, jobject _this, jint idx, jint c)
 	{
 		SET1DCODE(VT_I4, V_I4);
 	}
@@ -1553,8 +1512,7 @@ extern "C"
 	 * Method:    setInt
 	 * Signature: (III)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInt__III
-		(JNIEnv *env, jobject _this, jint i, jint j, jint c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInt__III(JNIEnv *env, jobject _this, jint i, jint j, jint c)
 	{
 		SET2DCODE(VT_I4, V_I4);
 	}
@@ -1564,8 +1522,7 @@ extern "C"
 	 * Method:    getInts
 	 * Signature: (II[II)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getInts
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jintArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getInts(JNIEnv *env, jobject _this, jint idx, jint nelem, jintArray ja, jint ja_start)
 	{
 		GETARRAYCODE(VT_I4, VT_I4, V_I4, jint, SetIntArrayRegion);
 	}
@@ -1575,8 +1532,7 @@ extern "C"
 	 * Method:    setInts
 	 * Signature: (II[II)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInts
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jintArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInts(JNIEnv *env, jobject _this, jint idx, jint nelem, jintArray ja, jint ja_start)
 	{
 		SETARRAYCODE(VT_I4, VT_I4, V_I4, jint,
 			GetIntArrayElements, ReleaseIntArrayElements);
@@ -1590,8 +1546,7 @@ extern "C"
 	 * Method:    getLong
 	 * Signature: (I)J
 	 */
-	JNIEXPORT jlong JNICALL Java_com_tangram_SafeArray_getLong__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jlong JNICALL Java_com_tangram_SafeArray_getLong__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		GET1DCODE(VT_I8, V_I8, jlong)
 	}
@@ -1601,8 +1556,7 @@ extern "C"
 	 * Method:    getLong
 	 * Signature: (II)J
 	 */
-	JNIEXPORT jlong JNICALL Java_com_tangram_SafeArray_getLong__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jlong JNICALL Java_com_tangram_SafeArray_getLong__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		GET2DCODE(VT_I8, V_I8, jlong)
 	}
@@ -1612,8 +1566,7 @@ extern "C"
 	 * Method:    setLong
 	 * Signature: (IJ)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLong__IJ
-		(JNIEnv *env, jobject _this, jint idx, jlong c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLong__IJ(JNIEnv *env, jobject _this, jint idx, jlong c)
 	{
 		SET1DCODE(VT_I8, V_I8);
 	}
@@ -1623,8 +1576,7 @@ extern "C"
 	 * Method:    setLong
 	 * Signature: (IIJ)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLong__IIJ
-		(JNIEnv *env, jobject _this, jint i, jint j, jlong c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLong__IIJ(JNIEnv *env, jobject _this, jint i, jint j, jlong c)
 	{
 		SET2DCODE(VT_I8, V_I8);
 	}
@@ -1634,8 +1586,7 @@ extern "C"
 	 * Method:    getLongs
 	 * Signature: (II[JI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getLongs
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jlongArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getLongs(JNIEnv *env, jobject _this, jint idx, jint nelem, jlongArray ja, jint ja_start)
 	{
 		GETARRAYCODE(VT_I8, VT_I8, V_I8, jlong, SetLongArrayRegion);
 	}
@@ -1645,8 +1596,7 @@ extern "C"
 	 * Method:    setLongs
 	 * Signature: (II[JI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLongs
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jlongArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLongs(JNIEnv *env, jobject _this, jint idx, jint nelem, jlongArray ja, jint ja_start)
 	{
 		SETARRAYCODE(VT_I8, VT_I8, V_I8, jlong,
 			GetLongArrayElements, ReleaseLongArrayElements);
@@ -1660,8 +1610,7 @@ extern "C"
 	 * Method:    getShort
 	 * Signature: (I)S
 	 */
-	JNIEXPORT jshort JNICALL Java_com_tangram_SafeArray_getShort__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jshort JNICALL Java_com_tangram_SafeArray_getShort__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		GET1DCODE(VT_I2, V_I2, jshort)
 	}
@@ -1671,8 +1620,7 @@ extern "C"
 	 * Method:    getShort
 	 * Signature: (II)S
 	 */
-	JNIEXPORT jshort JNICALL Java_com_tangram_SafeArray_getShort__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jshort JNICALL Java_com_tangram_SafeArray_getShort__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		GET2DCODE(VT_I2, V_I2, jshort)
 	}
@@ -1682,8 +1630,7 @@ extern "C"
 	 * Method:    setShort
 	 * Signature: (IS)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShort__IS
-		(JNIEnv *env, jobject _this, jint idx, jshort c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShort__IS(JNIEnv *env, jobject _this, jint idx, jshort c)
 	{
 		SET1DCODE(VT_I2, V_I2);
 	}
@@ -1693,8 +1640,7 @@ extern "C"
 	 * Method:    setShort
 	 * Signature: (IIS)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShort__IIS
-		(JNIEnv *env, jobject _this, jint i, jint j, jshort c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShort__IIS(JNIEnv *env, jobject _this, jint i, jint j, jshort c)
 	{
 		SET2DCODE(VT_I2, V_I2);
 	}
@@ -1704,8 +1650,7 @@ extern "C"
 	 * Method:    getShorts
 	 * Signature: (II[SI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getShorts
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jshortArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getShorts(JNIEnv *env, jobject _this, jint idx, jint nelem, jshortArray ja, jint ja_start)
 	{
 		GETARRAYCODE(VT_I2, VT_I2, V_I2, jshort, SetShortArrayRegion);
 	}
@@ -1715,8 +1660,7 @@ extern "C"
 	 * Method:    setShorts
 	 * Signature: (II[SI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShorts
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jshortArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShorts(JNIEnv *env, jobject _this, jint idx, jint nelem, jshortArray ja, jint ja_start)
 	{
 		SETARRAYCODE(VT_I2, VT_I2, V_I2, jshort,
 			GetShortArrayElements, ReleaseShortArrayElements);
@@ -1727,8 +1671,7 @@ extern "C"
 	 * Method:    getDouble
 	 * Signature: (I)D
 	 */
-	JNIEXPORT jdouble JNICALL Java_com_tangram_SafeArray_getDouble__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jdouble JNICALL Java_com_tangram_SafeArray_getDouble__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		GET1DCODE(VT_R8, V_R8, jdouble)
 	}
@@ -1738,8 +1681,7 @@ extern "C"
 	 * Method:    getDouble
 	 * Signature: (II)D
 	 */
-	JNIEXPORT jdouble JNICALL Java_com_tangram_SafeArray_getDouble__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jdouble JNICALL Java_com_tangram_SafeArray_getDouble__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		GET2DCODE(VT_R8, V_R8, jdouble)
 	}
@@ -1749,8 +1691,7 @@ extern "C"
 	 * Method:    setDouble
 	 * Signature: (ID)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDouble__ID
-		(JNIEnv *env, jobject _this, jint idx, jdouble c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDouble__ID(JNIEnv *env, jobject _this, jint idx, jdouble c)
 	{
 		SET1DCODE(VT_R8, V_R8);
 	}
@@ -1760,8 +1701,7 @@ extern "C"
 	 * Method:    setDouble
 	 * Signature: (IID)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDouble__IID
-		(JNIEnv *env, jobject _this, jint i, jint j, jdouble c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDouble__IID(JNIEnv *env, jobject _this, jint i, jint j, jdouble c)
 	{
 		SET2DCODE(VT_R8, V_R8);
 	}
@@ -1771,8 +1711,7 @@ extern "C"
 	 * Method:    getDoubles
 	 * Signature: (II[DI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getDoubles
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jdoubleArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getDoubles(JNIEnv *env, jobject _this, jint idx, jint nelem, jdoubleArray ja, jint ja_start)
 	{
 		GETARRAYCODE(VT_R8, VT_R8, V_R8, jdouble, SetDoubleArrayRegion);
 	}
@@ -1782,8 +1721,7 @@ extern "C"
 	 * Method:    setDoubles
 	 * Signature: (II[DI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDoubles
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jdoubleArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDoubles(JNIEnv *env, jobject _this, jint idx, jint nelem, jdoubleArray ja, jint ja_start)
 	{
 		SETARRAYCODE(VT_R8, VT_R8, V_R8, jdouble,
 			GetDoubleArrayElements, ReleaseDoubleArrayElements);
@@ -1799,8 +1737,7 @@ extern "C"
 	 * "StrFree, Release or VariantClear to release the memory"
 	 * waiting on the actual patch the submitter used before modifying this
 	 */
-	JNIEXPORT jstring JNICALL Java_com_tangram_SafeArray_getString__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jstring JNICALL Java_com_tangram_SafeArray_getString__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -1819,7 +1756,7 @@ extern "C"
 			BSTR bs = V_BSTR(&v);
 			jstring js = env->NewString((jchar*)bs, SysStringLen(bs)); // SR cast SF 1689061
 			// jacob report 1224219 
-			// SafeArrayGetElement memory must be freed http://www.canaimasoft.com/f90VB/OnlineManuals/Reference/TH_31.htm
+			// SafeArrayGetElement memory must be freed 
 			VariantClear(&v);
 			return js;
 		}
@@ -1828,7 +1765,7 @@ extern "C"
 			SafeArrayGetElement(psa, &idx, &bs);
 			jstring js = env->NewString((jchar*)bs, SysStringLen(bs)); // SR cast SF 1689061
 			// jacob report 1224219 
-			// SafeArrayGetElement memory must be freed http://www.canaimasoft.com/f90VB/OnlineManuals/Reference/TH_31.htm
+			// SafeArrayGetElement memory must be freed 
 			if (bs) SysFreeString(bs);
 			return js;
 		}
@@ -1841,8 +1778,7 @@ extern "C"
 	 * Method:    getString
 	 * Signature: (II)Ljava/lang/String;
 	 */
-	JNIEXPORT jstring JNICALL Java_com_tangram_SafeArray_getString__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jstring JNICALL Java_com_tangram_SafeArray_getString__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -1879,8 +1815,7 @@ extern "C"
 	 * Method:    setString
 	 * Signature: (ILjava/lang/String;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setString__ILjava_lang_String_2
-		(JNIEnv *env, jobject _this, jint idx, jstring s)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setString__ILjava_lang_String_2(JNIEnv *env, jobject _this, jint idx, jstring s)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1922,8 +1857,7 @@ extern "C"
 	 * Method:    setString
 	 * Signature: (IILjava/lang/String;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setString__IILjava_lang_String_2
-		(JNIEnv *env, jobject _this, jint i, jint j, jstring s)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setString__IILjava_lang_String_2(JNIEnv *env, jobject _this, jint i, jint j, jstring s)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -1967,8 +1901,7 @@ extern "C"
 	 * Method:    getStrings
 	 * Signature: (II[Ljava/lang/String;I)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getStrings
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getStrings(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -2017,8 +1950,7 @@ extern "C"
 	 * Method:    setStrings
 	 * Signature: (II[Ljava/lang/String;I)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setStrings
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setStrings(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -2071,8 +2003,7 @@ extern "C"
 	 * Method:    getByte
 	 * Signature: (I)B
 	 */
-	JNIEXPORT jbyte JNICALL Java_com_tangram_SafeArray_getByte__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jbyte JNICALL Java_com_tangram_SafeArray_getByte__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		GET1DCODE(VT_UI1, V_UI1, jbyte)
 	}
@@ -2082,8 +2013,7 @@ extern "C"
 	 * Method:    getByte
 	 * Signature: (II)B
 	 */
-	JNIEXPORT jbyte JNICALL Java_com_tangram_SafeArray_getByte__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jbyte JNICALL Java_com_tangram_SafeArray_getByte__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		GET2DCODE(VT_UI1, V_UI1, jbyte)
 	}
@@ -2093,8 +2023,7 @@ extern "C"
 	 * Method:    setByte
 	 * Signature: (IB)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setByte__IB
-		(JNIEnv *env, jobject _this, jint idx, jbyte c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setByte__IB(JNIEnv *env, jobject _this, jint idx, jbyte c)
 	{
 		SET1DCODE(VT_UI1, V_UI1);
 	}
@@ -2104,8 +2033,7 @@ extern "C"
 	 * Method:    setByte
 	 * Signature: (IIB)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setByte__IIB
-		(JNIEnv *env, jobject _this, jint i, jint j, jbyte c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setByte__IIB(JNIEnv *env, jobject _this, jint i, jint j, jbyte c)
 	{
 		SET2DCODE(VT_UI1, V_UI1);
 	}
@@ -2115,8 +2043,7 @@ extern "C"
 	 * Method:    getBytes
 	 * Signature: (II[BI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getBytes
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jbyteArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getBytes(JNIEnv *env, jobject _this, jint idx, jint nelem, jbyteArray ja, jint ja_start)
 	{
 		GETARRAYCODE(VT_UI1, VT_I1, V_UI1, jbyte, SetByteArrayRegion);
 	}
@@ -2126,8 +2053,7 @@ extern "C"
 	 * Method:    setBytes
 	 * Signature: (II[BI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBytes
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jbyteArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBytes(JNIEnv *env, jobject _this, jint idx, jint nelem, jbyteArray ja, jint ja_start)
 	{
 		SETARRAYCODE(VT_UI1, VT_I1, V_UI1, jbyte,
 			GetByteArrayElements, ReleaseByteArrayElements);
@@ -2138,8 +2064,7 @@ extern "C"
 	 * Method:    getFloat
 	 * Signature: (I)F
 	 */
-	JNIEXPORT jfloat JNICALL Java_com_tangram_SafeArray_getFloat__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jfloat JNICALL Java_com_tangram_SafeArray_getFloat__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		GET1DCODE(VT_R4, V_R4, jfloat)
 	}
@@ -2149,8 +2074,7 @@ extern "C"
 	 * Method:    getFloat
 	 * Signature: (II)F
 	 */
-	JNIEXPORT jfloat JNICALL Java_com_tangram_SafeArray_getFloat__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jfloat JNICALL Java_com_tangram_SafeArray_getFloat__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		GET2DCODE(VT_R4, V_R4, jfloat)
 	}
@@ -2160,8 +2084,7 @@ extern "C"
 	 * Method:    setFloat
 	 * Signature: (IF)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloat__IF
-		(JNIEnv *env, jobject _this, jint idx, jfloat c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloat__IF(JNIEnv *env, jobject _this, jint idx, jfloat c)
 	{
 		SET1DCODE(VT_R4, V_R4);
 	}
@@ -2171,8 +2094,7 @@ extern "C"
 	 * Method:    setFloat
 	 * Signature: (IIF)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloat__IIF
-		(JNIEnv *env, jobject _this, jint i, jint j, jfloat c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloat__IIF(JNIEnv *env, jobject _this, jint i, jint j, jfloat c)
 	{
 		SET2DCODE(VT_R4, V_R4);
 	}
@@ -2182,8 +2104,7 @@ extern "C"
 	 * Method:    getFloats
 	 * Signature: (II[FI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getFloats
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jfloatArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getFloats(JNIEnv *env, jobject _this, jint idx, jint nelem, jfloatArray ja, jint ja_start)
 	{
 		GETARRAYCODE(VT_R4, VT_R4, V_R4, jfloat, SetFloatArrayRegion);
 	}
@@ -2193,8 +2114,7 @@ extern "C"
 	 * Method:    setFloats
 	 * Signature: (II[FI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloats
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jfloatArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloats(JNIEnv *env, jobject _this, jint idx, jint nelem, jfloatArray ja, jint ja_start)
 	{
 		SETARRAYCODE(VT_R4, VT_R4, V_R4, jfloat,
 			GetFloatArrayElements, ReleaseFloatArrayElements);
@@ -2205,8 +2125,7 @@ extern "C"
 	 * Method:    getBoolean
 	 * Signature: (I)Z
 	 */
-	JNIEXPORT jboolean JNICALL Java_com_tangram_SafeArray_getBoolean__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jboolean JNICALL Java_com_tangram_SafeArray_getBoolean__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		// code is inline because of size mismatch
 		SAFEARRAY *sa = extractSA(env, _this);
@@ -2247,8 +2166,7 @@ extern "C"
 	 * Method:    getBoolean
 	 * Signature: (II)Z
 	 */
-	JNIEXPORT jboolean JNICALL Java_com_tangram_SafeArray_getBoolean__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jboolean JNICALL Java_com_tangram_SafeArray_getBoolean__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		// code is inline because of size mismatch
 		SAFEARRAY *sa = extractSA(env, _this);
@@ -2290,8 +2208,7 @@ extern "C"
 	 * Method:    setBoolean
 	 * Signature: (IZ)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBoolean__IZ
-		(JNIEnv *env, jobject _this, jint idx, jboolean c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBoolean__IZ(JNIEnv *env, jobject _this, jint idx, jboolean c)
 	{
 		// code is inline because of size mismatch
 		SAFEARRAY *sa = extractSA(env, _this);
@@ -2326,8 +2243,7 @@ extern "C"
 	 * Method:    setBoolean
 	 * Signature: (IIZ)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBoolean__IIZ
-		(JNIEnv *env, jobject _this, jint i, jint j, jboolean c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBoolean__IIZ(JNIEnv *env, jobject _this, jint i, jint j, jboolean c)
 	{
 		// code is inline because of size mismatch
 		SAFEARRAY *sa = extractSA(env, _this);
@@ -2363,8 +2279,7 @@ extern "C"
 	 * Method:    getBooleans
 	 * Signature: (II[ZI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getBooleans
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jbooleanArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getBooleans(JNIEnv *env, jobject _this, jint idx, jint nelem, jbooleanArray ja, jint ja_start)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -2405,8 +2320,7 @@ extern "C"
 	 * Method:    setBooleans
 	 * Signature: (II[ZI)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBooleans
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jbooleanArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBooleans(JNIEnv *env, jobject _this, jint idx, jint nelem, jbooleanArray ja, jint ja_start)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -2450,8 +2364,7 @@ extern "C"
 	 * Method:    getVariant
 	 * Signature: (I)LVariant;
 	 */
-	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_getVariant__I
-		(JNIEnv *env, jobject _this, jint idx)
+	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_getVariant__I(JNIEnv *env, jobject _this, jint idx)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -2491,8 +2404,7 @@ extern "C"
 	 * Method:    getVariant
 	 * Signature: (II)LVariant;
 	 */
-	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_getVariant__II
-		(JNIEnv *env, jobject _this, jint i, jint j)
+	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_getVariant__II(JNIEnv *env, jobject _this, jint i, jint j)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -2533,8 +2445,7 @@ extern "C"
 	 * Method:    setVariant
 	 * Signature: (ILVariant;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariant__ILcom_tangram_Variant_2
-		(JNIEnv *env, jobject _this, jint idx, jobject s)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariant__ILcom_tangram_Variant_2(JNIEnv *env, jobject _this, jint idx, jobject s)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -2570,8 +2481,7 @@ extern "C"
 	 * Method:    setVariant
 	 * Signature: (IILVariant;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariant__IILcom_tangram_Variant_2
-		(JNIEnv *env, jobject _this, jint i, jint j, jobject s)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariant__IILcom_tangram_Variant_2(JNIEnv *env, jobject _this, jint i, jint j, jobject s)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -2608,8 +2518,7 @@ extern "C"
 	 * Method:    getVariants
 	 * Signature: (II[LVariant;I)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getVariants
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_getVariants(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -2647,8 +2556,7 @@ extern "C"
 	 * Method:    setVariants
 	 * Signature: (II[LVariant;I)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariants
-		(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariants(JNIEnv *env, jobject _this, jint idx, jint nelem, jobjectArray ja, jint ja_start)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -2767,8 +2675,7 @@ extern "C"
 	  * Method:    getVariant
 	  * Signature: ([I)Lcom/tangram/Variant;
 	  */
-	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_getVariant___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jobject JNICALL Java_com_tangram_SafeArray_getVariant___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 
 		SAFEARRAY *psa = extractSA(env, _this);
@@ -2824,8 +2731,7 @@ extern "C"
 	 * Method:    setVariant
 	 * Signature: ([ILcom/tangram/Variant;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariant___3ILcom_tangram_Variant_2
-		(JNIEnv *env, jobject _this, jintArray indices, jobject s)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setVariant___3ILcom_tangram_Variant_2(JNIEnv *env, jobject _this, jintArray indices, jobject s)
 	{
 
 		SAFEARRAY *sa = extractSA(env, _this);
@@ -2873,8 +2779,7 @@ extern "C"
 	 * Method:    getChar
 	 * Signature: ([I)C
 	 */
-	JNIEXPORT jchar JNICALL Java_com_tangram_SafeArray_getChar___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jchar JNICALL Java_com_tangram_SafeArray_getChar___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		GETNDCODE(VT_UI2, V_UI2, jchar)
 	}
@@ -2897,8 +2802,7 @@ extern "C"
 	 * Method:    getInt
 	 * Signature: ([I)I
 	 */
-	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getInt___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jint JNICALL Java_com_tangram_SafeArray_getInt___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		GETNDCODE(VT_I4, V_I4, jint)
 	}
@@ -2909,8 +2813,7 @@ extern "C"
 	 * Method:    setInt
 	 * Signature: ([II)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInt___3II
-		(JNIEnv *env, jobject _this, jintArray indices, jint c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setInt___3II(JNIEnv *env, jobject _this, jintArray indices, jint c)
 	{
 		SETNDCODE(VT_I4, V_I4);
 	}
@@ -2923,8 +2826,7 @@ extern "C"
 	 * Method:    getLong
 	 * Signature: ([I)J
 	 */
-	JNIEXPORT jlong JNICALL Java_com_tangram_SafeArray_getLong___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jlong JNICALL Java_com_tangram_SafeArray_getLong___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		GETNDCODE(VT_I8, V_I8, jlong)
 	}
@@ -2935,8 +2837,7 @@ extern "C"
 	 * Method:    setLong
 	 * Signature: ([IJ)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLong___3IJ
-		(JNIEnv *env, jobject _this, jintArray indices, jlong c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setLong___3IJ(JNIEnv *env, jobject _this, jintArray indices, jlong c)
 	{
 		SETNDCODE(VT_I8, V_I8);
 	}
@@ -2948,8 +2849,7 @@ extern "C"
 	 * Method:    getShort
 	 * Signature: ([I)S
 	 */
-	JNIEXPORT jshort JNICALL Java_com_tangram_SafeArray_getShort___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jshort JNICALL Java_com_tangram_SafeArray_getShort___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		GETNDCODE(VT_I2, V_I2, jshort)
 	}
@@ -2959,8 +2859,7 @@ extern "C"
 	 * Method:    setShort
 	 * Signature: ([IS)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShort___3IS
-		(JNIEnv *env, jobject _this, jintArray indices, jshort c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setShort___3IS(JNIEnv *env, jobject _this, jintArray indices, jshort c)
 	{
 		SETNDCODE(VT_I2, V_I2);
 	}
@@ -2970,8 +2869,7 @@ extern "C"
 	 * Method:    getDouble
 	 * Signature: ([I)D
 	 */
-	JNIEXPORT jdouble JNICALL Java_com_tangram_SafeArray_getDouble___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jdouble JNICALL Java_com_tangram_SafeArray_getDouble___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		GETNDCODE(VT_R8, V_R8, jdouble)
 	}
@@ -2981,8 +2879,7 @@ extern "C"
 	 * Method:    setDouble
 	 * Signature: ([ID)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDouble___3ID
-		(JNIEnv *env, jobject _this, jintArray indices, jdouble c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setDouble___3ID(JNIEnv *env, jobject _this, jintArray indices, jdouble c)
 	{
 		SETNDCODE(VT_R8, V_R8);
 	}
@@ -2992,8 +2889,7 @@ extern "C"
 	 * Method:    getString
 	 * Signature: ([I)Ljava/lang/String;
 	 */
-	JNIEXPORT jstring JNICALL Java_com_tangram_SafeArray_getString___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jstring JNICALL Java_com_tangram_SafeArray_getString___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		SAFEARRAY *psa = extractSA(env, _this);
 		if (!psa) {
@@ -3048,8 +2944,7 @@ extern "C"
 	 *
 	 * This method has a leak in it somewhere.
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setString___3ILjava_lang_String_2
-		(JNIEnv *env, jobject _this, jintArray indices, jstring s)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setString___3ILjava_lang_String_2(JNIEnv *env, jobject _this, jintArray indices, jstring s)
 	{
 		SAFEARRAY *sa = extractSA(env, _this);
 		if (!sa) {
@@ -3103,8 +2998,7 @@ extern "C"
 	 * Method:    getByte
 	 * Signature: ([I)B
 	 */
-	JNIEXPORT jbyte JNICALL Java_com_tangram_SafeArray_getByte___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jbyte JNICALL Java_com_tangram_SafeArray_getByte___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		GETNDCODE(VT_UI1, V_UI1, jbyte)
 	}
@@ -3114,8 +3008,7 @@ extern "C"
 	 * Method:    setByte
 	 * Signature: ([IB)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setByte___3IB
-		(JNIEnv *env, jobject _this, jintArray indices, jbyte c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setByte___3IB(JNIEnv *env, jobject _this, jintArray indices, jbyte c)
 	{
 		SETNDCODE(VT_UI1, V_UI1);
 	}
@@ -3125,8 +3018,7 @@ extern "C"
 	 * Method:    getFloat
 	 * Signature: ([I)F
 	 */
-	JNIEXPORT jfloat JNICALL Java_com_tangram_SafeArray_getFloat___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jfloat JNICALL Java_com_tangram_SafeArray_getFloat___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		GETNDCODE(VT_R4, V_R4, jfloat)
 	}
@@ -3137,8 +3029,7 @@ extern "C"
 	 * Method:    setFloat
 	 * Signature: ([IF)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloat___3IF
-		(JNIEnv *env, jobject _this, jintArray indices, jfloat c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setFloat___3IF(JNIEnv *env, jobject _this, jintArray indices, jfloat c)
 	{
 		SETNDCODE(VT_R4, V_R4);
 	}
@@ -3148,8 +3039,7 @@ extern "C"
 	 * Method:    getBoolean
 	 * Signature: ([I)Z
 	 */
-	JNIEXPORT jboolean JNICALL Java_com_tangram_SafeArray_getBoolean___3I
-		(JNIEnv *env, jobject _this, jintArray indices)
+	JNIEXPORT jboolean JNICALL Java_com_tangram_SafeArray_getBoolean___3I(JNIEnv *env, jobject _this, jintArray indices)
 	{
 		// code is inline because of size mismatch
 		SAFEARRAY *sa = extractSA(env, _this);
@@ -3201,8 +3091,7 @@ extern "C"
 	 * Method:    setBoolean
 	 * Signature: ([IZ)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBoolean___3IZ
-		(JNIEnv *env, jobject _this, jintArray indices, jboolean c)
+	JNIEXPORT void JNICALL Java_com_tangram_SafeArray_setBoolean___3IZ(JNIEnv *env, jobject _this, jintArray indices, jboolean c)
 	{
 		// code is inline because of size mismatch
 		SAFEARRAY *sa = extractSA(env, _this);
@@ -3240,6 +3129,4 @@ extern "C"
 		}
 		env->ReleaseIntArrayElements(indices, jIndices, NULL);
 	}
-
-
 }

@@ -31,16 +31,14 @@ extern "C" {
  * Method:    doMessagePump
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_tangram_STA_doMessagePump
-  (JNIEnv *, jobject);
+JNIEXPORT void JNICALL Java_com_tangram_STA_doMessagePump(JNIEnv *, jobject);
 
 /*
  * Class:     com_tangram_STA
  * Method:    quitMessagePump
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_tangram_STA_quitMessagePump
-  (JNIEnv *, jobject);
+JNIEXPORT void JNICALL Java_com_tangram_STA_quitMessagePump(JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }

@@ -26,69 +26,61 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-/*
- * Class:     com_tangram_Dispatch
- * Method:    QueryInterface
- * Signature: (Ljava/lang/String;)Lcom/tangram/Dispatch;
- */
-JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_QueryInterface
-  (JNIEnv *, jobject, jstring);
+	/*
+	 * Class:     com_tangram_Dispatch
+	 * Method:    QueryInterface
+	 * Signature: (Ljava/lang/String;)Lcom/tangram/Dispatch;
+	 */
+	JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_QueryInterface(JNIEnv *, jobject, jstring);
 
-/*
- * Class:     Dispatch
- * Method:    createInstance
- * Signature: (Ljava/lang/String;)V
- */
-JNIEXPORT void JNICALL Java_com_tangram_Dispatch_createInstanceNative
-  (JNIEnv *, jobject, jstring);
+	/*
+	 * Class:     Dispatch
+	 * Method:    createInstance
+	 * Signature: (Ljava/lang/String;)V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_createInstanceNative(JNIEnv *, jobject, jstring);
 
-/*
- * Class:     Dispatch
- * Method:    getActiveInstance
- * Signature: (Ljava/lang/String;)V
- */
-JNIEXPORT void JNICALL Java_com_tangram_Dispatch_getActiveInstanceNative
-  (JNIEnv *, jobject, jstring);
+	/*
+	 * Class:     Dispatch
+	 * Method:    getActiveInstance
+	 * Signature: (Ljava/lang/String;)V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_getActiveInstanceNative(JNIEnv *, jobject, jstring);
 
-/*
- * Class:     Dispatch
- * Method:    coCreateInstance
- * Signature: (Ljava/lang/String;)V
- */
-JNIEXPORT void JNICALL Java_com_tangram_Dispatch_coCreateInstanceNative
-  (JNIEnv *, jobject, jstring);
+	/*
+	 * Class:     Dispatch
+	 * Method:    coCreateInstance
+	 * Signature: (Ljava/lang/String;)V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_coCreateInstanceNative(JNIEnv *, jobject, jstring);
 
-/*
- * Class:     Dispatch
- * Method:    release
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_tangram_Dispatch_release
-  (JNIEnv *, jobject);
+	/*
+	 * Class:     Dispatch
+	 * Method:    release
+	 * Signature: ()V
+	 */
+	JNIEXPORT void JNICALL Java_com_tangram_Dispatch_release(JNIEnv *, jobject);
 
-/*
- * Class:     Dispatch
- * Method:    getIDsOfNames
- * Signature: (Ljava/lang/Object;I[Ljava/lang/String;)[I
- */
-JNIEXPORT jintArray JNICALL Java_com_tangram_Dispatch_getIDsOfNames
-  (JNIEnv *, jclass, jobject, jint, jobjectArray);
+	/*
+	 * Class:     Dispatch
+	 * Method:    getIDsOfNames
+	 * Signature: (Ljava/lang/Object;I[Ljava/lang/String;)[I
+	 */
+	JNIEXPORT jintArray JNICALL Java_com_tangram_Dispatch_getIDsOfNames(JNIEnv *, jclass, jobject, jint, jobjectArray);
 
-/*
- * Class:     Dispatch
- * Method:    invokev
- * Signature: (Ljava/lang/Object;Ljava/lang/String;III[LVariant;[I)LVariant;
- */
-JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_invokev
-  (JNIEnv *, jclass, jobject, jstring, jint, jint, jint, jobjectArray, jintArray);
+	/*
+	 * Class:     Dispatch
+	 * Method:    invokev
+	 * Signature: (Ljava/lang/Object;Ljava/lang/String;III[LVariant;[I)LVariant;
+	 */
+	JNIEXPORT jobject JNICALL Java_com_tangram_Dispatch_invokev(JNIEnv *, jclass, jobject, jstring, jint, jint, jint, jobjectArray, jintArray);
 
-/*
- * Class:     Dispatch
- * Method:    wait
- * Signature: (Ljava/lang/Object;I;)I
- */
-JNIEXPORT jint JNICALL Java_com_tangram_Dispatch_hasExited
-	(JNIEnv *, jclass, jobject, jint, jint);
+	/*
+	 * Class:     Dispatch
+	 * Method:    wait
+	 * Signature: (Ljava/lang/Object;I;)I
+	 */
+	JNIEXPORT jint JNICALL Java_com_tangram_Dispatch_hasExited(JNIEnv *, jclass, jobject, jint, jint);
 
 #ifdef __cplusplus
 }

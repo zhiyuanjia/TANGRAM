@@ -63,12 +63,11 @@ extern "C"
 	 * Method:    init3
 	 * Signature: (Lcom/tangram/Dispatch;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
 	 */
-	JNIEXPORT void JNICALL Java_com_tangram_DispatchEvents_init3
-		(JNIEnv *env,
-			jobject _this, jobject src,
-			jobject sink,
-			jstring _progid,
-			jstring _typelib)
+	JNIEXPORT void JNICALL Java_com_tangram_DispatchEvents_init3(JNIEnv *env,
+		jobject _this, jobject src,
+		jobject sink,
+		jstring _progid,
+		jstring _typelib)
 	{
 		USES_CONVERSION;
 
