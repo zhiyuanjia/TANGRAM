@@ -1,0 +1,32 @@
+HKCR
+{
+	TangramOfficeX.TangramCtrl.1 = s 'TangramCtrl Class'
+	{
+		CLSID = s '{19631222-1963-1992-1965-19920612095B}'
+	}
+	TangramOfficeX.TangramCtrl = s 'TangramCtrl Class'
+	{		
+		CurVer = s 'TangramOfficeX.TangramCtrl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {19631222-1963-1992-1965-19920612095B} = s 'TangramCtrl Class'
+		{
+			ProgID = s 'TangramOfficeX.TangramCtrl.1'
+			VersionIndependentProgID = s 'TangramOfficeX.TangramCtrl'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove Control
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 107'
+			MiscStatus = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{19631222-1963-1992-1965-199206125775}'
+			Version = s '1.0'
+		}
+	}
+}

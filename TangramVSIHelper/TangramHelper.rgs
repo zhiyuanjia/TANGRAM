@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramVSIHelper.TangramHelper.1 = s 'TangramHelper Class'
+	{
+		CLSID = s '{19631222-1963-1992-1965-1992061256D9}'
+	}
+	TangramVSIHelper.TangramHelper = s 'TangramHelper Class'
+	{		
+		CurVer = s 'TangramVSIHelper.TangramHelper.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {19631222-1963-1992-1965-1992061256D9} = s 'TangramHelper Class'
+		{
+			ProgID = s 'TangramVSIHelper.TangramHelper.1'
+			VersionIndependentProgID = s 'TangramVSIHelper.TangramHelper'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{19631222-1963-1992-1965-1992061216EB}'
+			Version = s '1.0'
+		}
+	}
+}

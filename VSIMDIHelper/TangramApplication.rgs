@@ -1,0 +1,26 @@
+HKCR
+{
+	VSIMDIApp.Application.1 = s 'TangramApplication Class'
+	{
+		CLSID = s '{710D12E5-94F2-465A-8B84-62DAF88C8DB0}'
+	}
+	VSIMDIApp.Application = s 'TangramApplication Class'
+	{		
+		CurVer = s 'VSIMDIApp.Application.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {710D12E5-94F2-465A-8B84-62DAF88C8DB0} = s 'TangramApplication Class'
+		{
+			ProgID = s 'VSIMDIApp.Application.1'
+			VersionIndependentProgID = s 'VSIMDIApp.Application'
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{5EAE5EDC-2C25-4B07-BF0B-C9C7DC233D69}'
+			Version = s '1.0'
+		}
+	}
+}

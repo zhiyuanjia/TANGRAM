@@ -1,0 +1,116 @@
+Build/
+Samples/
+*.opensdf
+*.sdf
+*.suo
+*.ipch
+*.aps
+*.user
+
+#CommonFile Folder
+
+CommonFile/Tangram.h
+CommonFile/Tangram.c
+CommonFile/Tangram_p.c
+
+#Tangram Folder
+
+Tangram/Debug/
+Tangram/Release/
+Tangram/x64/
+Tangram/Tangram.tlb
+Tangram/Tangram_p.c
+
+#TangramApp Folder
+
+TangramApp/Debug/
+TangramApp/Release/
+TangramApp/x64/
+
+#TangramCLR Folder
+
+TangramCLR/Debug/
+TangramCLR/Release/
+TangramCLR/x64/
+
+#TangramCOMEx
+
+TangramCOMEx/Debug/
+TangramCOMEx/Release/
+TangramCOMEx/x64/
+
+#TangramDotNetLib Folder
+
+TangramDotNetLib/obj/
+
+#TangramExcelTabWnd Folder
+
+TangramExcelTabWnd/Debug/
+TangramExcelTabWnd/Release/
+TangramExcelTabWnd/x64/
+TangramExcelTabWnd/TangramExcelTabWnd_i.h
+TangramExcelTabWnd/TangramExcelTabWnd_i.c
+
+#TangramMFCApp
+
+TangramMFCApp/Debug/
+TangramMFCApp/Release/
+TangramMFCApp/x64/
+
+#TangramPackage
+
+TangramPackage/Debug/
+TangramPackage/obj/
+TangramPackage/Release/
+
+#TangramPackageUi
+
+TangramPackageUi/Debug/
+TangramPackageUi/Release/
+
+#TangramTabbedWnd
+
+TangramTabbedWnd/Debug/
+TangramTabbedWnd/Release/
+
+#TangramVSIHelper
+
+TangramVSIHelper/Debug/
+TangramVSIHelper/Release/
+TangramVSIHelper/x64/
+
+#VSIMDIHelper
+
+VSIMDIHelper/Debug/
+VSIMDIHelper/Release/
+
+#TangramTabCtrl Folder
+
+TangramTabCtrl/Debug/
+TangramTabCtrl/Release/
+TangramTabCtrl/x64/
+TangramTabCtrl/TangramTabCtrl_i.h
+TangramTabCtrl/TangramTabCtrl_i.c
+
+#TangramWinFormApp Folder
+
+TangramWinFormApp/obj/
+
+#WindowsFormsApplication Folder
+
+WindowsFormsApplication/obj/
+
+#TangramView Folder
+
+TangramView/Debug/
+TangramView/Release/
+TangramView/x64/
+TangramView/TangramView_i.h
+TangramView/TangramView_i.c
+
+Debug/
+ipch/
+bin/
+Release/
+resources/
+x64/

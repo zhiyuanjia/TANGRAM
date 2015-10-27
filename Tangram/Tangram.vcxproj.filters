@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{da126053-b6ff-43ef-8281-cc199f04134a}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus">
+      <UniqueIdentifier>{9d9b7606-edf7-4470-b3f3-95c6d51d0e09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus">
+      <UniqueIdentifier>{d717e345-419e-46da-90b0-c213b6779949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramVisualStudioPlus">
+      <UniqueIdentifier>{a7412fc2-c9b8-4ef9-b35b-f57c834b4c63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramVisualStudioPlus">
+      <UniqueIdentifier>{87f2daeb-55a1-446d-a78e-5fb0ab1c59b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramEclipsePlus">
+      <UniqueIdentifier>{2f33c0ec-30e5-41c5-98d1-1cc090fda3c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramEclipsePlus">
+      <UniqueIdentifier>{edabf99e-410d-4eb6-aa40-cb0e0d6d763a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramUtilities">
+      <UniqueIdentifier>{04e792e3-07dc-4834-a689-2a4b3e7aec93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramUtilities">
+      <UniqueIdentifier>{6703b65f-6f53-42d2-9d01-6e279273849f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\ExcelPlus">
+      <UniqueIdentifier>{4bfe8859-c1f6-49ec-a9c1-65db96f790ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\WordPlus">
+      <UniqueIdentifier>{ee3963a8-6858-47cd-b0f9-19c6b5a7cd2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\ExcelPlus">
+      <UniqueIdentifier>{7179ff8e-498c-4594-a838-a5fd178258a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\WordPlus">
+      <UniqueIdentifier>{282d8c72-f302-4700-9f87-45664d9c79e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\InfoPathPlus">
+      <UniqueIdentifier>{ffef7eeb-2fcd-4c3e-b871-2072bd50617e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\InfoPathPlus">
+      <UniqueIdentifier>{aa850dd4-14fc-4fb8-9295-93e58a386243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\AccessPlus">
+      <UniqueIdentifier>{3b5ab874-cdc6-4e8a-b14a-ab8728a46db4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\AccessPlus">
+      <UniqueIdentifier>{182a4667-07f8-40ef-818b-5d3f5cf79251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\LyncPlus">
+      <UniqueIdentifier>{1fbdb52e-713c-4053-b429-d75c64e80cce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\LyncPlus">
+      <UniqueIdentifier>{00c90dc2-7f3c-490b-85e7-59b4e62cd140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\OneNotePlus">
+      <UniqueIdentifier>{20a8918e-b276-47eb-93d4-376ec5ffb6aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\OneNotePlus">
+      <UniqueIdentifier>{c7564704-7589-4b86-97ce-82209ecf4df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\OutLookPlus">
+      <UniqueIdentifier>{fcf94fc8-0925-4061-a3db-fb3eace1e1a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\OutLookPlus">
+      <UniqueIdentifier>{de3dc5c0-5f37-4673-a1a6-f2fe85e214aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\PowerPointPlus">
+      <UniqueIdentifier>{35bee1de-b38e-4379-952a-c1506d2c2d93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\PowerPointPlus">
+      <UniqueIdentifier>{495044fa-3678-4835-8ce9-7dd052da459e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\ProjectPlus">
+      <UniqueIdentifier>{70eb1640-54e6-489c-b894-8f1d9b7749b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\ProjectPlus">
+      <UniqueIdentifier>{1e932f8a-4359-48af-be06-6423ec1189a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisioPlus">
+      <UniqueIdentifier>{259efae6-40be-4cb9-a07d-4dede669d0ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\VisioPlus">
+      <UniqueIdentifier>{dcf74e0a-1dfb-47a8-b7db-324e79118c3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TangramOfficePlus\VBA">
+      <UniqueIdentifier>{b6ac6870-0189-47fa-a5c4-5de5e70d4bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TangramOfficePlus\VBA">
+      <UniqueIdentifier>{33a1aada-71a0-4428-9270-8a6aee603e4a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramSplitterWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramTabbedView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramJSExtender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualStudioPlus\TangramVSAddin.cpp">
+      <Filter>Source Files\TangramVisualStudioPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\TangramEclipseAddin.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\TangramCtrl.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramUtilities\TangramComponentInstaller.cpp">
+      <Filter>Source Files\TangramUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramUtilities\TangramDownLoad.cpp">
+      <Filter>Source Files\TangramUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramUtilities\XUnzip.cpp">
+      <Filter>Source Files\TangramUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="TangramUtilities\XZip.cpp">
+      <Filter>Source Files\TangramUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\WordPlus\TangramWordAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\WordPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\WordPlus\WordPlusDoc.cpp">
+      <Filter>Source Files\TangramOfficePlus\WordPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\ExcelPlus\TangramExcelAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\ExcelPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\ExcelPlus\ExcelPlusWnd.cpp">
+      <Filter>Source Files\TangramOfficePlus\ExcelPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\InfoPathPlus\TangramInfoPathAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\InfoPathPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\AccessPlus\TangramAccessAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\AccessPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\LyncPlus\TangramLyncAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\LyncPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\OneNotePlus\TangramOneNoteAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\OneNotePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\OutlookPlus\TangramOutLookAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\OutLookPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\PowerpointPlus\TangramPowerPointAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\PowerPointPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\ProjectPlus\TangramProjectAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus\ProjectPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\VisioPlus\TangramVisioAddin.cpp">
+      <Filter>Source Files\VisioPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\VBA\TangramVBAForm.cpp">
+      <Filter>Source Files\TangramOfficePlus\VBA</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\WordPlus\WordPlusEvents.cpp">
+      <Filter>Source Files\TangramOfficePlus\WordPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\OneNotePlus\OneNotePlusEvents.cpp">
+      <Filter>Source Files\TangramOfficePlus\OneNotePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficePlus\TangramAddin.cpp">
+      <Filter>Source Files\TangramOfficePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="Markup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\ComThread.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\Dispatch.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\DispatchEvents.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\DispatchProxy.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\EnumVariant.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\EventProxy.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\SafeArray.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\STA.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\util.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+    <ClCompile Include="EclipsePlus\jni\Variant.cpp">
+      <Filter>Source Files\TangramEclipsePlus</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="splith.cur">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
+    <None Include="splitv.cur">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
+    <None Include="Tangram.rgs">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
+    <None Include="TangramApp.rgs">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
+    <None Include="Tangram.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TangramCtrl.rgs">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
+    <None Include="Tangram.tlb" />
+    <None Include="TangramAccessFormHelper.rgs">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
+    <None Include="TangramAccessApp.rgs">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramSplitterWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramTabbedView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramJSExtender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VisualStudioPlus\TangramVSAddin.h">
+      <Filter>Header Files\TangramVisualStudioPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramUtilities\XZip.h">
+      <Filter>Header Files\TangramUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramUtilities\XUnzip.h">
+      <Filter>Header Files\TangramUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramUtilities\TangramDownLoad.h">
+      <Filter>Header Files\TangramUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="TangramUtilities\TangramComponentInstaller.h">
+      <Filter>Header Files\TangramUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\ExcelPlus\ExcelPlusWnd.h">
+      <Filter>Header Files\TangramOfficePlus\ExcelPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\ExcelPlus\TangramExcelAddin.h">
+      <Filter>Header Files\TangramOfficePlus\ExcelPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\WordPlus\WordPlusDoc.h">
+      <Filter>Header Files\TangramOfficePlus\WordPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\WordPlus\TangramWordAddin.h">
+      <Filter>Header Files\TangramOfficePlus\WordPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\InfoPathPlus\TangramInfoPathAddin.h">
+      <Filter>Header Files\TangramOfficePlus\InfoPathPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\LyncPlus\TangramLyncAddin.h">
+      <Filter>Header Files\TangramOfficePlus\LyncPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\OneNotePlus\TangramOneNoteAddin.h">
+      <Filter>Header Files\TangramOfficePlus\OneNotePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\OutlookPlus\TangramOutLookAddin.h">
+      <Filter>Header Files\TangramOfficePlus\OutLookPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\PowerpointPlus\TangramPowerPointAddin.h">
+      <Filter>Header Files\TangramOfficePlus\PowerPointPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\ProjectPlus\TangramProjectAddin.h">
+      <Filter>Header Files\TangramOfficePlus\ProjectPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\VisioPlus\TangramVisioAddin.h">
+      <Filter>Header Files\TangramOfficePlus\VisioPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\VBA\TangramVBAForm.h">
+      <Filter>Header Files\TangramOfficePlus\VBA</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\_ITangramVBAFormEvents_CP.h">
+      <Filter>Header Files\TangramOfficePlus\VBA</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\TangramCtrl.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\TangramEclipseAddin.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\ExcelPlus\ExcelPlusEvents.h">
+      <Filter>Header Files\TangramOfficePlus\ExcelPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\WordPlus\WordPlusEvents.h">
+      <Filter>Header Files\TangramOfficePlus\WordPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\OutlookPlus\OutLookPlusEvents.h">
+      <Filter>Header Files\TangramOfficePlus\OutLookPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\OneNotePlus\OneNotePlusEvents.h">
+      <Filter>Header Files\TangramOfficePlus\OneNotePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\InfoPathPlus\InfoPathPlusEvents.h">
+      <Filter>Header Files\TangramOfficePlus\InfoPathPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\LyncPlus\LyncEvent.h">
+      <Filter>Header Files\TangramOfficePlus\LyncPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\LyncPlus\UccAPIEvent.h">
+      <Filter>Header Files\TangramOfficePlus\LyncPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\PowerpointPlus\PowerpointPlusEvents.h">
+      <Filter>Header Files\TangramOfficePlus\PowerPointPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\AccessPlus\TangramAccessAddin.h">
+      <Filter>Header Files\TangramOfficePlus\AccessPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficePlus\TangramAddin.h">
+      <Filter>Header Files\TangramOfficePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="Markup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\ComThread.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\Dispatch.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\DispatchEvents.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\DispatchProxy.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\EnumVariant.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\EventProxy.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\SafeArray.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\STA.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\util.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+    <ClInclude Include="EclipsePlus\jni\Variant.h">
+      <Filter>Header Files\TangramEclipsePlus</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp">
+      <Filter>Generated Files\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Tangram.rc">
+      <Filter>Generated Files\Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="..\CommonFile\Tangram.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+</Project>

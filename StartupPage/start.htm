@@ -1,0 +1,52 @@
+<html>
+
+<script>
+    function Tangram_OnPageLoaded(SourceWindow, URL) {
+        if (SourceWindow == window) {
+            Tangram.ExtendCtrl(0, "", Tangram.xtml("xtmlStartupDoc"));
+            //alert(TangramCore);
+            //alert(TangramCore.TangramExtender("DTE"));
+            //CComQIPtr<DTE2> pDTE2(pDTE);
+            //CComPtr<ToolWindows> pToolWindows;
+            //pDTE2->get_ToolWindows(&pToolWindows);
+            //if (pToolWindows)
+            //{
+            //	//CComPtr<VxDTE::OutputWindow> pOutWnd;
+            //	//pToolWindows->get_OutputWindow(&pOutWnd);
+            //	//CComPtr<OutputWindowPane> pPane;
+            //	//CComPtr<OutputWindowPanes> pPanes;
+            //	//pOutWnd->get_OutputWindowPanes(&pPanes);
+            //	//pPanes->Add(CComBSTR(L"Tangram"), &pPane);
+            //	//pPane->OutputString(CComBSTR(L"Welcome to Tangram!"));
+            //}
+            //alert(TangramCore.TangramExtender("DTE").ToolWindows);
+            //alert(toolwnds);
+            //var outputwnd = toolwnds.OutputWindow;
+            //var panes = outputwnd.OutputWindowPanes;
+            //var pane = panes.Add("Tangram");
+            //pane.OutputString("Welcome to Tangram!");
+        }
+    }
+    function Tangram_OnClrControlCreated(Node, Ctrl, CtrlName, CtrlHandle) {
+        //alert(22);
+    }
+</script>
+
+<body>
+    <xml id="xtmlStartupDoc">
+        <tangram>
+            <window>
+                <node name="Start_S0001"
+                      id="TangramTabCtrl"
+                      cnnid="TangramTabbedWnd.TabbedComponent.1"
+                      style="18">
+                    <node name="Page1" caption="Cloud Tools" id="hostview" />
+                    <node name="Start_S0000" caption="Map Application Studio" id="CLRCtrl" cnnid="TangramDotNetLib.about,TangramDotNetLib" />
+                    <node name="Start_S0001" caption="Map Application Studio" id="CLRCtrl" cnnid="TangramDotNetLib.about,TangramDotNetLib" />
+                </node>
+            </window>
+            <data><xx><yy>FFFFFˮˮ</yy></xx></data>
+        </tangram>
+    </xml>
+</body>
+</html>

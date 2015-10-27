@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        function RegButtonEvents() {
+            var button1 = Tangram.GetCtrlInNode('panel1_default_MainPanel', 'button1');
+            button1.Text = button1.Text + ' (Registered)';
+            Tangram.AttachObjEvent(this, button1, 'OnClick', 'button1_OnClick');
+            alert('Register successfully!');
+        }
+
+        function button1_OnClick() {
+            alert('Click button1.');
+        }
+
+    </script>
+</head>
+<body>
+    <h4>Use scripts to manipulate the controls on the left side.</h4>
+    <a href="javascript:void(0);" onclick="RegButtonEvents();">Registration button events</a>
+</body>
+</html>

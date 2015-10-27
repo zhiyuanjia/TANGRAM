@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'TangramMFCMDIApp'
+				'TangramMFCMDIApp.EXE'
+				{
+			val AppID = s '%APPID%'
+		}
+	}
+}

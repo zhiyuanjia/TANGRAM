@@ -1,0 +1,182 @@
+﻿<html>
+<script>
+    var strText = null;
+    function Tangram_OnPageLoaded(SourceWindow, URL) {
+        if (SourceWindow == window) {
+            //Tangram.EnableSinkCLRCtrlCreatedEvent = false;
+            Tangram.AddObjToHtml("MainFrame", true, Tangram.External);
+            MainFrame.Text = "Welcome to the World of Tangram";
+            Tangram.ExtendCtrl(MainFrame, "", Tangram.xtml("xtmlStartupDoc"));
+            Tangram.Extend(MainFrame, "subMainPanel", "", "", Tangram.xtml("xtmlMain"));
+            Tangram.Extend(MainFrame, "subBottomPanel", "", "", Tangram.xtml("xtmlBottom"));
+            Tangram.Extend(MainFrame, "subPropertyPanel", "", "", Tangram.xtml("xtmlProperty"));
+        }
+    }
+
+    function Tangram_OnNodeCreated(Node) {
+        if (Node.TangramName == "subBottomPanel_default_WinHtml") {
+            //alert(1);
+            Node.GetCtrlByName("InfoTextBox", true).Text = document.body.parentElement.outerHTML;
+        }
+        if (Node.TangramName == "subBottomPanel_default_Page3") {
+            var ctrl = Node.GetCtrlByName("textBox1", true);
+            Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnMouseDoubleClick", "abc");
+            Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnKeyPress", "");
+            Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnMouseEnter", "a23");
+            Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnMouseLeave", "");
+        }
+        if (Node.TangramName == "TangramMdiFrame_default_Detail") {
+            Tangram.AttachNodeEvent("TangramMdiFrame_default_Detail", this);
+
+        }
+    }
+
+    function TangramMdiFrame_default_Detail_Node_OnControlNotify(Node, NotifyCode, CtrlID, CtrlHandle, ClassName)
+    {
+        if(CtrlID==206)
+        {
+            varText = TangramCore.GetItemText(CtrlHandle, 0);
+            alert(varText);
+        }
+    }
+    function Tangram_OnAddInCreated(/*TangramNode */pNode, /*IDispatch */pAddIn, /*BSTR*/ bstrID, /*BSTR*/ bstrAddInXml) {
+    }
+
+    function Tangram_OnClrControlCreated(Node, ctrl,/*BSTR */Name, /*LONGLONG */hWnd) {
+        //alert(Node.TangramName + ":" + ctrl.Name);
+        //if (Node.TangramName == "subBottomPanel_default_Page3") {
+        //    if (Name == "button1") {
+        //        Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnClick", "button1_OnnClick");
+        //    }
+        //    if (Name == "textBox1") {
+        //        Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnMouseDoubleClick", "abc");
+        //        Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnKeyPress", "");
+        //        Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnMouseEnter", "a23");
+        //        Tangram.AttachNodeSubCtrlEvent(this, Node, ctrl, "OnMouseLeave", "");
+        //    }
+        //    if (Name == "textBoxEventInfo") {
+        //        ctrl.Text = Tangram_OnClrControlCreated;
+        //    }
+        //}
+    }
+    function Tangram_OnBeforeExtendXml(/*BSTR */bstrXml, /*LONGLONG */hWnd) {
+
+    }
+
+    function Tangram_OnNodeMouseActivate(Node) {
+        if (Node.TangramName != "subPropertyPanel_default_Property")
+            TangramCore.TangramPropertyGrid.SelectedObject = Node.XObject;
+        if (Node.TangramName == "BottomPanel_BottomPanel_ObjectInfo") {
+        }
+        else if (!!Node.XObject) {
+            var win = Tangram.HTMLWindow("subBottomPanel_default_ObjectInfo");
+            win.document.body.innerHTML = Tangram.GetObjectInfo(Node.XObject, Node.TangramName);
+            // win.document.body.innerXTML = write(Tangram.GetObjectInfo(Node.XObject, Node.TangramName));
+            var win2 = Tangram.HTMLWindow(Node.TangramName);
+            if (!!win2)
+                Tangram.GetCtrlByName(MainFrame, "output_textBox", true).Text = win2.document.body.parentElement.outerHTML;
+            //TangramCore.GetCLRControl(MainFrame,"BottomPanel,subBottomPanel,output_textBox").Text = win2.document.body.parentElement.outerHTML;
+        }
+
+    }
+    function Tangram_OnExtendXmlComplete(/*BSTR*/ bstrXml, /*LONGLONG*/ hWnd, /*TangramNode*/ pNode) {
+        Tangram.GetCtrlByName(MainFrame, "output_textBox", true).Text = bstrXml;//document.body.parentElement.outerHTML;
+        //var nCount = Tangram.FrameCount;
+        //for(var i=0;i<nCount;i++)
+        //{
+        //    alert(Tangram.Frame(i).HWND);
+        //}
+        //alert(pNode.TangramFrame.RootNodes.NodeCount);
+    }
+
+    function Tangram_OnDestroy() {
+        //alert("Tangram_OnDestroy");
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function button1_OnnClick(obj, arg) {
+        alert(Tangram_OnClrControlCreated);
+    }
+
+    function abc(obj, arg) {
+        alert(arg);
+    }
+    function a23(obj, arg) {
+        obj.Text = arg.ToString();
+    }
+
+    function subBottomPanel_default_Page3_textBox1_OnMouseLeave(obj, arg) {
+        obj.Text = "Leave:" + arg.ToString();
+    }
+
+    function subBottomPanel_default_Page3_textBox1_OnKeyPress(obj, arg) {
+        Tangram.Nodes("subBottomPanel_default_Page3").GetCtrlByName("textBox1", true).Text = "KeyPress:" + arg.KeyChar;
+    }
+
+    function MainFrame_OnTangramMDIParentLoad(xx) {
+        alert(xx);
+    }
+    function MainFrame_OnTangramMDIParentOutputButtonClick() {
+        //alert(TangramCore.GetCLRControl(MainFrame, "BottomPanel,subBottomPanel,output_textBox").Name);
+        Tangram.GetCtrlByName(MainFrame, "output_textBox", true).Text = document.body.parentElement.outerHTML;
+        ////TangramCore.GetCLRControl(MainFrame, "BottomPanel,subBottomPanel").output_textBox.Text = "123";
+        //alert(document.body.parentElement.outerHTML);
+    }
+
+    function MainFrame_OnTangramMDIParentClosing(xx) {
+        //alert(xx);
+        return false;
+    }
+</script>
+<body>
+    <xml id="xtmlBottom">
+        <tangram framme="">
+            <window>
+                <node name="Start_S0001" id="TangramTab" cnnid="TangramTabbedWnd.TabbedComponent.1" activepage="3" style="39">
+                    <node name="WinHtml" caption="MdiParent Behind HTML Source Code" id="CLRCtrl" cnnid="TangramWinFormApp.TangramCtrl,TangramWinFormApp" />
+                    <node name="Page1" caption="Tangram HTML Source Code" id="hostview" cnnid="TangramView.Connector.1" />
+                    <node name="ObjectInfo" caption="Tangram Object Infomation" id="ActiveX" cnnid="about:blank" scrollbar="1" />
+                    <node name="Page3" caption="Sink .NET Control Event" id="CLRCtrl" cnnid="TangramWinFormApp.EventDemoCtrl,TangramWinFormApp" />
+                </node>
+            </window>
+        </tangram>
+    </xml>
+    <xml id="xtmlProperty">
+        <tangram framme="">
+            <window>
+                <node name="Start_S0001" id="TangramTab" cnnid="TangramTabbedWnd.TabbedComponent.1" activepage="3" style="18">
+                    <node name="Property" caption="Object Property" id="CLRCtrl" cnnid="system.windows.forms.propertygrid,tangram" />
+                </node>
+            </window>
+        </tangram>
+    </xml>
+    <xml id="xtmlMain">
+        <tangram framme="">
+            <window>
+                <node name="Start_S0001" id="TangramTab" cnnid="TangramTabbedWnd.TabbedComponent.1" activepage="3" style="18">
+                    <node name="Workspace" caption="Main WorkSpace" id="ActiveX" cnnid="MainPanel.htm" />
+                    <node name="MDIChild" caption="Create Various MDIChild" id="ActiveX" cnnid="MdichildPanel.htm" />
+                    <node name="Others" caption="Others" id="CLRCtrl" cnnid="TangramWinFormsApplication.TangramCtrl,TangramWinFormsApplication" />
+                </node>
+            </window>
+        </tangram>
+    </xml>
+    <xml id="xtmlStartupDoc">
+        <tangram>
+            <window>
+                <node name="Start_S0001" id="TangramTab" cnnid="TangramExTabWnd.Tab.1" activepage="1" location="1" style="OutLookTabWndH">
+                    <node name="About" id="CLRCtrl" cnnid="TangramWinFormApp.About,TangramWinFormApp" caption="About Tangram" />
+                    <node name="TangramWorkSpace" caption="Tangram Work Space" id="hostview" cnnid="" mdiclient="true" url="TangramBK.htm"/>
+                    <node name="Start_S0002" id="TangramTab" cnnid="TangramTabbedWnd.TabbedComponent.1" caption="Tangram:Detail Information" activepage="3" style="19">
+                        <node name="Detail" caption="Tangram:Detail Information" id="TestView" cnnid="TangramView.Connector.1" />
+                        <node name="Examples" caption="About Examples" />
+                        <node name="Cpp" caption="Tangram: C++ Support" />
+                        <node name="DotNet" caption="Tangram: .NET Support" />
+                        <node name="Web" caption="Tangram: Web Application Support" />
+                    </node>
+                </node>
+            </window>
+        </tangram>
+    </xml>
+</body>
+</html>

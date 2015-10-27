@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Tangram>
+  <COMLibs>
+    <ComLib Target="Program Files\Tangram\">Program Files\Tangram\Tangram.dll</ComLib>
+    <ComLib>ComLibs\TangramVSIHelper.dll</ComLib>
+    <ComLib>ComLibs\TangramTabbedWnd.dll</ComLib>
+    <ComLib>ComLibs\TangramTabCtrl.dll</ComLib>
+    <ComLib>ComLibs\TangramExTabWnd.dll</ComLib>
+  </COMLibs>
+  <CLRLibs>
+    <CLR>TangramCLR.dll</CLR>
+    <CLR>TangramAssemblies\TangramDotNetLib.dll</CLR>
+  </CLRLibs>
+  <CommonFiles>
+    <CLR>Start.dll</CLR>
+    <CLR>CattoDB.dll</CLR>
+  </CommonFiles>
+</Tangram>

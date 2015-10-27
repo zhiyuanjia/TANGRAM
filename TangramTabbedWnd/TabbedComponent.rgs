@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramTabbedWnd.TabbedComponent.1 = s 'TabbedComponent Class'
+	{
+		CLSID = s '{95D9087D-7C46-499C-9FE6-FEDCA18A4100}'
+	}
+	TangramTabbedWnd.TabbedComponent = s 'TabbedComponent Class'
+	{
+		CLSID = s '{95D9087D-7C46-499C-9FE6-FEDCA18A4100}'
+		CurVer = s 'TangramTabbedWnd.TabbedComponent.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {95D9087D-7C46-499C-9FE6-FEDCA18A4100} = s 'TabbedComponent Class'
+		{
+			ProgID = s 'TangramTabbedWnd.TabbedComponent.1'
+			VersionIndependentProgID = s 'TangramTabbedWnd.TabbedComponent'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{14164F7D-8BEA-4E10-973E-99B8D8402191}'
+		}
+	}
+}

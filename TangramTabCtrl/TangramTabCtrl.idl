@@ -1,0 +1,20 @@
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(6D51B3C3-9923-4AEA-91F4-838E0EE8B940),
+	version(1.0),
+]
+library TangramTabCtrlLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(BFA03995-CD03-45A3-9DF0-C656AF13DE20)
+	]
+	coclass TangramConnector
+	{
+		[default] interface IDispatch;
+	};
+};
+

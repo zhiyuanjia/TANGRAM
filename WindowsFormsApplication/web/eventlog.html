@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        String.format = function (str) {
+            var args = arguments;
+            var reg = new RegExp("%([1-" + args.length + "])", "g");
+            return String(str).replace(
+            reg,
+            function ($1, $2) {
+                return args[$2];
+            });
+        };
+
+        function Tangram_OnPageLoaded(sender, url) {
+            document.body.insertAdjacentHTML('afterBegin', String.format('<h5>%1 : Loaded \'%2\'</h5>', new Date().toLocaleString(), url));
+        }
+
+        function Tangram_OnNodeCreated(pNodeCreated) {
+            document.body.insertAdjacentHTML('afterBegin', String.format('<h5>%1 : Node \'%2\' Created</h5>', new Date().toLocaleString(), pNodeCreated.Name));
+        }
+
+        function Tangram_OnNavigateXmlComplete(bstrXml, hWnd, pRetRootNode) {
+            document.body.insertAdjacentHTML('afterBegin', String.format('<h5>%1 : NavigateXml Complete</h5>', new Date().toLocaleString()));
+        }
+
+        function Tangram_OnDestroy() {
+            document.body.insertAdjacentHTML('afterBegin', String.format('<h5>%1 : Destroy</h5>', new Date().toLocaleString()));
+        }
+
+        function Tangram_OnNodeMouseActivate(pActiveNode) {
+            document.body.insertAdjacentHTML('afterBegin', String.format('<h5>%1 : Node Mouse Activate</h5>', new Date().toLocaleString()));
+        }
+
+        function Tangram_OnClrControlCreated(Node, Ctrl, CtrlName, CtrlHandle) {
+            document.body.insertAdjacentHTML('afterBegin', String.format('<h5>%1 : Clr Control Created \'%2\'</h5>', new Date().toLocaleString(), CtrlName));
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

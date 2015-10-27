@@ -1,0 +1,65 @@
+/********************************************************************************
+*					Tangram Library - version 8.0								*
+*********************************************************************************
+* Copyright (C) 2002-2015 by Tangram Team.   All Rights Reserved.				*
+*
+* THIS SOURCE FILE IS THE PROPERTY OF TANGRAM TEAM AND IS NOT TO
+* BE RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED
+* WRITTEN CONSENT OF TANGRAM TEAM.
+*
+* THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS
+* OUTLINED IN THE GPL LICENSE AGREEMENT.TANGRAM TEAM
+* GRANTS TO YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE
+* THIS SOFTWARE ON A SINGLE COMPUTER.
+*
+* CONTACT INFORMATION:
+* mailto:sunhui@tangramfx.com
+* http://www.tangramFX.com
+*
+*
+********************************************************************************/
+
+// TangramMFCApp.idl : TangramMFCApp 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(TangramMFCApp.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(33522476-3DE1-4B34-BB62-3140C6641D47),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramApplication : IDispatch{
+	[propget, id(1)] HRESULT TangramCore([out, retval] IDispatch** pVal);
+};
+
+[
+	uuid(71236B93-4FB7-4455-B5FA-5FD2C8EBBAA9),
+	version(1.0)	
+]
+library TangramMFCAppLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(0710D66F-BE59-4814-823F-C6FDE0C042BB)		
+	]
+	dispinterface _ITangramApplicationEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(35039169-5A7F-4A6F-8787-523F77F5170C)		
+	]
+	coclass TangramApplication
+	{
+		[default] interface ITangramApplication;
+		[default, source] dispinterface _ITangramApplicationEvents;
+	};
+};

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+    <xml id="xtmlMainDoc">
+        <tangram xxxx="123">
+            <window>
+                <node id="splitter" name="MainWnd" style="0" rows="1" cols="2" height="483," width="200,377,">
+                    <node name="Start_S0000" />
+                    <node name="Start_S0001" id="TangramTabCtrl" cnnid="TangramTabCtrl.Connector.1" activepage="3" location="1" style="4">
+                        <node name="New" caption="See What's New!'" />
+                        <node name="WorkSpace" caption="Tangram Work Space" id="hostview" cnnid="" />
+                        <node name="Page3" caption="Welcome to the world of tangram" id="xx"/>
+                        <node name="FirstApp" caption="How to: Write your first Tangram Application!" id="yy" />
+                    </node>
+                </node>
+            </window>
+        </tangram>
+    </xml>
+    <xml id="xtmlAbout">
+        <tangram>
+            <window>
+                <node id="splitter" name="MainWnd" style="0" rows="1" cols="2" height="483," width="200,377,">
+                    <node name="Start_S0000" />
+                    <node name="Start_S0001" id="TangramTab" cnnid="TangramExTabWnd.Tab.1" activepage="0" location="1" style="OutLookTabWndV">
+                        <node name="about" id="CLRCtrl" cnnid="TangramWinFormApp.About,TangramWinFormApp" caption="About Tangram" />
+                        <node name="WorkSpace" caption="Tangram Work Space" id="zz" cnnid="" />
+                        <node name="Page3" caption="Handler Event for .NET Control in Html" />
+                        <node name="FirstApp" caption="How to: Using Tab Component in Tangram WebPage" />
+                    </node>
+                </node>
+            </window>
+        </tangram>
+    </xml>    <script language="javascript" type="text/javascript">
+// <!CDATA[
+        function Tangram_OnPageLoaded(/**/SourceWindow, URL) {
+            if (SourceWindow == window) {
+                //var obj = Tangram.Nodes("BottomPanel_BottomPanel_Page3").GetCtrlByName("textBox1", true);
+                //Tangram.AttachObjEvent(obj, 11, "BottomPanel_BottomPanel_Page3_textBox1", window);
+                //Tangram.AttachObjEvent(obj, 9, "BottomPanel_BottomPanel_Page3_textBox1", window);
+                //Tangram.AttachObjEvent(obj, 13, "BottomPanel_BottomPanel_Page3_textBox1", window);
+                //Tangram.AttachObjEvent(obj, 15, "BottomPanel_BottomPanel_Page3_textBox1", window);
+            }
+        }
+        function BottomPanel_BottomPanel_Page3_textBox1_OnMouseDoubleClick(obj, arg) {
+            alert("abce " + arg);
+        }
+        function Button2_onclick() {
+            var MainForm = Tangram.TangramFrame("TangramMdiFrame");
+            MainForm.Extend("xxx_1", xtmlMainDoc.XMLDocument.xml);
+        }
+
+        function Button1_onclick() {
+            var MainForm = Tangram.TangramFrame("TangramMdiFrame");
+            MainForm.Extend("default", xtmlMainDoc.XMLDocument.xml);
+        }
+
+        function Button3_onclick() {
+            var MainForm = Tangram.TangramFrame("TangramMdiFrame");
+            MainForm.Extend("xxx_2", xtmlAbout.XMLDocument.xml);
+        }
+        
+        function Button4_onclick() {
+
+        }
+
+
+// ]]>
+    </script>
+</head>
+<body>
+
+    <p>
+        <input id="Button1" type="button" value=" WorkSpace" 
+            onclick="return Button1_onclick()" /><br />
+        </p>
+    <p>
+        <input id="Button2" 
+            type="button" value="How to..." onclick="return Button2_onclick()" /></p>
+    <p>
+        <input id="Button3" type="button" value="About" 
+            onclick="return Button3_onclick()" /></p>
+    <p>
+        <input id="Button4" 
+            type="button" value="Others ..." onclick="return Button4_onclick()" /></p>
+
+</body>
+</html>

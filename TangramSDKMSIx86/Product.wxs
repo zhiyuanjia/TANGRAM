@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Tangram Software Development Kit x86" Language="1033" Version="1.0.0.0" Manufacturer="Tangram Team" UpgradeCode="11edf21e-71b5-475a-9896-39a0cd11582b">
+		<Package InstallerVersion="405" Compressed="yes" InstallScope="perMachine" />
+
+    <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+		<Feature Id="ProductFeature" Title="TangramSDKMSIx86" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <MergeRef Id="MSVC120CRTX86"/>
+    </Feature>
+
+    <UIRef Id="WixUI_Minimal"/>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="TangramFx">
+          <Directory Id="BINARY" Name="bin"></Directory>
+          <Directory Id="INCLUDE" Name="include"></Directory>
+          <Directory Id="SAMPLES" Name="Samples"></Directory>
+          <Directory Id="DOCUMENTS" Name="docs"></Directory>
+          <Merge Id="MSVC120CRTX86" Language="1033" SourceFile="../resources/Microsoft_VC120_CRT_x86.msm" DiskId="1" />
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <Component Id="compTangramLibrary" Guid="{4714AE31-169D-4177-91C9-1EB0422B522C}" Directory="INSTALLFOLDER">
+        <File Id="filTangramDLL" Name="Tangram.dll" DiskId="1" Source="../resources/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramCLRLibrary_GAC" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C4A3A7}" Directory="INSTALLFOLDER">
+        <File Id="filTangramCLRDLL_GAC" Name="TangramCLR.dll" DiskId="1" Source="../resources/TangramCLR.dll" KeyPath="yes" Assembly=".net"></File>
+      </Component>
+      <Component Id="compTangramCLRLibrary" Guid="{56B8AD3B-33A5-4EF8-ADF6-72E983F7D046}" Directory="BINARY">
+        <File Id="filTangramCLRDLL" Name="TangramCLR.dll" DiskId="1" Source="../resources/TangramCLR.dll" KeyPath="yes"></File>
+        <RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\[ProductName]">
+          <RegistryValue Type="string" Value="[$compTangramCLRLibrary]" />
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\[ProductName]">
+          <RegistryValue Type="string" Value="[$compTangramCLRLibrary]" />
+        </RegistryKey>
+      </Component>
+      <Component Id="compTextFile" Guid="{7B74652A-09CA-4135-8320-45ED94F29209}" Directory="INSTALLFOLDER">
+        <File Id="filReadMeTXT" Name="README.txt" DiskId="1" Source="../resources/README.txt" KeyPath="yes"></File>
+      </Component>
+      <!--BEGIN Non-core Component-->
+      <Component Id="compTangramExTabWnd" Guid="{492BF889-3712-47D6-B9C8-8BCC045707CE}" Directory="INSTALLFOLDER">
+        <File Id="filTangramExTabWndDLL" Name="TangramExTabWnd.dll" DiskId="1" Source="../resources/TangramExTabWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramTabbedWnd" Guid="{6031D9AF-3E76-4350-8C3F-1260CA1B9FE6}" Directory="INSTALLFOLDER">
+        <File Id="filTangramTabbedWndDLL" Name="TangramTabbedWnd.dll" DiskId="1" Source="../resources/TangramTabbedWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramTabCtrl" Guid="{73EF93DE-1E85-450B-9D6F-696A17E0AAD6}" Directory="INSTALLFOLDER">
+        <File Id="filTangramTabCtrlDLL" Name="TangramTabCtrl.dll" DiskId="1" Source="../resources/TangramTabCtrl.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <!--END Non-core Component-->
+      <!--<Component Id="compIncludeFiles" Guid="{EACBDE4C-F25F-48A4-B333-761F990CB967}" Directory="INCLUDE" Win64="yes">
+        
+      </Component>
+      <Component Id="compSampleFiles" Guid="{0F1B9B60-BCB1-4F81-AED9-C96B2921D0DD}" Directory="SAMPLES" Win64="yes">
+        
+      </Component>
+      <Component Id="compDocuments" Guid="{EB3C62DF-567F-4CE5-ACDD-6254A925F077}" Directory="DOCUMENTS" Win64="yes">
+        
+      </Component>-->
+    </ComponentGroup>
+  </Fragment>
+</Wix>

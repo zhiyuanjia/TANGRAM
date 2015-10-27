@@ -1,0 +1,44 @@
+// TangramApp.idl : TangramApp 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(TangramApp.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(106900CA-AE52-49E5-9A4F-86BC0856B837),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangrmAppObject : IDispatch{
+	[propget, id(1)] HRESULT TangramCore([out, retval] IDispatch** pVal);
+};
+[
+	uuid(63D4854E-35AC-49EC-8E12-EF0793B3E16B),
+	version(1.0)	
+]
+library TangramAppLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(B7099FCE-6E2D-4AFB-88FC-85DE78E38403)		
+	]
+	dispinterface _ITangrmAppObjectEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(14913B76-D627-4B3A-9DA4-D2BD8DD07197)		
+	]
+	coclass TangrmAppObject
+	{
+		[default] interface ITangrmAppObject;
+		[default, source] dispinterface _ITangrmAppObjectEvents;
+	};
+};
+import "shobjidl.idl";

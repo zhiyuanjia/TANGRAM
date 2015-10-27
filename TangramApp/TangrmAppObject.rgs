@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramApp.AppObject.1 = s 'TangrmAppObject Class'
+	{
+		CLSID = s '{14913B76-D627-4B3A-9DA4-D2BD8DD07197}'
+	}
+	TangramApp.AppObject = s 'TangrmAppObject Class'
+	{		
+		CurVer = s 'TangramApp.AppObject.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {14913B76-D627-4B3A-9DA4-D2BD8DD07197} = s 'TangrmAppObject Class'
+		{
+			ProgID = s 'TangramApp.AppObject.1'
+			VersionIndependentProgID = s 'TangramApp.AppObject'
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{63D4854E-35AC-49EC-8E12-EF0793B3E16B}'
+			Version = s '1.0'
+		}
+	}
+}

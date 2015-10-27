@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramMFCApp.Application.1 = s 'TangramApplication Class'
+	{
+		CLSID = s '{35039169-5A7F-4A6F-8787-523F77F5170C}'
+	}
+	TangramMFCApp.Application = s 'TangramApplication Class'
+	{		
+		CurVer = s 'TangramMFCApp.Application.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {35039169-5A7F-4A6F-8787-523F77F5170C} = s 'TangramApplication Class'
+		{
+			ProgID = s 'TangramMFCApp.Application.1'
+			VersionIndependentProgID = s 'TangramMFCApp.Application'
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{71236B93-4FB7-4455-B5FA-5FD2C8EBBAA9}'
+			Version = s '1.0'
+		}
+	}
+}

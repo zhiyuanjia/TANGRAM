@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'TangramTabbedWnd'
+		'TangramTabbedWnd.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

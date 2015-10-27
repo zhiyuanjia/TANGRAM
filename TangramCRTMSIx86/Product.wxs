@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Tangram Client Runtime Component x86" Language="1033" Version="1.0.0.0" Manufacturer="Tangram Team" UpgradeCode="d29461c8-38e5-4fe6-ac14-8f842da30dd4">
+		<Package InstallerVersion="405" Compressed="yes" InstallScope="perMachine" />
+
+    <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+		<Feature Id="ProductFeature" Title="TangramCRTMSIx86" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <MergeRef Id="MSVC120CRTX86"/>
+    </Feature>
+
+    <UIRef Id="WixUI_Minimal"/>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="TangramFx">
+          <Directory Id="BINARY" Name="bin"></Directory>
+          <Merge Id="MSVC120CRTX86" Language="1033" SourceFile="../resources/Microsoft_VC120_CRT_x86.msm" DiskId="1" />
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <Component Id="compTangramLibrary" Guid="{4714AE31-169D-4177-91C9-1EB0422B522C}" Directory="INSTALLFOLDER">
+        <File Id="filTangramDLL" Name="Tangram.dll" DiskId="1" Source="../resources/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramCLRLibrary" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C4A3A7}" Directory="BINARY">
+        <File Id="filTangramCLRDLL" Name="TangramCLR.dll" DiskId="1" Source="../resources/TangramCLR.dll" KeyPath="yes" Assembly=".net"></File>
+      </Component>
+      <Component Id="compTextFile" Guid="{7B74652A-09CA-4135-8320-45ED94F29209}" Directory="INSTALLFOLDER">
+        <File Id="filReadMeTXT" Name="README.txt" DiskId="1" Source="../resources/README.txt" KeyPath="yes"></File>
+      </Component>
+      <!--BEGIN Non-core Component-->
+      <Component Id="compTangramExTabWnd" Guid="{492BF889-3712-47D6-B9C8-8BCC045707CE}" Directory="INSTALLFOLDER">
+        <File Id="filTangramExTabWndDLL" Name="TangramExTabWnd.dll" DiskId="1" Source="../resources/TangramExTabWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramTabbedWnd" Guid="{6031D9AF-3E76-4350-8C3F-1260CA1B9FE6}" Directory="INSTALLFOLDER">
+        <File Id="filTangramTabbedWndDLL" Name="TangramTabbedWnd.dll" DiskId="1" Source="../resources/TangramTabbedWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramTabCtrl" Guid="{73EF93DE-1E85-450B-9D6F-696A17E0AAD6}" Directory="INSTALLFOLDER">
+        <File Id="filTangramTabCtrlDLL" Name="TangramTabCtrl.dll" DiskId="1" Source="../resources/TangramTabCtrl.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <!--END Non-core Component-->
+    </ComponentGroup>
+  </Fragment>
+</Wix>

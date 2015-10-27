@@ -1,0 +1,25 @@
+// TangramView.idl : TangramView 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(TangramView.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(6D51B3C3-9923-4AEA-91F4-838E0EE8B940),
+	version(1.0),
+]
+library TangramViewLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(2F5B0B45-8DB0-463F-98E3-6418A07B9F15)		
+	]
+	coclass TangramConnector
+	{
+		[default] interface IDispatch;
+	};
+};
+

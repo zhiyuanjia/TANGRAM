@@ -1,0 +1,48 @@
+// TangramCOMEx.idl : TangramCOMEx的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(TangramCOMEx.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(7831ED8B-CDF1-4676-8D26-E0F6073262D8),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICOMHelper : IDispatch{
+	[id(1)] HRESULT HookCOM();
+	[id(2)] HRESULT UnHookCOM();
+	[id(3)] HRESULT HookCreateInstance(VARIANT_BOOL bHook);
+	[id(4)] HRESULT HookCoRegisterClassObject(VARIANT_BOOL bHook);
+};
+[
+	uuid(DADFC698-6649-4167-A501-EB57153A201B),
+	version(1.0),
+]
+library TangramCOMExLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(9ADF6F60-B663-4BC0-9256-73A7DC34F148)		
+	]
+	dispinterface _ICOMHelperEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(E2379B15-CA40-4233-A44E-758DC891BE1B)		
+	]
+	coclass COMHelper
+	{
+		[default] interface ICOMHelper;
+		[default, source] dispinterface _ICOMHelperEvents;
+	};
+};
+
+import "shobjidl.idl";

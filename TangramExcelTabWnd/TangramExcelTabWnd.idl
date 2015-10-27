@@ -1,0 +1,25 @@
+// TangramExcelTabWnd.idl : IDL source for TangramExcelTabWnd
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TangramExcelTabWnd.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(FF1B5714-97D6-4E03-AAB0-69711E03E940),
+	version(1.0),
+	helpstring("TangramExcelTabWnd 1.0 Type Library")
+]
+library TangramExcelTabWndLib
+{
+	[
+		uuid(EA6FB1E5-5D5C-4A52-AA02-C6A8FF639423),
+		helpstring("TabbedComponent Class")
+	]
+	coclass TabbedComponent
+	{
+		[default] interface IDispatch;
+	};
+};

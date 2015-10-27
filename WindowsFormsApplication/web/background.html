@@ -1,0 +1,39 @@
+﻿<html>
+<xml id="Form1">
+    <tangram>
+        <window>
+            <node id="splitter" style="0" rows="1" cols="2" width="250,500">
+                <node name="MainPanel" id="clrctrl" cnnid="Tangram.Sample.WindowsFormsApplication.Controls.ucMainPanel,WindowsFormsApplication" />
+                <node id="tab" style="0">
+                    <node caption="HomePage" id="ActiveX" cnnid="http://localhost/index.html" />
+                    <node caption="Event Log" id="ActiveX" cnnid="http://localhost/eventlog.html?233" />
+                    <node caption="Copyright" id="hostview" />
+                </node>
+            </node>
+        </window>
+    </tangram>
+</xml>
+<script type="text/javascript">
+
+    function Tangram_OnPageLoaded(sender, url) {
+        if (sender == window) {
+            Tangram.External.Text = "Welcome to the World of Tangram";
+            var panel = Tangram.GetCtrlByName(Tangram.External, 'panel1', true);
+            Tangram.NavigateCtrl(panel, 'default', Tangram.xtml('Form1'));
+        }
+
+    }
+
+    function ModifyFormText(txt) {
+        Tangram.External.Text = txt + " (Note! Modified by background page.)";
+    }
+
+    function BeginTiming() {
+        var label_ = Tangram.GetCtrlInNode('panel1_default_MainPanel', 'labelShowTime');
+        setInterval(function () {
+            label_.Text = new Date().toLocaleTimeString();
+        }, 1000);
+    }
+
+</script>
+</html>

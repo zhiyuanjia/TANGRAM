@@ -1,0 +1,54 @@
+// TangramVSIHelper.idl : TangramVSIHelper的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(TangramVSIHelper.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(33522476-3DE1-4B34-BB62-3140C6641D39),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramVSHelper : IDispatch {
+	[id(1)] HRESULT ExtendXml(BSTR bstrXml, BSTR bstrKey, [out, retval] IDispatch** ppNode);
+	[propget, id(2)] HRESULT HWND([out, retval] ULONGLONG* pVal);
+}; 
+
+[
+	object,
+	uuid(D490269C-A117-4D7C-84B9-7840FEC4919C),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramHelper : IDispatch{
+	[propget, id(1)] HRESULT OutputPane([out, retval] IDispatch** pVal);
+	[id(2)] HRESULT PutTextToOutputPane(BSTR bstrMsg);
+	[id(3)] HRESULT ClearOutputPane();
+
+	[id(5)] HRESULT ShowCLRForm(BSTR bstrXml);
+	[id(6)] HRESULT ShowCLRMDIForm(BSTR bstrXml);
+	[id(7)] HRESULT ShowXMLWithWindow(BSTR bstrID, BSTR bstrKey, BSTR bstrXml);
+};
+[
+	uuid(19631222-1963-1992-1965-1992061216EB),
+	version(1.0),
+]
+library TangramVSIHelperLib
+{
+	importlib("stdole2.tlb");
+
+	[
+		uuid(19631222-1963-1992-1965-1992061256D9)
+	]
+	coclass TangramHelper
+	{
+		[default] interface ITangramHelper;
+	};
+};
+

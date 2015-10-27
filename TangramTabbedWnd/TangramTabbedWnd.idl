@@ -1,0 +1,26 @@
+// TangramTabbedWnd.idl : IDL source for TangramTabbedWnd
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TangramTabbedWnd.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(14164F7D-8BEA-4E10-973E-99B8D8402191),
+	version(1.0),
+	helpstring("TangramTabbedWnd 1.0 Type Library")
+]
+library TangramTabbedWndLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(95D9087D-7C46-499C-9FE6-FEDCA18A4100),
+		helpstring("TabbedComponent Class")
+	]
+	coclass TabbedComponent
+	{
+		[default] interface IDispatch;
+	};
+};

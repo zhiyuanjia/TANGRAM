@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+
+    <script language="javascript" type="text/javascript">
+// <!CDATA[
+        function Tangram_OnPageLoaded(SourceWindow, URL) {
+            if (SourceWindow == window) 
+            {
+                //TextArea1.value = Tangram.NodeNames;
+            }
+        }
+
+        function Button3_onclick() {
+            TangramCore.Application.Text = Text1.value;
+        }
+
+// ]]>
+    </script>
+    <style type="text/css">
+        #Text1
+        {
+            height: 34px;
+            width: 365px;
+        }
+    </style>
+</head>
+<body background="Tangram.png">
+
+    <p>
+        <input id="Button3" type="button" value="Modify Main Window Caption" onclick="return Button3_onclick()" /></p>
+
+    <p>
+        <input id="Text1" type="text" /></p>
+
+</body>
+</html>

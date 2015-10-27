@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramComEx.ComHelper.1 = s 'COMHelper Class'
+	{
+		CLSID = s '{E2379B15-CA40-4233-A44E-758DC891BE1B}'
+	}
+	TangramComEx.ComHelper = s 'COMHelper Class'
+	{		
+		CurVer = s 'TangramComEx.ComHelper.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {E2379B15-CA40-4233-A44E-758DC891BE1B} = s 'COMHelper Class'
+		{
+			ProgID = s 'TangramComEx.ComHelper.1'
+			VersionIndependentProgID = s 'TangramComEx.ComHelper'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{DADFC698-6649-4167-A501-EB57153A201B}'
+			Version = s '1.0'
+		}
+	}
+}

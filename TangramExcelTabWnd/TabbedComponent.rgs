@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramExTabWnd.Tab.1 = s 'TabExComponent Class'
+	{
+		CLSID = s '{EA6FB1E5-5D5C-4A52-AA02-C6A8FF639423}'
+	}
+	TangramExTabWnd.Tab = s 'TabExComponent Class'
+	{
+		CLSID = s '{EA6FB1E5-5D5C-4A52-AA02-C6A8FF639423}'
+		CurVer = s 'TangramExTabWnd.Tab.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {EA6FB1E5-5D5C-4A52-AA02-C6A8FF639423} = s 'TabExComponent Class'
+		{
+			ProgID = s 'TangramExTabWnd.Tab.1'
+			VersionIndependentProgID = s 'TangramExTabWnd.Tab'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{FF1B5714-97D6-4E03-AAB0-69711E03E940}'
+		}
+	}
+}

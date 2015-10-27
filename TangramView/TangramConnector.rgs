@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramView.Connector.1 = s 'TangramConnector Class'
+	{
+		CLSID = s '{2F5B0B45-8DB0-463F-98E3-6418A07B9F15}'
+	}
+	TangramView.Connector = s 'TangramConnector Class'
+	{		
+		CurVer = s 'TangramView.Connector.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2F5B0B45-8DB0-463F-98E3-6418A07B9F15} = s 'TangramConnector Class'
+		{
+			ProgID = s 'TangramView.Connector.1'
+			VersionIndependentProgID = s 'TangramView.Connector'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{6D51B3C3-9923-4AEA-91F4-838E0EE8B940}'
+			Version = s '1.0'
+		}
+	}
+}

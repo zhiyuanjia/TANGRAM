@@ -1,0 +1,43 @@
+// VSIMDIHelper.idl : VSIMDIHelper 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(VSIMDIHelper.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(EE4C5589-4877-42FD-A96A-013E353E9EBE),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITangramApplication : IDispatch{
+	[propget, id(1), helpstring("property TangramCore")] HRESULT TangramCore([out, retval]IDispatch** ppTangramCore);
+};
+[
+	uuid(5EAE5EDC-2C25-4B07-BF0B-C9C7DC233D69),
+	version(1.0)	
+]
+library VSIMDIHelperLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(0D655A33-A6D0-4B7E-B961-7E4E7AA684DA)		
+	]
+	dispinterface _ITangramApplicationEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(710D12E5-94F2-465A-8B84-62DAF88C8DB0)		
+	]
+	coclass TangramApplication
+	{
+		[default] interface ITangramApplication;
+		[default, source] dispinterface _ITangramApplicationEvents;
+	};
+};
