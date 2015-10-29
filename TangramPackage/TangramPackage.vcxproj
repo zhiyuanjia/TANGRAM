@@ -178,6 +178,9 @@
     <ClCompile Include="TangramToolWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <PkgdefFile Include="..\Release\TangramMFCApp.exe">
+      <FileType>Document</FileType>
+    </PkgdefFile>
     <None Include="TangramEditorAutomation.inl" />
     <None Include="TangramEditorCore.inl" />
     <None Include="TangramEditorEvents.inl" />
@@ -185,30 +188,46 @@
     <None Include="TangramEditorPersistance.inl" />
     <None Include="TangramEditorWindowing.inl" />
     <None Include="TangramPackage.def" />
-    <PkgdefFile Include="..\Build\Tangram.dll">
+    <PkgdefFile Include="..\msi\release\Tangram_CRT_x64.msi">
+      <FileType>Document</FileType>
+      <VSIXSubPath>msi</VSIXSubPath>
+    </PkgdefFile>
+    <PkgdefFile Include="..\msi\release\Tangram_CRT_x86.msi">
+      <FileType>Document</FileType>
+      <VSIXSubPath>msi</VSIXSubPath>
+    </PkgdefFile>
+    <PkgdefFile Include="..\Release\TangramView.dll">
       <FileType>Document</FileType>
       <VSIXSubPath>COMLibs</VSIXSubPath>
     </PkgdefFile>
-    <PkgdefFile Include="..\Build\TangramExTabWnd.dll">
+    <PkgdefFile Include="..\Release\TangramVSIHelper.dll">
       <FileType>Document</FileType>
       <VSIXSubPath>COMLibs</VSIXSubPath>
     </PkgdefFile>
-    <PkgdefFile Include="..\Build\TangramTabbedWnd.dll">
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\concrt140.dll">
       <FileType>Document</FileType>
-      <VSIXSubPath>COMLibs</VSIXSubPath>
     </PkgdefFile>
-    <PkgdefFile Include="..\Build\TangramTabCtrl.dll">
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\msvcp140.dll">
       <FileType>Document</FileType>
-      <VSIXSubPath>COMLibs</VSIXSubPath>
     </PkgdefFile>
-    <PkgdefFile Include="..\Build\TangramVSIHelper.dll">
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\vccorlib140.dll">
       <FileType>Document</FileType>
-      <VSIXSubPath>COMLibs</VSIXSubPath>
     </PkgdefFile>
-    <PkgdefFile Include="..\Build\TangramCLR.dll">
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\vcruntime140.dll">
       <FileType>Document</FileType>
+    </PkgdefFile>
+    <PkgdefFile Include="..\Release\TangramCLR.dll">
+      <FileType>Document</FileType>
+    </PkgdefFile>
+    <PkgdefFile Include="..\Release\TangramDotNetLib.dll">
+      <FileType>Document</FileType>
+      <VSIXSubPath>TangramAssemblies</VSIXSubPath>
     </PkgdefFile>
     <PkgdefFile Include="XML\Tangram.Xml">
+      <FileType>Document</FileType>
+      <SubType>Designer</SubType>
+    </PkgdefFile>
+    <PkgdefFile Include="XML\tangrameditor.xml">
       <FileType>Document</FileType>
     </PkgdefFile>
     <PkgdefFile Include="Templates\TangramExtFile.APPXml">

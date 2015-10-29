@@ -1,80 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Tangram Client Runtime Component x86_64" Language="1033" Version="1.0.0.0" Manufacturer="Tangram Team" UpgradeCode="2d1010fb-3120-470a-bf12-2aa8fff93087">
-		<Package InstallerVersion="405" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+  <Product Id="*" Name="Tangram Client Runtime Component x64" Language="1033" Version="1.0.0.0" Manufacturer="Tangram Team" UpgradeCode="2d1010fb-3120-470a-bf12-2aa8fff90001">
+    <Package InstallerVersion="405" Compressed="yes" InstallScope="perMachine" Platform="x64" />
 
     <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
-    
+
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
-		<Feature Id="ProductFeature" Title="TangramCRTMSIx64" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-      <MergeRef Id="MSVC120CRTX86"/>
-      <MergeRef Id="MSVC120CRTX64"/>
+    <Feature Id="ProductFeature" Title="TangramCRTMSIx64" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
     </Feature>
 
-    <UIRef Id="WixUI_Minimal"/>
-	</Product>
+    <!--<UIRef Id="WixUI_Minimal"/>-->
+  </Product>
 
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="TangramFx">
-          <Directory Id="BINARY" Name="bin"></Directory>
-          <Merge Id="MSVC120CRTX86" Language="1033" SourceFile="../resources/Microsoft_VC120_CRT_x86.msm" DiskId="1" />
-        </Directory>
-      </Directory>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFiles64Folder">
-        <Directory Id="INSTALLFOLDERX64" Name="TangramFx">
-          <Directory Id="BINARYX64" Name="bin"></Directory>
-          <Merge Id="MSVC120CRTX64" Language="1033" SourceFile="../resources/Microsoft_VC120_CRT_x64.msm" DiskId="1" />
+        <Directory Id="INSTALLFOLDERX64" Name="Tangram">
+          <Directory Id="OFFICEPLUS" Name="MsOfficePlus">
+            <Directory Id="EXCELPLUS" Name="excel">
+            </Directory>
+            <Directory Id="WORDPLUS" Name="winword">
+            </Directory>
+            <Directory Id="POWERPNTPLUS" Name="Powerpnt">
+            </Directory>
+            <Directory Id="ACCESSPLUS" Name="msaccess">
+            </Directory>
+          </Directory>
         </Directory>
       </Directory>
-		</Directory>
-	</Fragment>
+      <Directory Id="System64Folder">
+      </Directory>
+    </Directory>
+  </Fragment>
 
-	<Fragment>
-		<ComponentGroup Id="ProductComponents">
-      <Component Id="compTangramLibrary" Guid="{4714AE31-169D-4177-91C9-1EB0422B522C}" Directory="INSTALLFOLDER">
-        <File Id="filTangramDLL" Name="Tangram.dll" DiskId="1" Source="../resources/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <Component Id="compconcrt14064Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40011}" Directory="System64Folder"  Win64="yes">
+        <File Id="fileconcrt14064DLL" Name="concrt140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT64/concrt140.dll" KeyPath="yes"></File>
       </Component>
-      <Component Id="compTangramCLRLibrary" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C4A3A7}" Directory="BINARY">
-        <File Id="filTangramCLRDLL" Name="TangramCLR.dll" DiskId="1" Source="../resources/TangramCLR.dll" KeyPath="yes" Assembly=".net"></File>
+      <Component Id="msvcp14064Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40012}" Directory="System64Folder"  Win64="yes">
+        <File Id="filemsvcp14064DLL" Name="msvcp140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT64/msvcp140.dll" KeyPath="yes"></File>
       </Component>
-      <Component Id="compTextFile" Guid="{7B74652A-09CA-4135-8320-45ED94F29209}" Directory="INSTALLFOLDER">
-        <File Id="filReadMeTXT" Name="README.txt" DiskId="1" Source="../resources/README.txt" KeyPath="yes"></File>
+      <Component Id="compvcruntime14064Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40013}" Directory="System64Folder"  Win64="yes">
+        <File Id="filevcruntime14064DLL" Name="vcruntime140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT64/vcruntime140.dll" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compvccorlib14064Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40014}" Directory="System64Folder"  Win64="yes">
+        <File Id="filevccorlib14064DLL" Name="vccorlib140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT64/vccorlib140.dll" KeyPath="yes"></File>
       </Component>
       <Component Id="compTangramLibraryX64" Guid="{4155CD81-BA8F-4292-8418-ECE01F1815BE}" Directory="INSTALLFOLDERX64" Win64="yes">
-        <File Id="filTangramDLLX64" Name="Tangram.dll" DiskId="1" Source="../resources/x64/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
+        <File Id="fileTangramDLLX64" Name="Tangram.dll" DiskId="1" Source="../Release/x64/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
       </Component>
-      <Component Id="compTangramCLRLibraryX64" Guid="{D86EDE91-DF14-4066-9997-9B4F8331ACE0}" Directory="BINARYX64" Win64="yes">
-        <File Id="filTangramCLRDLLX64" Name="TangramCLR.dll" DiskId="1" Source="../resources/x64/TangramCLR.dll" KeyPath="yes" Assembly=".net"></File>
+      <Component Id="compTangramCLRLibraryX64" Guid="{D86EDE91-DF14-4066-9997-9B4F8331ACE0}" Directory="INSTALLFOLDERX64" Win64="yes">
+        <File Id="fileTangramCLRDLLX64" Name="TangramCLR.dll" DiskId="1" Source="../Release/x64/TangramCLR.dll" KeyPath="yes" ProcessorArchitecture="x64" ></File>
       </Component>
-      <Component Id="compTextFileX64" Guid="{2FE45A28-63DD-4141-8731-955BBB54D9FD}" Directory="INSTALLFOLDERX64" Win64="yes">
-        <File Id="filReadMeTXTX64" Name="README.txt" DiskId="1" Source="../resources/x64/README.txt" KeyPath="yes"></File>
-      </Component>
-      <!--BEGIN Non-core Component-->
-      <Component Id="compTangramExTabWnd" Guid="{492BF889-3712-47D6-B9C8-8BCC045707CE}" Directory="INSTALLFOLDER">
-        <File Id="filTangramExTabWndDLL" Name="TangramExTabWnd.dll" DiskId="1" Source="../resources/TangramExTabWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
-      </Component>
-      <Component Id="compTangramTabbedWnd" Guid="{6031D9AF-3E76-4350-8C3F-1260CA1B9FE6}" Directory="INSTALLFOLDER">
-        <File Id="filTangramTabbedWndDLL" Name="TangramTabbedWnd.dll" DiskId="1" Source="../resources/TangramTabbedWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
-      </Component>
-      <Component Id="compTangramTabCtrl" Guid="{73EF93DE-1E85-450B-9D6F-696A17E0AAD6}" Directory="INSTALLFOLDER">
-        <File Id="filTangramTabCtrlDLL" Name="TangramTabCtrl.dll" DiskId="1" Source="../resources/TangramTabCtrl.dll" SelfRegCost="1" KeyPath="yes"></File>
-      </Component>
-      <!--END Non-core Component-->
       <!--BEGIN Non-core Component-->
       <Component Id="compTangramExTabWndX64" Guid="{07DDD51E-AF50-42B1-ACFA-D7F372CE664C}" Directory="INSTALLFOLDERX64" Win64="yes">
-        <File Id="filTangramExTabWndDLLX64" Name="TangramExTabWnd.dll" DiskId="1" Source="../resources/x64/TangramExTabWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
+        <File Id="fileTangramExTabWndDLLX64" Name="TangramExTabWnd.dll" DiskId="1" Source="../Release/x64/TangramExTabWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
       </Component>
       <Component Id="compTangramTabbedWndX64" Guid="{EE663418-D193-4F16-9C9B-08753121850A}" Directory="INSTALLFOLDERX64" Win64="yes">
-        <File Id="filTangramTabbedWndDLLX64" Name="TangramTabbedWnd.dll" DiskId="1" Source="../resources/x64/TangramTabbedWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
+        <File Id="fileTangramTabbedWndDLLX64" Name="TangramTabbedWnd.dll" DiskId="1" Source="../Release/x64/TangramTabbedWnd.dll" SelfRegCost="1" KeyPath="yes"></File>
       </Component>
       <Component Id="compTangramTabCtrlX64" Guid="{BA6472A3-F30C-4E26-9AFE-ABBBE1369EE6}" Directory="INSTALLFOLDERX64" Win64="yes">
-        <File Id="filTangramTabCtrlDLLX64" Name="TangramTabCtrl.dll" DiskId="1" Source="../resources/x64/TangramTabCtrl.dll" SelfRegCost="1" KeyPath="yes"></File>
+        <File Id="fileTangramTabCtrlDLLX64" Name="TangramTabCtrl.dll" DiskId="1" Source="../Release/x64/TangramTabCtrl.dll" SelfRegCost="1" KeyPath="yes"></File>
       </Component>
       <!--END Non-core Component-->
+      <!--BEGIN Office Plus-->
+      <Component Id="compTangramExcelPlus" Guid="{492BF889-3712-47D6-B9C8-8BCC04570001}" Directory="EXCELPLUS">
+        <File Id="fileTangramExcelPlus" Name="excel.tangram" DiskId="1" Source="../MsOfficePlus/excel.tangram" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramWordPlus" Guid="{6031D9AF-3E76-4350-8C3F-1260CA1B0002}" Directory="WORDPLUS">
+        <File Id="fileTangramWordPlus" Name="winword.tangram" DiskId="1" Source="../MsOfficePlus/winword.tangram" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramPowerpntPlus" Guid="{73EF93DE-1E85-450B-9D6F-696A17E00003}" Directory="POWERPNTPLUS">
+        <File Id="fileTangramPowerpntPlus" Name="powerpnt.tangram" DiskId="1" Source="../MsOfficePlus/powerpnt.tangram" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramAccessPlus" Guid="{73EF93DE-1E85-450B-9D6F-696A17E00004}" Directory="ACCESSPLUS">
+        <File Id="fileTangramAccessPlus" Name="msaccess.tangram" DiskId="1" Source="../MsOfficePlus/msaccess.tangram" KeyPath="yes"></File>
+      </Component>
+      <!--END Office Plus-->
     </ComponentGroup>
-	</Fragment>
+  </Fragment>
 </Wix>

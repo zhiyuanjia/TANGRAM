@@ -80,14 +80,14 @@ bool CTangramApp::CheckUrl(CString&   url)
 
 BOOL CTangramApp::InitInstance()
 {
-	m_pDTE = NULL;
+	m_bSystem64 = FALSE;
+
 	TCHAR file[MAX_PATH];
 	GetModuleFileName(::GetModuleHandle(_T("TangramPackage.dll")), file, MAX_PATH * sizeof(TCHAR));
 	
 	m_strModulePath = file;
 	int nPos = m_strModulePath.ReverseFind('\\');
 	m_strModulePath = m_strModulePath.Left(nPos + 1);
-	//HRESULT hr = SHGetFolderPath(NULL,CSIDL_COMMON_APPDATA,NULL,0,szPath);
 	HRESULT hr = SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, file);
 	m_strAppDataPath = CString(file);
 	m_strAppDataPath += _T("\\TangramData\\");
@@ -128,6 +128,7 @@ BOOL CTangramApp::InitInstance()
 			::MessageBox(NULL,_T("Please restart Visual Studio with Administrator AUTHORITY!"),_T("Visual Studio"),MB_OK);
 			return FALSE;
 		}
+
 		CString strXmlFile = m_strModulePath + _T("tangram.xml");
 		if (::PathFileExists(strXmlFile))
 		{
@@ -143,7 +144,65 @@ BOOL CTangramApp::InitInstance()
 					if (pParse)
 						strActionXML = pParse->xml();
 				}
-				CTangramXmlParse* pXmlNode = m_Parse.GetChild(_T("COMLibs"));
+
+				STARTUPINFO startupInfo;
+				wchar_t cmdLine[2048];
+				memset(&startupInfo, 0, sizeof(startupInfo));
+				startupInfo.cb = sizeof(startupInfo);
+				PROCESS_INFORMATION processInfo;
+				memset(&processInfo, 0, sizeof(processInfo));
+				DWORD code = 0;
+				CTangramXmlParse* pXmlNode = m_Parse.GetChild(_T("MSI"));
+				if (pXmlNode)
+				{
+					hr = SHGetFolderPath(NULL, CSIDL_WINDOWS, NULL, 0, szFile);
+					m_strWindowSystemPath = CString(szFile);
+					CString strSys64 = _T("\\SysWOW64\\");
+					CString strPath = m_strWindowSystemPath + strSys64;
+					CString strFile = _T("");
+					if (::PathIsDirectory(strPath))
+					{
+						nCount = pXmlNode->GetCount();
+						for (int i = 0; i < nCount; i++)
+						{
+							pParse = pXmlNode->GetChild(i);
+							if (pParse)
+							{
+								strFile = theApp.m_strModulePath + _T("msi\\") + pParse->text();
+								if (::PathFileExists(strFile))
+								{
+									swprintf_s(cmdLine, _T("msiexec.exe /i \"%s\" %s"), strFile.GetBuffer(), _T("/qb"));
+									if (CreateProcess(NULL, cmdLine, NULL, NULL, TRUE, 0, NULL, NULL, &startupInfo, &processInfo))
+									{
+										// wait for the installer to finish
+										WaitForSingleObject(processInfo.hProcess, INFINITE);
+										//DeleteFile(strFile);
+										GetExitCodeProcess(processInfo.hProcess, &code);
+									}
+								}
+							}
+						}
+					}
+					else
+					{
+						strFile = theApp.m_strModulePath + _T("msi\\Tangram_CRT_x86.msi");
+						if (::PathFileExists(strFile))
+						{
+							swprintf_s(cmdLine, _T("msiexec.exe /i \"%s\" %s"), strFile.GetBuffer(), _T("/qb"));
+							if (CreateProcess(NULL, cmdLine, NULL, NULL, TRUE, 0, NULL, NULL, &startupInfo, &processInfo))
+							{
+								// wait for the installer to finish
+								WaitForSingleObject(processInfo.hProcess, INFINITE);
+								//DeleteFile(strFile);
+								GetExitCodeProcess(processInfo.hProcess, &code);
+							}
+						}
+					}
+				}
+
+				m_pTangramCore.CoCreateInstance(CComBSTR(L"tangram.tangram.1"));
+				
+				pXmlNode = m_Parse.GetChild(_T("COMLibs"));
 				if (pXmlNode)
 				{
 					nCount = pXmlNode->GetCount();
@@ -158,15 +217,20 @@ BOOL CTangramApp::InitInstance()
 						{
 							CString strDll = _T("");
 							CString strFile = pParse->text();
-							CString s = pParse->attr(_T("Target"), _T(""));
-							nPos = s.Find(_T("\\"));
-							s = strFile.Left(nPos);
+							CString strTarget = pParse->attr(_T("Target"), _T(""));
+							nPos = strTarget.Find(_T("\\"));
+							CString s = strTarget.Left(nPos);
 							if (s.CompareNoCase(_T("Program Files")) == 0)
 							{
-								s = s.Mid(nPos + 1);
+								CString strDir = m_strProgramFilePath + strTarget.Mid(nPos);
+								if (::PathIsDirectory(strDir) == false)
+								{
+									::SHCreateDirectoryEx(NULL, strDir, NULL);
+								}
+								CString strFile1 = strFile.Mid(strFile.Find(_T("\\")) + 1);
+								strDll = strDir + strFile1;
 								if (::PathFileExists(m_strModulePath + strFile))
 								{
-									strDll = m_strProgramFilePath + s;
 									::CopyFile(m_strModulePath + strFile, strDll, false);
 								}
 							}
@@ -187,7 +251,6 @@ BOOL CTangramApp::InitInstance()
 					}
 				}
 
-				m_pTangramCore.CoCreateInstance(CComBSTR(L"tangram.tangram.1"));
 				pXmlNode = m_Parse.GetChild(_T("CLRLibs"));
 				if (pXmlNode)
 				{
@@ -202,10 +265,11 @@ BOOL CTangramApp::InitInstance()
 						pParse = pXmlNode->GetChild(i);
 						if (pParse)
 						{
-							CString strLib = m_strModulePath + pParse->text();
+							CString _strLib = pParse->text();
+							CString strLib = m_strModulePath + _strLib;
 							if (::PathFileExists(strLib))
 							{
-								CString strTarget = theApp.m_strPath + strLib;
+								CString strTarget = theApp.m_strPath + _strLib;
 								nPos = strTarget.ReverseFind('\\');
 								if (nPos != -1)
 								{
@@ -213,9 +277,9 @@ BOOL CTangramApp::InitInstance()
 									if (PathIsDirectory(strDir) == FALSE)
 									{
 										::SHCreateDirectory(NULL, strDir);
-										nPos = strLib.ReverseFind('\\');
-										CString strProbingPath = strLib.Left(nPos);
-										if (pAssemblyBindingNode == NULL)
+										nPos = _strLib.ReverseFind('\\');
+										CString strProbingPath = _strLib.Left(nPos);
+										if (pAssemblyBindingNode == NULL&&strProbingPath!=_T(""))
 										{
 											TCHAR szFile[MAX_PATH] = { 0 };
 											::GetModuleFileName(NULL, szFile, MAX_PATH);
@@ -256,6 +320,7 @@ BOOL CTangramApp::InitInstance()
 						m_Parse2.SaveFile(strCfgFile);
 					}
 				}
+
 				pXmlNode = m_Parse.GetChild(_T("CommonFiles"));
 				if (pXmlNode)
 				{
@@ -281,6 +346,31 @@ BOOL CTangramApp::InitInstance()
 						}
 					}
 				}
+
+				pXmlNode = m_Parse.GetChild(_T("Exe"));
+				if (pXmlNode)
+				{
+					nCount = pXmlNode->GetCount();
+					for (int i = 0; i < nCount; i++)
+					{
+						pParse = pXmlNode->GetChild(i);
+						if (pParse)
+						{
+							CString strLib = m_strModulePath + pParse->text();
+							if (::PathFileExists(strLib))
+							{
+								swprintf_s(cmdLine, _T("%s /Regserver"), strLib.GetBuffer());
+								if (CreateProcess(NULL, cmdLine, NULL, NULL, TRUE, 0, NULL, NULL, &startupInfo, &processInfo))
+								{
+									// wait for the installer to finish
+									WaitForSingleObject(processInfo.hProcess, INFINITE);
+									//DeleteFile(strFile);
+									GetExitCodeProcess(processInfo.hProcess, &code);
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -302,6 +392,343 @@ BOOL CTangramApp::InitInstance()
 	}
 	return TRUE;
 }
+
+//BOOL CTangramApp::InitInstance()
+//{
+//	m_bSystem64 = FALSE;
+//
+//	TCHAR file[MAX_PATH];
+//	GetModuleFileName(::GetModuleHandle(_T("TangramPackage.dll")), file, MAX_PATH * sizeof(TCHAR));
+//	
+//	m_strModulePath = file;
+//	int nPos = m_strModulePath.ReverseFind('\\');
+//	m_strModulePath = m_strModulePath.Left(nPos + 1);
+//	//HRESULT hr = SHGetFolderPath(NULL,CSIDL_COMMON_APPDATA,NULL,0,szPath);
+//	HRESULT hr = SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, file);
+//	m_strAppDataPath = CString(file);
+//	m_strAppDataPath += _T("\\TangramData\\");
+//
+//	hr = SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES, NULL, 0, file);
+//	m_strProgramFilePath = CString(file);
+//
+//	GetModuleFileName(NULL, file, MAX_PATH * sizeof(TCHAR));
+//	CString path(file);
+//	nPos = path.ReverseFind('\\');
+//	CString strName = path.Mid(nPos + 1);
+//	nPos = strName.Find(_T("."));
+//	m_strExeName = strName.Left(nPos);
+//	m_strAppDataPath += m_strExeName;
+//	m_strAppDataPath += _T("\\");
+//	m_strVersion = _T("");
+//	CComQIPtr<_DTE> pDTE(m_pDTE);
+//	if (pDTE)
+//	{
+//		CComBSTR bstrVer;
+//		pDTE->get_Version(&bstrVer);
+//		m_strVersion = OLE2T(bstrVer);
+//		m_strAppDataPath += m_strVersion;
+//		m_strAppDataPath += _T("\\");
+//	}
+//	CString strComponentURL = _T("");
+//	CString strActionXML = _T("");
+//	TCHAR szFile[MAX_PATH] = { 0 };
+//	::GetModuleFileName(NULL, szFile, MAX_PATH);
+//	CString strPath = CString(szFile);
+//	nPos = strPath.ReverseFind('\\');
+//	m_strPath = strPath.Left(nPos + 1);
+//	m_pTangramCore.CoCreateInstance(CComBSTR(L"tangram.tangram.1"));
+//	if (m_pTangramCore == NULL)
+//	{
+//		if (IsUserAdministrator() == FALSE)
+//		{
+//			::MessageBox(NULL,_T("Please restart Visual Studio with Administrator AUTHORITY!"),_T("Visual Studio"),MB_OK);
+//			return FALSE;
+//		}
+//		CString strXmlFile = m_strModulePath + _T("tangram.xml");
+//		if (::PathFileExists(strXmlFile))
+//		{
+//			CTangramXmlParse m_Parse;
+//			if (m_Parse.LoadFile(strXmlFile))
+//			{
+//				int nCount = 0;
+//				CTangramXmlParse* pParse = NULL;
+//				strComponentURL = m_Parse.attr(_T("ComponentURL"), _T(""));
+//				if (strComponentURL != _T(""))
+//				{
+//					pParse = m_Parse.GetChild(_T("InstallAction"));
+//					if (pParse)
+//						strActionXML = pParse->xml();
+//				}
+//				CTangramXmlParse* pXmlNode = m_Parse.GetChild(_T("COMLibs"));
+//				if (pXmlNode)
+//				{
+//					nCount = pXmlNode->GetCount();
+//					typedef int (CALLBACK* TANGRAMFUNCTION)(void);
+//					TANGRAMFUNCTION RegisterServerFunction = NULL;
+//					HINSTANCE handle = NULL;
+//					BOOL bRegisterServer = FALSE;
+//					for (int i = 0; i < nCount; i++)
+//					{
+//						pParse = pXmlNode->GetChild(i);
+//						if (pParse)
+//						{
+//							CString strDll = _T("");
+//							CString strFile = pParse->text();
+//							CString strTarget = pParse->attr(_T("Target"), _T(""));
+//							nPos = strTarget.Find(_T("\\"));
+//							CString s = strTarget.Left(nPos);
+//							if (s.CompareNoCase(_T("Program Files")) == 0)
+//							{
+//								CString strDir = m_strProgramFilePath + strTarget.Mid(nPos);
+//								if (::PathIsDirectory(strDir) == false)
+//								{
+//									::SHCreateDirectoryEx(NULL, strDir, NULL);
+//								}
+//								CString strFile1 = strFile.Mid(strFile.Find(_T("\\")) + 1);
+//								strDll = strDir + strFile1;
+//								if (::PathFileExists(m_strModulePath + strFile))
+//								{
+//									::CopyFile(m_strModulePath + strFile, strDll, false);
+//								}
+//							}
+//							else
+//								strDll = m_strModulePath + strFile;
+//							if (::PathFileExists(strDll))
+//							{
+//								handle = LoadLibraryEx(strDll, NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
+//								if (handle != NULL)
+//								{
+//									RegisterServerFunction = GetProcAddress(handle, "DllRegisterServer");
+//									if (RegisterServerFunction != NULL)
+//										bRegisterServer = (RegisterServerFunction() == S_OK);
+//									FreeLibrary(handle);
+//								}
+//							}
+//						}
+//					}
+//				}
+//
+//				m_pTangramCore.CoCreateInstance(CComBSTR(L"tangram.tangram.1"));
+//				pXmlNode = m_Parse.GetChild(_T("CLRLibs"));
+//				if (pXmlNode)
+//				{
+//					CTangramXmlParse* pAssemblyBindingNode = NULL;
+//					CString strCfgFile = _T("");
+//					CString strVal = _T("");
+//					BOOL bModifyed = FALSE;
+//					CTangramXmlParse m_Parse2;
+//					nCount = pXmlNode->GetCount();
+//					for (int i = 0; i < nCount; i++)
+//					{
+//						pParse = pXmlNode->GetChild(i);
+//						if (pParse)
+//						{
+//							CString _strLib = pParse->text();
+//							CString strLib = m_strModulePath + _strLib;
+//							if (::PathFileExists(strLib))
+//							{
+//								CString strTarget = theApp.m_strPath + _strLib;
+//								nPos = strTarget.ReverseFind('\\');
+//								if (nPos != -1)
+//								{
+//									CString strDir = strTarget.Left(nPos + 1);
+//									if (PathIsDirectory(strDir) == FALSE)
+//									{
+//										::SHCreateDirectory(NULL, strDir);
+//										nPos = _strLib.ReverseFind('\\');
+//										CString strProbingPath = _strLib.Left(nPos);
+//										if (pAssemblyBindingNode == NULL&&strProbingPath!=_T(""))
+//										{
+//											TCHAR szFile[MAX_PATH] = { 0 };
+//											::GetModuleFileName(NULL, szFile, MAX_PATH);
+//											strCfgFile = CString(szFile) + _T(".config");
+//											if (m_Parse2.LoadFile(strCfgFile))
+//												pAssemblyBindingNode = m_Parse2[_T("runtime")][_T("assemblyBinding")].GetChild(_T("probing"));
+//											if (pAssemblyBindingNode)
+//											{
+//												if (strVal == _T(""))
+//													strVal = pAssemblyBindingNode->attr(_T("privatePath"), _T(""));
+//												CString _strval = strVal;
+//												_strval.MakeLower();
+//												CString strKey = _T(";") + strProbingPath + _T(";");
+//												strKey.MakeLower();
+//												if (_strval.Find(strKey) == -1)
+//												{
+//													bModifyed = TRUE;
+//													nPos = strVal.Find(_T(";"));
+//													CString s = strVal.Left(nPos + 1);
+//													s += strProbingPath;
+//													s += _T(";");
+//													s += strVal.Mid(nPos);
+//													s.Replace(_T(";;"), _T(";"));
+//													strVal = s;
+//												}
+//											}
+//										}
+//
+//									}
+//								}
+//								::CopyFile(strLib, strTarget, false);
+//							}
+//						}
+//					}
+//					if (bModifyed&&pAssemblyBindingNode)
+//					{
+//						pAssemblyBindingNode->put_attr(_T("privatePath"), strVal);
+//						m_Parse2.SaveFile(strCfgFile);
+//					}
+//				}
+//				hr = SHGetFolderPath(NULL, CSIDL_WINDOWS, NULL, 0, szFile);
+//				m_strWindowSystemPath = CString(szFile);
+//				CString strSys64 = _T("\\SysWOW64\\");
+//				CString strPath = m_strWindowSystemPath + strSys64;
+//				if (::PathIsDirectory(strPath))
+//				{
+//					m_bSystem64 = TRUE;
+//					pXmlNode = m_Parse.GetChild(_T("Microsoft.VC140.CRT"));
+//					if (pXmlNode)
+//					{
+//						CTangramXmlParse m_Parse2;
+//						nCount = pXmlNode->GetCount();
+//						for (int i = 0; i < nCount; i++)
+//						{
+//							pParse = pXmlNode->GetChild(i);
+//							if (pParse)
+//							{
+//								CString _strLib = pParse->text();
+//								nPos = _strLib.Find(_T("."));
+//								CString strTarget = m_strPath + _strLib;
+//								CString strLib = m_strModulePath + _strLib;
+//								if (::PathFileExists(strLib))
+//								{
+//									::CopyFile(strLib, strTarget, false);
+//									::DeleteFile(strLib);
+//								}
+//							}
+//						}
+//					}
+//					pXmlNode = m_Parse.GetChild(_T("Microsoft.VC140.CRT64"));
+//					if (pXmlNode)
+//					{
+//						strPath = m_strWindowSystemPath + _T("\\System32\\");
+//						CTangramXmlParse m_Parse2;
+//						nCount = pXmlNode->GetCount();
+//						for (int i = 0; i < nCount; i++)
+//						{
+//							pParse = pXmlNode->GetChild(i);
+//							if (pParse)
+//							{
+//								CString _strLib = pParse->text();
+//								nPos = _strLib.Find(_T("."));
+//								CString strTarget = strPath + _strLib;
+//								CString strLib = m_strModulePath + _T("CRT64\\")+ _strLib;
+//								if (::PathFileExists(strLib))
+//								{
+//									::CopyFile(strLib, strTarget, false);
+//									::DeleteFile(strLib);
+//								}
+//							}
+//						}
+//						::RemoveDirectory(m_strModulePath + _T("CRT64\\"));
+//					}
+//				}
+//				else
+//				{
+//					strPath = m_strWindowSystemPath + _T("\\System32\\");
+//					pXmlNode = m_Parse.GetChild(_T("Microsoft.VC140.CRT"));
+//					if (pXmlNode)
+//					{
+//						CTangramXmlParse m_Parse2;
+//						nCount = pXmlNode->GetCount();
+//						for (int i = 0; i < nCount; i++)
+//						{
+//							pParse = pXmlNode->GetChild(i);
+//							if (pParse)
+//							{
+//								CString _strLib = pParse->text();
+//								nPos = _strLib.Find(_T("."));
+//								CString strTarget = m_strPath + _strLib;
+//								CString strLib = m_strModulePath + _strLib;
+//								if (::PathFileExists(strLib))
+//								{
+//									::CopyFile(strLib, strTarget, false);
+//									::DeleteFile(strLib);
+//								}
+//							}
+//						}
+//					}
+//				}
+//
+//				pXmlNode = m_Parse.GetChild(_T("MsOfficePlus"));
+//				if (pXmlNode)
+//				{
+//					BOOL bModifyed = FALSE;
+//					CTangramXmlParse m_Parse2;
+//					nCount = pXmlNode->GetCount();
+//					for (int i = 0; i < nCount; i++)
+//					{
+//						pParse = pXmlNode->GetChild(i);
+//						if (pParse)
+//						{
+//							CString _strLib = pParse->text();
+//							nPos = _strLib.Find(_T("."));
+//							CString strDir = theApp.m_strProgramFilePath + _T("\\Tangram\\MsOfficePlus\\") + _strLib.Left(nPos) + _T("\\");
+//							::SHCreateDirectoryEx(NULL, strDir, NULL);
+//							CString strTarget = strDir + _strLib;
+//							CString strLib = m_strModulePath + _T("MsOfficePlus\\") + _strLib;
+//							if (::PathFileExists(strLib))
+//							{
+//								::CopyFile(strLib, strTarget, false);
+//							}
+//						}
+//					}
+//				}
+//				pXmlNode = m_Parse.GetChild(_T("CommonFiles"));
+//				if (pXmlNode)
+//				{
+//					nCount = pXmlNode->GetCount();
+//					for (int i = 0; i < nCount; i++)
+//					{
+//						pParse = pXmlNode->GetChild(i);
+//						if (pParse)
+//						{
+//							CString strLib = m_strModulePath + pParse->text();
+//							if (::PathFileExists(strLib))
+//							{
+//								CString strTarget = m_strPath + strLib;
+//								nPos = strTarget.ReverseFind('\\');
+//								if (nPos != -1)
+//								{
+//									CString strDir = strTarget.Left(nPos + 1);
+//									if (PathIsDirectory(strDir) == FALSE)
+//										::SHCreateDirectory(NULL, strDir);
+//								}
+//								::CopyFile(strLib, strTarget, false);
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	if (m_pTangramCore)
+//	{
+//		m_pTangramCore->put_TangramVal(CComBSTR(L"EnableProcessFormTabKey"), CComVariant(0));
+//		m_pTangramCore->put_TangramExtender(CComBSTR(L"DTE"), m_pDTE);
+//		CComPtr<ITangramHelper> pHelper;
+//		pHelper.CoCreateInstance(CComBSTR(L"TangramVSIHelper.TangramHelper.1"));
+//		if (pHelper)
+//		{
+//			CComPtr<IDispatch> pPane;
+//			pHelper.p->get_OutputPane(&pPane);
+//			m_pTangramHelper = pHelper.p;
+//			m_pTangramHelper->AddRef();
+//			if (strComponentURL != _T("") && strActionXML != _T(""))
+//				m_pTangramCore->DownLoadFile(CComBSTR(strComponentURL), CComBSTR(L"TangramData\\TangramInit\\TangramInit.zip"), CComBSTR(strActionXML));
+//		}
+//	}
+//	return TRUE;
+//}
 
 DWORD CTangramApp::ExecCmd(const CString cmd, const BOOL setCurrentDirectory)
 {

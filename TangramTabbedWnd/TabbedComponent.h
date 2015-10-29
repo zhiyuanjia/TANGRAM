@@ -3,8 +3,8 @@
 #pragma once
 #include "resource.h"       // main symbols
 
-#include "TangramTabbedWnd_i.h"
 #include "Tangram.h"
+#include "TangramTabbedWnd_i.h"
 
 // CTabbedComponent
 

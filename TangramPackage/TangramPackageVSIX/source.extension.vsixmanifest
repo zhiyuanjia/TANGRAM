@@ -6,10 +6,10 @@
     <Description>Tangram for Visual Studio</Description>
   </Metadata>
   <Installation AllUsers="true">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[11.0,)" />
   </Installation>
   <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.0,)" />
   </Dependencies>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="TangramPackage" Path="|TangramPackage;PkgdefProjectOutputGroup|" />

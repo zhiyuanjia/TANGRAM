@@ -1,18 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Tangram>
   <COMLibs>
-    <ComLib Target="Program Files\Tangram\">Program Files\Tangram\Tangram.dll</ComLib>
     <ComLib>ComLibs\TangramVSIHelper.dll</ComLib>
-    <ComLib>ComLibs\TangramTabbedWnd.dll</ComLib>
-    <ComLib>ComLibs\TangramTabCtrl.dll</ComLib>
-    <ComLib>ComLibs\TangramExTabWnd.dll</ComLib>
+    <ComLib>ComLibs\TangramView.dll</ComLib>
   </COMLibs>
+  <MSI>
+    <msi>Tangram_CRT_x86.msi</msi>
+    <msi>Tangram_CRT_x64.msi</msi>
+  </MSI>
+  <Exe>
+    <exe>TangramMFCApp.exe</exe> 
+</Exe>
   <CLRLibs>
     <CLR>TangramCLR.dll</CLR>
     <CLR>TangramAssemblies\TangramDotNetLib.dll</CLR>
   </CLRLibs>
+  <Microsoft.VC140.CRT>
+    <CRT>concrt140.dll</CRT>
+    <CRT>msvcp140.dll</CRT>
+    <CRT>vccorlib140.dll</CRT>
+    <CRT>vcruntime140.dll</CRT>
+  </Microsoft.VC140.CRT>
   <CommonFiles>
     <CLR>Start.dll</CLR>
-    <CLR>CattoDB.dll</CLR>
+    <EditorScript>tangrameditor.xml</EditorScript>
   </CommonFiles>
 </Tangram>

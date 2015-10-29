@@ -6,7 +6,7 @@
     <ProductVersion>3.9</ProductVersion>
     <ProjectGuid>65553a6e-f728-4c6c-8234-6b2e088ac811</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>Tangram_CRT_x86_64</OutputName>
+    <OutputName>Tangram_CRT_x64</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <LinkerAdditionalOptions>-ext WixUIExtension</LinkerAdditionalOptions>
-    <OutputPath>..\bin\$(Platform)\$(Configuration)\</OutputPath>
+    <OutputPath>..\Msi\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>

@@ -111,12 +111,18 @@
     <PkgdefFile Include="Templates\TangramExtFile1.APPXml" />
     <PkgdefFile Include="Templates\TangramExtFile2.APPXml" />
     <PkgdefFile Include="Templates\TangramExtFile3.APPXml" />
-    <PkgdefFile Include="..\Build\Tangram.dll" />
-    <PkgdefFile Include="..\Build\TangramExTabWnd.dll" />
-    <PkgdefFile Include="..\Build\TangramTabbedWnd.dll" />
-    <PkgdefFile Include="..\Build\TangramTabCtrl.dll" />
-    <PkgdefFile Include="..\Build\TangramVSIHelper.dll" />
-    <PkgdefFile Include="..\Build\TangramCLR.dll" />
     <PkgdefFile Include="XML\Tangram.Xml" />
+    <PkgdefFile Include="..\Release\TangramCLR.dll" />
+    <PkgdefFile Include="..\Release\TangramVSIHelper.dll" />
+    <PkgdefFile Include="..\Release\TangramDotNetLib.dll" />
+    <PkgdefFile Include="..\Release\TangramView.dll" />
+    <PkgdefFile Include="XML\tangrameditor.xml" />
+    <PkgdefFile Include="..\msi\release\Tangram_CRT_x64.msi" />
+    <PkgdefFile Include="..\msi\release\Tangram_CRT_x86.msi" />
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\concrt140.dll" />
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\vccorlib140.dll" />
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\vcruntime140.dll" />
+    <PkgdefFile Include="..\msi\Microsoft.VC140.CRT\msvcp140.dll" />
+    <PkgdefFile Include="..\Release\TangramMFCApp.exe" />
   </ItemGroup>
 </Project>

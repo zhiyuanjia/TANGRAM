@@ -149,7 +149,7 @@ BOOL CTangramMFCApp::InitInstance()
 	// Parse command line for standard shell commands, DDE, file open
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
-	::MessageBox(NULL, _T("11"), _T("22"), MB_OK);
+
 	#if !defined(_WIN32_WCE) || defined(_CE_DCOM)
 	if (FAILED(RegisterClassObjects(CLSCTX_LOCAL_SERVER, REGCLS_MULTIPLEUSE)))
 		return FALSE;

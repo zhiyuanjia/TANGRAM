@@ -19,6 +19,8 @@
 *
 ********************************************************************************/
 #pragma once
+#include "dte.h"
+#include "dte80.h"
 
 #include "TangramVSIHelper_i.h"
 class CTangramPackage;
@@ -27,6 +29,7 @@ class CTangramApp :
 	public CAtlDllModuleT<CTangramApp>
 {
 public:
+	BOOL m_bSystem64;
 	HWND m_hVSToolWnd;
 	CString m_strPath;
 	CString m_strExeName;
@@ -34,6 +37,7 @@ public:
 	CString m_strModulePath;
 	CString m_strAppDataPath;
 	CString m_strProgramFilePath;
+	CString m_strWindowSystemPath;
 
 	IDispatch* m_pDTE;
 	ITangramHelper* m_pTangramHelper;

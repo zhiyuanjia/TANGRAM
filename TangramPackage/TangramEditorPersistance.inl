@@ -126,8 +126,9 @@ HRESULT CTangramEditorDoc<Traits_T>::ReadData(
 						//strAppStartFilePath += CComBSTR(L"XtmlTemplate\\SplitterTab.xtml");
 						CComPtr<ITangramFrame> m_pFrame;
 						m_pTangram->CreateFrame(CComVariant(0), CComVariant((LONGLONG)h), CComBSTR(L""), &m_pFrame);
-
-						m_pFrame->Extend(CComBSTR(L""), CComBSTR(L"tangrameditor.xml"), &m_pNode);
+						CString strEditScript = theApp.m_strModulePath;
+						strEditScript += _T("tangrameditor.xml");
+						m_pFrame->Extend(CComBSTR(L""), CComBSTR(strEditScript), &m_pNode);
 						m_pNode->put_Tag(CComVariant(bstr));
 						ITextDocument* pITextDocument = NULL;
 						pITextDocument = GetControl().GetITextDocument();
