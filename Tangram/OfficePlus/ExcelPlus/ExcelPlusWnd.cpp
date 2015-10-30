@@ -106,7 +106,10 @@ namespace TangramOfficePlus
 
 		CTangramExcelPlusWB::CTangramExcelPlusWB(void)
 		{
-			m_pFrame		 = NULL;
+			m_pTangram = NULL;
+			m_pFrame = NULL;
+			m_pTaskPaneTangram = NULL;
+			m_pTaskPaneFrame = NULL;
 			m_pWorkBook		 = NULL;
 			m_strTaskPaneXml = _T("");
 		}

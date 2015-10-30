@@ -39,7 +39,7 @@ using namespace Runtime::InteropServices;
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];		
 //
-// Version information for an assembly consists of the following four values:
+// Version information for an assembly consists of the following four values:System.Runtime.InteropServices.ImportedFromTypeLibAttribute'
 //
 //      Major Version
 //      Minor Version 
@@ -49,7 +49,7 @@ using namespace Runtime::InteropServices;
 // You can specify all the value or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly:AssemblyVersionAttribute("1.0.*")];
+[assembly:AssemblyVersionAttribute("1.0.1992.1963")];
 
 //
 // In order to sign your assembly you must specify a key to use. Refer to the 
@@ -76,6 +76,6 @@ using namespace Runtime::InteropServices;
 [assembly:ComVisibleAttribute(false)]
 
 [assembly:AssemblyDelaySignAttribute(false)];
-//[assembly:AssemblyKeyFileAttribute("TangramCLR.snk")];
+[assembly:AssemblyKeyFileAttribute("TangramCLR.snk")];
 //[assembly:AssemblyKeyNameAttribute("TangramCLR.snk")];
 

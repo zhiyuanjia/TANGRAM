@@ -37,8 +37,8 @@ namespace TangramOfficePlus
 			_Document*					m_pDoc;
 			ITangram*					m_pTangram;
 			ITangramFrame*				m_pFrame;
-			ITangram*					m_pTaskPaneTangram = NULL;
-			ITangramFrame*				m_pTaskPaneFrame = NULL;
+			ITangram*					m_pTaskPaneTangram;
+			ITangramFrame*				m_pTaskPaneFrame;
 			CString						m_strTaskPaneXml;
 		};
 

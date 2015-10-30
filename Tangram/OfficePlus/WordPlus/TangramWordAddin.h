@@ -49,7 +49,7 @@ namespace TangramOfficePlus
 			virtual ~CTangramWordAddin();
 
 			CComPtr<_Application>				m_pApplication;
-			CTangramWordPlusDocWnd*				m_pCurWordPlusDocWnd = NULL;
+			CTangramWordPlusDocWnd*				m_pCurWordPlusDocWnd;
 
 			void __stdcall OnDocumentOpen(_Document* Doc);
 			void __stdcall OnNewDocument(_Document* Doc);

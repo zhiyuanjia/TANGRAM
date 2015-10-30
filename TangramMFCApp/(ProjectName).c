@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0603 */
-/* at Fri Oct 23 14:45:38 2015
+/* at Wed Oct 28 09:23:02 2015
  */
 /* Compiler settings for TangramMFCApp.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
@@ -47,7 +47,7 @@
 #endif /* __RPCPROXY_H_VERSION__ */
 
 
-#include "TangramMFCApp_i.h"
+#include "(ProjectName)_i.h"
 
 #define TYPE_FORMAT_STRING_SIZE   25                                
 #define PROC_FORMAT_STRING_SIZE   37                                

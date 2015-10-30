@@ -103,8 +103,7 @@ HRESULT CTangramJSObject::QueryInterface(REFIID riid, void **ppvObject)
 	if (InlineIsEqualGUID(riid, IID_NULL))
 		return E_NOINTERFACE;
 
-	if (InlineIsEqualGUID(riid, m_EventIID) ||
-		InlineIsEqualUnknown(riid) ||
+	if (InlineIsEqualUnknown(riid) ||
 		InlineIsEqualGUID(riid, __uuidof(IDispatch)) ||
 		InlineIsEqualGUID(riid, m_EventIID))
 	{
@@ -151,6 +150,10 @@ HRESULT CTangramJSObject::Invoke(DISPID dispIdMember, REFIID riid, LCID lcid, WO
 
 HRESULT CTangramJSObject::SetEventNames()
 {
+	if (theApp.m_pTangramEventTypeInfo == NULL)
+	{
+		theApp.m_pHostCore->Init();
+	}
 	ITypeInfo* pInfo;
 	if (m_pTypeInfo == NULL)
 		pInfo = theApp.m_pTangramEventTypeInfo.p;

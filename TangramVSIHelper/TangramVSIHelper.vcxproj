@@ -322,17 +322,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TangramCLR\TangramCLR.vcxproj">
-      <Project>{7b3be494-b1ae-4341-9d85-2b2399ab3103}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="TangramForm.resx">
       <DependentUpon>TangramForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TangramMDIForm.resx">
       <DependentUpon>TangramMDIForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TangramCLR\TangramCLR.vcxproj">
+      <Project>{7b3be494-b1ae-4341-9d85-2b2399ab3103}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,10 +30,11 @@ namespace TangramOfficePlus
 	{
 		CTangramWordPlusDoc::CTangramWordPlusDoc(void)
 		{
+			m_pTaskPaneTangram = NULL;
+			m_pTaskPaneFrame = NULL;
 			m_pDoc				= NULL;
 			m_pFrame			= NULL;
 			m_pTangram			= NULL;
-			m_pTaskPaneFrame	= NULL;
 			m_strTaskPaneXml	= _T("");
 		}
 

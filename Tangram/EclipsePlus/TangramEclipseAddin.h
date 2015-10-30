@@ -59,9 +59,9 @@ namespace TangramEclipsePlus
 			BOOL m_bCreated;
 			CString m_strURL;
 
-			ITangram* m_pTangram = NULL;
-			ITangramFrame* m_pFrame = NULL;
-			ITangramNode* m_pCurNode = NULL;
+			ITangram* m_pTangram;
+			ITangramFrame* m_pFrame;
+			ITangramNode* m_pCurNode;
 
 			BEGIN_COM_MAP(CTangramEclipseWnd)
 				COM_INTERFACE_ENTRY(ITangramEclipseTopWnd)

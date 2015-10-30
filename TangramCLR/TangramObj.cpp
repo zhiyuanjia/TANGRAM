@@ -51,7 +51,7 @@ namespace TangramCLR
 		theAppProxy.m_pProxy->AttachNode(m_pTangramNodeEvent);
 		m_pChildNodes = nullptr;
 		SetNewNode(pNode);
-		unsigned long nValue = (unsigned long)pNode;
+		LONGLONG nValue = (LONGLONG)pNode;
 		theAppProxy._insertObject(nValue, this);
 	}
 
@@ -606,7 +606,7 @@ namespace TangramCLR
 	Tangram::Tangram(ITangram* pTangram)
 	{
 		m_pTangram = pTangram;
-		unsigned long nValue = (unsigned long)m_pTangram;
+		LONGLONG nValue = (LONGLONG)m_pTangram;
 		theAppProxy._insertObject(nValue, this);
 		m_pTangramClrEvent = new CTangramClrEvent();
 		m_pTangramClrEvent->DispEventAdvise(m_pTangram);
@@ -616,7 +616,7 @@ namespace TangramCLR
 	Tangram::~Tangram()
 	{
 		m_pTangramClrEvent->DispEventUnadvise(m_pTangram);
-		unsigned long nValue = (unsigned long)m_pTangram;
+		LONGLONG nValue = (LONGLONG)m_pTangram;
 		theAppProxy._removeObject(nValue);
 		delete m_pTangramClrEvent;
 	}

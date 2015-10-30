@@ -31,6 +31,7 @@ namespace TangramOfficePlus
 	{
 		CTangramWordAddin::CTangramWordAddin() :CTangramOfficePlusApp()
 		{
+			m_pCurWordPlusDocWnd = NULL;
 			CComVariant m_v;
 			m_v.vt = VT_I4;
 			m_v.lVal = (LONGLONG)(CTangramOfficePlusApp*)this;

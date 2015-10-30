@@ -101,6 +101,8 @@ namespace TangramOfficePlus
 
 		CTangramPresentation::CTangramPresentation()
 		{
+			m_pTaskPaneTangram = NULL;
+			m_pTaskPaneFrame = NULL;	
 			m_strTaskPaneXml = _T("");
 			m_pTangram = NULL;
 			m_pFrame = NULL;

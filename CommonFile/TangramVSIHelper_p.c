@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0603 */
-/* at Fri Oct 09 16:34:56 2015
+/* at Fri Oct 30 07:27:43 2015
  */
 /* Compiler settings for TangramVSIHelper.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 

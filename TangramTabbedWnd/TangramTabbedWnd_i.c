@@ -6,7 +6,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0603 */
-/* at Fri Sep 25 21:03:25 2015
+/* at Thu Oct 29 17:04:31 2015
  */
 /* Compiler settings for TangramTabbedWnd.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 

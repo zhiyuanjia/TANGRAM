@@ -1,17 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-  <Metadata>
-    <Identity Id="fea558f9-2737-4369-8e99-14f316ca9190" Version="1.0" Language="en-US" Publisher="Tangram Team" />
-    <DisplayName>Tangram</DisplayName>
-    <Description>Tangram for Visual Studio</Description>
-  </Metadata>
-  <Installation AllUsers="true">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[11.0,)" />
-  </Installation>
-  <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.0,)" />
-  </Dependencies>
-  <Assets>
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="TangramPackage" Path="|TangramPackage;PkgdefProjectOutputGroup|" />
-  </Assets>
-</PackageManifest>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+  <Identifier Id="fea558f9-2737-4369-8e99-14f316ca9190">
+    <AllUsers>true</AllUsers>
+    <Name>TangramPackage</Name>
+    <Author>TangramTeam</Author>
+    <Version>1.0</Version>
+    <Description xml:space="preserve">Tangram for Visual Studio</Description>
+    <Locale>1033</Locale>
+    <SupportedProducts>
+      <VisualStudio Version="10.0">
+        <Edition>Ultimate</Edition>
+        <Edition>Premium</Edition>
+        <Edition>Pro</Edition>
+        <Edition>Express_All</Edition>
+      </VisualStudio>
+    </SupportedProducts>
+    <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.5" />
+  </Identifier>
+  <References />
+  <Content>
+    <VsPackage>|TangramPackage;PkgdefProjectOutputGroup|</VsPackage>
+  </Content>
+</Vsix>

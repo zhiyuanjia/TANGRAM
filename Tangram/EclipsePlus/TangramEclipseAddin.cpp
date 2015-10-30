@@ -95,6 +95,9 @@ namespace TangramEclipsePlus
 
 		CTangramEclipseWnd::CTangramEclipseWnd(void)
 		{
+			m_pTangram = NULL;
+			m_pFrame = NULL;
+			m_pCurNode = NULL;
 			m_nIndex = 0;
 			m_bCreated = false;
 			m_strURL = _T("");

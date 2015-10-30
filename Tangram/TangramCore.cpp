@@ -82,6 +82,11 @@ CTangramCore::CTangramCore()
 	m_hHostWnd = NULL;
 	theApp.m_pHostCore = this;
 	m_pRootNodes = NULL;
+	TRACE(_T("------------------Create CTangramCore------------------------\n"));
+}
+
+void CTangramCore::Init()
+{
 	ITypeInfo* pTypeInfo = NULL;
 	ITypeLib* pTypeLib = NULL;
 	GetTI(0, &pTypeInfo);
@@ -92,8 +97,6 @@ CTangramCore::CTangramCore()
 		pTypeInfo->Release();
 		pTypeLib->Release();
 	}
-
-	TRACE(_T("------------------Create CTangramCore------------------------\n"));
 }
 
 CTangramCore::~CTangramCore()
@@ -101,7 +104,8 @@ CTangramCore::~CTangramCore()
 	map<CString, IDispatch*>::iterator it = m_mapObjDic.end();
 	for (it = m_mapObjDic.begin(); it != m_mapObjDic.end(); it++)
 	{
-		it->second->Release();
+		if(it->first.CompareNoCase(_T("DTE")))
+			it->second->Release();
 	}
 	m_mapObjDic.erase(m_mapObjDic.begin(), m_mapObjDic.end());
 	if (m_pRootNodes)

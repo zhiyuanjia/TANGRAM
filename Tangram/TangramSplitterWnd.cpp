@@ -23,9 +23,45 @@
 //
 
 #include "stdafx.h"
-#include <..\src\mfc\afximpl.h> // for AfxDeleteObject
+//#include <..\src\mfc\afximpl.h> // for AfxDeleteObject
 #include "TangramSplitterWnd.h"
+struct AUX_DATA
+{
+	// system metrics
+	int cxVScroll, cyHScroll;
+	int cxIcon, cyIcon;
 
+	int cxBorder2, cyBorder2;
+
+	// device metrics for screen
+	int cxPixelsPerInch, cyPixelsPerInch;
+
+	// convenient system color
+	HBRUSH hbrWindowFrame;
+	HBRUSH hbrBtnFace;
+
+	// color values of system colors used for CToolBar
+	COLORREF clrBtnFace, clrBtnShadow, clrBtnHilite;
+	COLORREF clrBtnText, clrWindowFrame;
+
+	// standard cursors
+	HCURSOR hcurWait;
+	HCURSOR hcurArrow;
+	HCURSOR hcurHelp;       // cursor used in Shift+F1 help
+
+	// special GDI objects allocated on demand
+	HFONT   hStatusFont;
+	HFONT   hToolTipsFont;
+	HBITMAP hbmMenuDot;
+
+// Implementation
+	AUX_DATA();
+	~AUX_DATA();
+	void UpdateSysColors();
+	void UpdateSysMetrics();
+};
+
+extern AFX_DATA AUX_DATA afxData;
 #ifndef AFX_CX_BORDER
 #define AFX_CX_BORDER CX_BORDER 
 #endif

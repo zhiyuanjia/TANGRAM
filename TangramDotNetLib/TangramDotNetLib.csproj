@@ -62,6 +62,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TangramCLR, Version=1.0.5779.19701, Culture=neutral, PublicKeyToken=1bcc94f26a4807a7, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TangramCLR.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.cs">
@@ -131,12 +136,6 @@
     <EmbeddedResource Include="TangramMDIParent.resx">
       <DependentUpon>TangramMDIParent.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TangramCLR\TangramCLR.vcxproj">
-      <Project>{7b3be494-b1ae-4341-9d85-2b2399ab3103}</Project>
-      <Name>TangramCLR</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

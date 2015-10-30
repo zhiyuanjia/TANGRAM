@@ -5,11 +5,11 @@
 /* link this file in with the server and any clients */
 
 
- /* File created by MIDL compiler version 8.00.0603 */
-/* at Fri Oct 30 07:27:43 2015
+ /* File created by MIDL compiler version 7.00.0555 */
+/* at Fri Oct 30 17:33:39 2015
  */
-/* Compiler settings for TangramVSIHelper.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
+/* Compiler settings for TangramCLRProxy.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
@@ -67,16 +67,10 @@ typedef IID CLSID;
 
 #endif !_MIDL_USE_GUIDDEF_
 
-MIDL_DEFINE_GUID(IID, IID_ITangramVSHelper,0x33522476,0x3DE1,0x4B34,0xBB,0x62,0x31,0x40,0xC6,0x64,0x1D,0x39);
+MIDL_DEFINE_GUID(IID, LIBID_TangramCLRProxyLib,0x19631222,0x1963,0x1992,0x19,0x65,0x19,0x92,0x06,0x12,0xDD,0xDD);
 
 
-MIDL_DEFINE_GUID(IID, IID_ITangramHelper,0xD490269C,0xA117,0x4D7C,0x84,0xB9,0x78,0x40,0xFE,0xC4,0x91,0x9C);
-
-
-MIDL_DEFINE_GUID(IID, LIBID_TangramVSIHelperLib,0x19631222,0x1963,0x1992,0x19,0x65,0x19,0x92,0x06,0x12,0x16,0xEB);
-
-
-MIDL_DEFINE_GUID(CLSID, CLSID_TangramHelper,0x19631222,0x1963,0x1992,0x19,0x65,0x19,0x92,0x06,0x12,0x56,0xD9);
+MIDL_DEFINE_GUID(CLSID, CLSID_TangramProxy,0x19631222,0x1963,0x1992,0x19,0x65,0x19,0x92,0x06,0x12,0xCC,0xCC);
 
 #undef MIDL_DEFINE_GUID
 

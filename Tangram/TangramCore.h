@@ -118,6 +118,7 @@ public:
 
 	void Lock(){}
 	void Unlock(){}
+	void Init();
 
 	HRESULT ExtendEx(LONGLONG hHostMainWnd, BSTR bstrXTMLFile, LONG l, LONG t, LONG r, LONG b, LONG l2, LONG t2, LONG r2, LONG b2, ITangramNode** pDocObj);
 

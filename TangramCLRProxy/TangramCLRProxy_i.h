@@ -3,11 +3,11 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 8.00.0603 */
-/* at Thu Oct 29 17:04:31 2015
+ /* File created by MIDL compiler version 7.00.0555 */
+/* at Fri Oct 30 17:33:39 2015
  */
-/* Compiler settings for TangramTabbedWnd.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
+/* Compiler settings for TangramCLRProxy.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 
     protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
@@ -32,8 +32,8 @@
 #endif // __RPCNDR_H_VERSION__
 
 
-#ifndef __TangramTabbedWnd_i_h__
-#define __TangramTabbedWnd_i_h__
+#ifndef __TangramCLRProxy_i_h__
+#define __TangramCLRProxy_i_h__
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 #pragma once
@@ -41,16 +41,16 @@
 
 /* Forward Declarations */ 
 
-#ifndef __TabbedComponent_FWD_DEFINED__
-#define __TabbedComponent_FWD_DEFINED__
+#ifndef __TangramProxy_FWD_DEFINED__
+#define __TangramProxy_FWD_DEFINED__
 
 #ifdef __cplusplus
-typedef class TabbedComponent TabbedComponent;
+typedef class TangramProxy TangramProxy;
 #else
-typedef struct TabbedComponent TabbedComponent;
+typedef struct TangramProxy TangramProxy;
 #endif /* __cplusplus */
 
-#endif 	/* __TabbedComponent_FWD_DEFINED__ */
+#endif 	/* __TangramProxy_FWD_DEFINED__ */
 
 
 /* header files for imported files */
@@ -63,23 +63,23 @@ extern "C"{
 
 
 
-#ifndef __TangramTabbedWndLib_LIBRARY_DEFINED__
-#define __TangramTabbedWndLib_LIBRARY_DEFINED__
+#ifndef __TangramCLRProxyLib_LIBRARY_DEFINED__
+#define __TangramCLRProxyLib_LIBRARY_DEFINED__
 
-/* library TangramTabbedWndLib */
-/* [helpstring][version][uuid] */ 
+/* library TangramCLRProxyLib */
+/* [version][uuid] */ 
 
 
-EXTERN_C const IID LIBID_TangramTabbedWndLib;
+EXTERN_C const IID LIBID_TangramCLRProxyLib;
 
-EXTERN_C const CLSID CLSID_TabbedComponent;
+EXTERN_C const CLSID CLSID_TangramProxy;
 
 #ifdef __cplusplus
 
-class DECLSPEC_UUID("95D9087D-7C46-499C-9FE6-FEDCA18A4100")
-TabbedComponent;
+class DECLSPEC_UUID("19631222-1963-1992-1965-19920612CCCC")
+TangramProxy;
 #endif
-#endif /* __TangramTabbedWndLib_LIBRARY_DEFINED__ */
+#endif /* __TangramCLRProxyLib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */
 

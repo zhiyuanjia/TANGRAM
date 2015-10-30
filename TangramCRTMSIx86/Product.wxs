@@ -37,6 +37,7 @@
 
   <Fragment>
     <ComponentGroup Id="ProductComponents">
+      <!--BEGIN Visual Studio 2015 Runtime Component-->
       <Component Id="compconcrt140Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40001}" Directory="SystemFolder">
         <File Id="fileconcrt140DLL" Name="concrt140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT/concrt140.dll" KeyPath="yes"></File>
       </Component>
@@ -49,11 +50,15 @@
       <Component Id="compvccorlib140Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40004}" Directory="SystemFolder">
         <File Id="filevccorlib140DLL" Name="vccorlib140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT/vccorlib140.dll" KeyPath="yes"></File>
       </Component>
+      <!--END Visual Studio 2015 Runtime Component-->
       <Component Id="compTangramLibrary" Guid="{4714AE31-169D-4177-91C9-1EB0422B522C}" Directory="INSTALLFOLDER">
         <File Id="fileTangramDLL" Name="Tangram.dll" DiskId="1" Source="../Release/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
       </Component>
       <Component Id="compTangramCLRLibrary" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C4A3A7}" Directory="INSTALLFOLDER" >
-        <File Id="fileTangramCLRDLL" Name="TangramCLR.dll" DiskId="1" Source="../Release/TangramCLR.dll" KeyPath="yes" ProcessorArchitecture="x86"></File>
+        <File Id="fileTangramCLRDLL" Name="TangramCLR.dll" DiskId="1" Source="../Release/TangramCLR.dll" KeyPath="yes" ProcessorArchitecture="x86"  Assembly=".net"></File>
+      </Component>
+      <Component Id="compTangramCLRProxyLibrary" Guid="*" Directory="INSTALLFOLDER">
+        <File Id="fileTangramCLRProxyDLL" Name="TangramCLRProxy.dll" DiskId="1" Source="../Release/TangramCLRProxy.dll" SelfRegCost="1" KeyPath="yes"></File>
       </Component>
       <!--BEGIN Non-core Component-->
       <Component Id="compTangramExTabWnd" Guid="{492BF889-3712-47D6-B9C8-8BCC045707CE}" Directory="INSTALLFOLDER">
@@ -67,10 +72,10 @@
       </Component>
       <!--END Non-core Component-->
       <!--BEGIN Office Plus-->
-      <Component Id="compTangramExcelPlus" Guid="{492BF889-3712-47D6-B9C8-8BCC04570001}" Directory="EXCELPLUS">
+      <Component Id="compTangramExcelPlus" Guid="*" Directory="EXCELPLUS">
         <File Id="fileTangramExcelPlus" Name="excel.tangram" DiskId="1" Source="../MsOfficePlus/excel.tangram" KeyPath="yes"></File>
       </Component>
-      <Component Id="compTangramWordPlus" Guid="{6031D9AF-3E76-4350-8C3F-1260CA1B0002}" Directory="WORDPLUS">
+      <Component Id="compTangramWordPlus" Guid="*" Directory="WORDPLUS">
         <File Id="fileTangramWordPlus" Name="winword.tangram" DiskId="1" Source="../MsOfficePlus/winword.tangram" KeyPath="yes"></File>
       </Component>
       <Component Id="compTangramPowerpntPlus" Guid="{73EF93DE-1E85-450B-9D6F-696A17E00003}" Directory="POWERPNTPLUS">

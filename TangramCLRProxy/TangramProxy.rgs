@@ -1,0 +1,26 @@
+HKCR
+{
+	TangramCLRProxy.TangramProxy.1 = s 'TangramProxy Class'
+	{
+		CLSID = s '{19631222-1963-1992-1965-19920612CCCC}'
+	}
+	TangramCLRProxy.TangramProxy = s 'TangramProxy Class'
+	{		
+		CurVer = s 'TangramCLRProxy.TangramProxy.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {19631222-1963-1992-1965-19920612CCCC} = s 'TangramProxy Class'
+		{
+			ProgID = s 'TangramCLRProxy.TangramProxy.1'
+			VersionIndependentProgID = s 'TangramCLRProxy.TangramProxy'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{19631222-1963-1992-1965-19920612DDDD}'
+			Version = s '1.0'
+		}
+	}
+}

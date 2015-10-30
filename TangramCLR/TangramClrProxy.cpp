@@ -37,7 +37,6 @@ CTangramCLRProxy::CTangramCLRProxy()
 	Application::EnableVisualStyles();
 	m_pSystemAssembly = nullptr;
 	m_htObjects = gcnew Hashtable();
-
 	CComPtr<ITangramCore> pTangramCore;
 	pTangramCore.CoCreateInstance(CComBSTR("Tangram.Tangram.1"));
 	theApp.m_pTangramCore = pTangramCore.Detach();

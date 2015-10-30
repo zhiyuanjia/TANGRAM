@@ -74,10 +74,10 @@ namespace TangramOfficePlus
 
 			CString					m_strTaskPaneXml;
 
-			ITangram*				m_pTangram = NULL;
-			ITangramFrame*			m_pFrame = NULL;
-			ITangram*				m_pTaskPaneTangram = NULL;
-			ITangramFrame*			m_pTaskPaneFrame = NULL;
+			ITangram*				m_pTangram;
+			ITangramFrame*			m_pFrame;
+			ITangram*				m_pTaskPaneTangram;
+			ITangramFrame*			m_pTaskPaneFrame;
 
 			_Workbook*				m_pWorkBook;
 			ExcelWorkBookWndMap		m_mapExcelWorkBookWnd;
