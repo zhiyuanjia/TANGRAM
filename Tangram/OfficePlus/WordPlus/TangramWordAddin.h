@@ -38,7 +38,7 @@ namespace TangramOfficePlus
 		typedef CTangramWordPlusDocumentMap::iterator WordPlusDocumentMapIT;
 		class CTangramWordAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp,
+			public CTangramAddinApp,
 			public CTangramWordPlusAppEvents2,
 			//public CTangramWordPlusAppEvents3,
 			//public CTangramWordPlusAppEvents4,

@@ -32,7 +32,7 @@ namespace TangramOfficePlus
 	{
 		class CTangramInfoPathAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp,
+			public CTangramAddinApp,
 			public CTangramInfoPathApplicationEvents
 		{
 		public:
@@ -41,7 +41,7 @@ namespace TangramOfficePlus
 
 			CComPtr<InfoPath::_Application3> m_pApplication;
 			CComPtr<InfoPath::_ApplicationEvents> m_pApplicationEvents;
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

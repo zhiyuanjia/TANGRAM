@@ -75,7 +75,7 @@ public:
 	CTangramBKWnd*							m_pTangramMDIClientBKWnd;
 	CComPtr<ITypeInfo>						m_pTangramEventTypeInfo;
 	CTangramCLRProxyBase*					m_pTangramCLRProxy;
-	CTangramOfficePlusApp*					m_pTangramOfficePlusApp;
+	CTangramAddinApp*						m_pTangramAddinApp;
 
 	ITangramVBAForm *						m_pActiveForm2;
 	TRACKMOUSEEVENT							EventTrack;

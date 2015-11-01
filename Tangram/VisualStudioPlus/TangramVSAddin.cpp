@@ -203,8 +203,8 @@ namespace TangramVisualStudioPlus
 			int nVer = _wtoi(strVer);
 			CComVariant m_v;
 			m_v.vt = VT_I4;
-			m_v.lVal = (LONGLONG)(CTangramOfficePlusApp*)this;
-			theApp.m_pHostCore->put_TangramVal(CComBSTR(L"OfficePlusApp"), m_v);
+			m_v.lVal = (LONGLONG)(CTangramAddinApp*)this;
+			theApp.m_pHostCore->put_TangramVal(CComBSTR(L"TangramAddinApp"), m_v);
 		}
 
 		CTangramVisualStudioAddin::~CTangramVisualStudioAddin()

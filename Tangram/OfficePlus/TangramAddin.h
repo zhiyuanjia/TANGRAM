@@ -77,7 +77,7 @@ namespace TangramOfficePlus
 		ITangram*				m_pTangram;
 		IDispatch*				m_pApplication;
 		CComQIPtr<IRibbonUI>	m_spRibbonUI;
-		CTangramOfficePlusApp*	m_pTangramOfficeApp;
+		CTangramAddinApp*	m_pTangramOfficeApp;
 	};
 }
 

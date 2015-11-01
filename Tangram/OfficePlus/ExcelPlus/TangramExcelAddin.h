@@ -44,7 +44,7 @@ namespace TangramOfficePlus
 
 		class CTangramExcelAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp,
+			public CTangramAddinApp,
 			public CTangramExcelPlusAppEvents,
 			public map<_Workbook*, CTangramExcelPlusWB*>
 		{
@@ -61,7 +61,7 @@ namespace TangramOfficePlus
 			//void __stdcall OnWorkbookActivate(_Workbook* Wb);
 			void __stdcall OnWindowActivate(_Workbook* Wb, Excel::Window* Wn);
 
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

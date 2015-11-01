@@ -44,14 +44,14 @@ namespace TangramVisualBasicPlus
 
 		class CTangramVB6Addin :
 			public TangramOfficePlus::CTangramAddin,
-			public CTangramOfficePlusApp
+			public CTangramAddinApp
 		{
 		public:
 			CTangramVB6Addin();
 			virtual ~CTangramVB6Addin();
 
 			CComPtr<VBIDE::VBE> m_pVBE;
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

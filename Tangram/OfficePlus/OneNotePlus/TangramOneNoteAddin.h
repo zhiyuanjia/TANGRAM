@@ -30,14 +30,14 @@ namespace TangramOfficePlus
 	{
 		class CTangramOneNoteAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp
+			public CTangramAddinApp
 		{
 		public:
 			CTangramOneNoteAddin();
 			virtual ~CTangramOneNoteAddin();
 
 			CComPtr<OneNote::IApplication> m_pApplication;
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

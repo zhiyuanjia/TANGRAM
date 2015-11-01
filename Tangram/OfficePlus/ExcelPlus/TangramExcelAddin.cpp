@@ -31,7 +31,7 @@ namespace TangramOfficePlus
 {
 	namespace ExcelPlus
 	{
-		CTangramExcelAddin::CTangramExcelAddin():CTangramOfficePlusApp()
+		CTangramExcelAddin::CTangramExcelAddin():CTangramAddinApp()
 		{
 			m_pActiveWnd = NULL;
 			m_bOldVer = false;
@@ -44,8 +44,8 @@ namespace TangramOfficePlus
 
 			CComVariant m_v;
 			m_v.vt = VT_I4;
-			m_v.lVal = (LONGLONG)(CTangramOfficePlusApp*)this;
-			theApp.m_pHostCore->put_TangramVal(CComBSTR(L"OfficePlusApp"), m_v);
+			m_v.lVal = (LONGLONG)(CTangramAddinApp*)this;
+			theApp.m_pHostCore->put_TangramVal(CComBSTR(L"TangramAddinApp"), m_v);
 		}
 
 		CTangramExcelAddin::~CTangramExcelAddin()

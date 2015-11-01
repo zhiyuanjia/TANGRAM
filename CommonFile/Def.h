@@ -101,10 +101,10 @@ namespace TangramCommon
 		virtual BSTR GetCtrlValueByName(IDispatch* CtrlDisp, BSTR bstrName, bool bFindInChild)=0;
 	};
 
-	class CTangramOfficePlusApp
+	class CTangramAddinApp
 	{
 	public:
-		CTangramOfficePlusApp()
+		CTangramAddinApp()
 		{
 			m_strUser = _T("");
 			m_strRibbonXml = _T("");

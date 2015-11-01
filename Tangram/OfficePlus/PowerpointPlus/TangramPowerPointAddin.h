@@ -71,7 +71,7 @@ namespace TangramOfficePlus
 		};
 
 		class CTangramPowerPointAddin : public CTangramAddin,
-			public CTangramOfficePlusApp,
+			public CTangramAddinApp,
 			public CTangramPowerpointPlusEApplication
 		{
 		public:
@@ -81,7 +81,7 @@ namespace TangramOfficePlus
 			CComPtr<PowerPoint::_Application> m_pApplication;
 			map<CString, CTangramPresentation*> m_mapTangramPres;
 
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

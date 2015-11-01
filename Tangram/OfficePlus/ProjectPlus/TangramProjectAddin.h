@@ -32,7 +32,7 @@ namespace TangramOfficePlus
 	{
 		class CTangramProjectAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp,
+			public CTangramAddinApp,
 			public CTangramEProjectAppEvents,
 			public CTangramEProjectAppEvents2
 		{
@@ -41,7 +41,7 @@ namespace TangramOfficePlus
 			virtual ~CTangramProjectAddin();
 
 			CComPtr<_MSProject> m_pApplication;
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

@@ -37,7 +37,7 @@ namespace TangramOfficePlus
 		class CTangramOutLookPlusInspector;
 		class CTangramOutLookAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp,
+			public CTangramAddinApp,
 			public CTangramOutLookPlusExplorersEvents,
 			public CTangramOutLookPlusInspectorsEvents,
 			public CTangramOutLookPlusApplicationEvents,
@@ -49,7 +49,7 @@ namespace TangramOfficePlus
 			virtual ~CTangramOutLookAddin();
 
 			CComPtr<OutLook::_Application> m_pApplication;
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

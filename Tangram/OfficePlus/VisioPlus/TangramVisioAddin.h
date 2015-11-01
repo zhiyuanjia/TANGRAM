@@ -28,12 +28,12 @@ namespace TangramOfficePlus
 	{
 		class CTangramVisioAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp
+			public CTangramAddinApp
 			{
 		public:
 			CTangramVisioAddin();
 			virtual ~CTangramVisioAddin();
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

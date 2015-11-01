@@ -497,12 +497,12 @@ STDMETHODIMP CTangramCore::put_TangramVal(BSTR bstrKey, VARIANT newVal)
 			return S_OK;
 		}
 	}
-	if (strKey.CompareNoCase(_T("OfficePlusApp")) == 0)
+	if (strKey.CompareNoCase(_T("TangramAddinApp")) == 0)
 	{
 		if (newVal.vt == VT_I4&&newVal.lVal)
 		{
-			theApp.m_pTangramOfficePlusApp = (CTangramOfficePlusApp*)newVal.lVal;
-			if (theApp.m_pTangramOfficePlusApp&&theApp.m_hCBTHook == NULL)
+			theApp.m_pTangramAddinApp = (CTangramAddinApp*)newVal.lVal;
+			if (theApp.m_pTangramAddinApp&&theApp.m_hCBTHook == NULL)
 			{
 				theApp.m_hCBTHook = SetWindowsHookEx(WH_CBT, CTangramApp::CBTProc, NULL, GetCurrentThreadId());
 			}

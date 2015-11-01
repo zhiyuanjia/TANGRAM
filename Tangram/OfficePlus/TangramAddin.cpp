@@ -205,8 +205,8 @@ namespace TangramOfficePlus
 		{
 			strURL = m_Parse.attr(_T(""), _T(""));
 			CComVariant var;
-			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"OfficePlusApp"), &var);
-			m_pTangramOfficeApp = (CTangramOfficePlusApp*)var.lVal;
+			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"TangramAddinApp"), &var);
+			m_pTangramOfficeApp = (CTangramAddinApp*)var.lVal;
 			var.Clear();
 			if (m_pTangramOfficeApp)
 			{
@@ -222,8 +222,8 @@ namespace TangramOfficePlus
 			strURL = m_Parse.attr(_T(""), _T(""));
 			theApp.m_hPlugInModule = ::LoadLibrary(strLib);
 			CComVariant var;
-			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"OfficePlusApp"),&var);
-			m_pTangramOfficeApp = (CTangramOfficePlusApp*)var.lVal;
+			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"TangramAddinApp"),&var);
+			m_pTangramOfficeApp = (CTangramAddinApp*)var.lVal;
 			var.Clear();
 			if (m_pTangramOfficeApp)
 			{

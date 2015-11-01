@@ -83,7 +83,7 @@ namespace TangramVisualStudioPlus
 
 		class CTangramVisualStudioAddin :
 			public TangramOfficePlus::CTangramAddin,
-			public CTangramOfficePlusApp
+			public CTangramAddinApp
 		{
 		public:
 			CTangramVisualStudioAddin();
@@ -91,7 +91,7 @@ namespace TangramVisualStudioPlus
 
 			CComPtr<_DTE> m_pDTE;
 			CTangramVSIDEWnd* m_pMainWnd;
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);

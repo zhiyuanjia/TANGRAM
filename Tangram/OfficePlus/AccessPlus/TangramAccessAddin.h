@@ -77,7 +77,7 @@ namespace TangramOfficePlus
 
 		class CTangramAccessAddin :
 			public CTangramAddin,
-			public CTangramOfficePlusApp
+			public CTangramAddinApp
 			{
 		public:
 			CTangramAccessAddin();
@@ -86,7 +86,7 @@ namespace TangramOfficePlus
 			CTangramAccessMainWnd*					m_pMainWnd;
 			map<HWND, CTangramAccessFormWnd*>		m_mapForms;
 			CComPtr<MSAccess::_Application>			m_pApplication;
-			//CTangramOfficePlusApp:
+			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
 			HRESULT OnDisconnection(int DisConnectMode);
