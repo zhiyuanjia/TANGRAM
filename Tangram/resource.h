@@ -6,6 +6,8 @@
 #define IDD_TANGRAMLITETABBEDFORMVIEW   101
 #define IDR_TANGRAMCTRL                 108
 #define IDR_TANGRAM                     157
+#define IDR_TANGRAM1                    158
+#define IDR_TANGRAM64                   158
 #define IDB_TANGRAMCTRLEX               199
 #define IDR_TANGRAMCTRLEX               200
 #define IDB_BITMAP_GRID                 201

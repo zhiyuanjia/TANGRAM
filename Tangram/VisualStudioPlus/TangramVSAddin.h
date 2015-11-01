@@ -18,7 +18,7 @@
 *
 *
 ********************************************************************************/
-
+#ifndef _WIN64
 #pragma once
 #include "../TangramCore.h"
 #include "dte.h"
@@ -100,5 +100,6 @@ namespace TangramVisualStudioPlus
 		};
 	}
 }
+#endif
 
 

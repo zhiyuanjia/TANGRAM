@@ -21,8 +21,8 @@
 
 #include "../stdafx.h"
 #include "TangramVSAddin.h"
-//#include "../Tangram/VisualStudioPlus/ObjModel/ADDAUTO.H"
 
+#ifndef _WIN64
 namespace TangramVisualStudioPlus
 {
 	namespace VisualStudioPlus
@@ -289,4 +289,5 @@ namespace TangramVisualStudioPlus
 		}
 	}
 }
+#endif
 

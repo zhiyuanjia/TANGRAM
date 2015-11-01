@@ -409,6 +409,7 @@
     <None Include="splitv.cur" />
     <None Include="Tangram.rgs" />
     <None Include="Tangram.tlb" />
+    <None Include="tangram64.rgs" />
     <None Include="TangramAccessApp.rgs" />
     <None Include="TangramAccessFormHelper.rgs" />
     <None Include="TangramApp.rgs" />

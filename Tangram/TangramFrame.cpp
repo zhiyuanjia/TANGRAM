@@ -13,7 +13,7 @@
 * THIS SOFTWARE ON A SINGLE COMPUTER.
 *
 * CONTACT INFORMATION:
-* mailto:sunhui@tangramfx.com
+* mailto:sunhui@tangramfx.com 
 * http://www.tangramFX.com
 *
 *

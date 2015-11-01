@@ -30,7 +30,7 @@ End Sub
 */
 #include "../../stdafx.h"
 #include "TangramVB6Addin.h"
-
+#ifndef _WIN64
 namespace TangramVisualBasicPlus
 {
 	namespace VB6Plus
@@ -141,6 +141,7 @@ namespace TangramVisualBasicPlus
 		}
 	}
 }// namespace TangramVisualBasicPlus
+#endif
 
 
 

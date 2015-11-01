@@ -40,6 +40,11 @@ public:
 	static HRESULT WINAPI UpdateRegistry(BOOL bRegister)
 	{
 		return theApp.UpdateRegistryFromResource(IDR_TANGRAM, bRegister);
+//#ifndef _WIN64
+//#else
+//#endif		
+//		return theApp.UpdateRegistryFromResource(IDR_TANGRAM64, bRegister);
+//
 	}
 
 	static HRESULT WINAPI CreateInstance(void* pv, REFIID riid, LPVOID* ppv)

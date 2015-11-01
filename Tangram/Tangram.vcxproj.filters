@@ -277,6 +277,9 @@
     <None Include="TangramAccessApp.rgs">
       <Filter>Generated Files\Resource Files</Filter>
     </None>
+    <None Include="tangram64.rgs">
+      <Filter>Generated Files\Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">

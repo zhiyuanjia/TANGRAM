@@ -23,7 +23,7 @@
 
 #include "vbe6ext.h"
 #include "../Tangram/OfficePlus/TangramAddin.h"
-
+#ifndef _WIN64
 namespace TangramVisualBasicPlus
 {
 	namespace VB6Plus
@@ -60,4 +60,5 @@ namespace TangramVisualBasicPlus
 		};
 	}
 }// namespace TangramOfficePlus
+#endif
 
