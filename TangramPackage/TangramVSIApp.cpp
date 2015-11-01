@@ -24,6 +24,7 @@
 #include "Wininet.h"
 #include "TangramVSIApp.h"
 #include "CommonIncludes.h"
+//#include <Winbase.h>
 
 CTangramApp theApp;
 
@@ -366,6 +367,101 @@ BOOL CTangramApp::InitInstance()
 									WaitForSingleObject(processInfo.hProcess, INFINITE);
 									//DeleteFile(strFile);
 									GetExitCodeProcess(processInfo.hProcess, &code);
+								}
+							}
+						}
+					}
+				}
+
+				pXmlNode = m_Parse.GetChild(_T("OfficePlus"));
+				if (pXmlNode)
+				{
+					//Install Office Component:
+					BOOL m_b32bitOffice = FALSE;
+					BOOL m_b64bitSystem = FALSE;
+
+					SYSTEM_INFO si;
+					GetNativeSystemInfo(&si);
+
+					if (si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||
+						si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64)
+						m_b64bitSystem = TRUE;
+
+					wchar_t buf[_MAX_PATH];
+					CString strPath = _T("SOFTWARE\\Microsoft\\Office\\ClickToRun\\Configuration\\");
+					swprintf_s(buf, strPath);
+					DWORD size = _MAX_PATH;
+					HKEY hKey = NULL;
+					REGSAM hREGSAM = KEY_READ | KEY_QUERY_VALUE;
+					if (m_b64bitSystem)
+						hREGSAM |= KEY_WOW64_64KEY;
+					if (RegCreateKeyEx(HKEY_LOCAL_MACHINE, buf, 0, NULL, REG_OPTION_NON_VOLATILE, hREGSAM, NULL, &hKey, NULL) == ERROR_SUCCESS)
+					{
+						wchar_t szPlatForm[_MAX_PATH];
+						if (RegQueryValueEx(hKey, L"Platform", 0, NULL, (BYTE*)&szPlatForm, &size) == ERROR_SUCCESS)
+						{
+							CString strVal = path;
+							if (strVal.CompareNoCase(_T("x86")) == 0)
+								m_b32bitOffice = TRUE;
+						}
+						RegCloseKey(hKey);
+					}
+					CString strOfficePath = _T("");
+					strPath = _T("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\");
+					strPath += _T("winword.exe");
+					swprintf_s(buf, strPath);
+					hKey = NULL;
+					if (RegCreateKeyEx(HKEY_LOCAL_MACHINE, buf, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_READ | KEY_QUERY_VALUE | KEY_WOW64_64KEY, NULL, &hKey, NULL) == ERROR_SUCCESS)
+					{
+						wchar_t path[_MAX_PATH];
+						if (RegQueryValueEx(hKey, L"Path", 0, NULL, (BYTE*)&path, &size) == ERROR_SUCCESS)
+						{
+							strOfficePath = path;
+						}
+						RegCloseKey(hKey);
+					}
+
+					CTangramXmlParse* pXmlNode2 = pXmlNode->GetChild(_T("ConfigFile"));
+					if (pXmlNode2)
+					{
+						nCount = pXmlNode2->GetCount();
+						for (int i = 0; i < nCount; i++)
+						{
+							pParse = pXmlNode2->GetChild(i);
+							if (pParse)
+							{
+								CString strCfgFile = m_strModulePath + _T("OfficePlus\\") + pParse->text();
+								CString strTarget = strOfficePath + pParse->text();
+								if (::PathFileExists(strCfgFile))
+								{
+									::CopyFile(strCfgFile, strTarget, false);
+								}
+							}
+						}
+					}
+					if (m_b32bitOffice)
+					{
+						//for 32bit Office:
+						pXmlNode2 = pXmlNode->GetChild(_T("x86"));
+					}
+					else
+					{
+						//for 64bit Office:
+						pXmlNode2 = pXmlNode->GetChild(_T("x64"));
+					}
+					if (pXmlNode2)
+					{
+						nCount = pXmlNode2->GetCount();
+						for (int i = 0; i < nCount; i++)
+						{
+							pParse = pXmlNode2->GetChild(i);
+							if (pParse)
+							{
+								CString strSourceFile = m_strModulePath + _T("OfficePlus\\") + pXmlNode2->name() + _T("\\") + pParse->text();
+								CString strTarget = strOfficePath + pParse->name() +_T("\\") + pParse->text();
+								if (::PathFileExists(strSourceFile))
+								{
+									::CopyFile(strSourceFile, strTarget, false);
 								}
 							}
 						}

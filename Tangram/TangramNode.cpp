@@ -167,6 +167,7 @@ CTangramNode::~CTangramNode()
 				if (::IsWindow(m_pFrame->m_hWnd))
 				{
 					m_pFrame->UnsubclassWindow(true);
+					m_pFrame->m_hWnd = NULL;
 				}
 				delete m_pFrame;
 

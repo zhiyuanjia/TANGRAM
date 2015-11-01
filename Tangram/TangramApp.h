@@ -57,6 +57,7 @@ public:
 	~CTangramApp();
 
 	BOOL									m_bCLRStart;
+	BOOL									m_b32Process;
 	BOOL									m_bWinFormActived;
 	BOOL									m_bEnableProcessFormTabKey;
 
@@ -96,6 +97,7 @@ public:
 	CString									m_strModulePath;
 	CString									m_strAppDataPath;
 	CString									m_strProgramFilePath;
+	CString									m_strTangramCLRPath;
 	CString									m_strCLRScript;
 	CString									m_strCurrentKey;
 	CString									m_strCurrentRootName;
@@ -161,6 +163,8 @@ private:
 	//.NET Version 4: 
 	ICLRRuntimeHost*						m_pClrHost;
 
+	BOOL IsWow64bit();
+	BOOL Is64bitSystem();
 	BOOL _CheckNode(CTangramXmlParse* pXmlNode);
 	void _clearObjects()
 	{

@@ -247,7 +247,7 @@ STDMETHODIMP CTangram::CreateFrame(VARIANT ParentObj, VARIANT HostWnd, BSTR bstr
 			}
 		}
 	}
-	else if (HostWnd.vt == VT_I4 || HostWnd.vt == VT_I8)
+	else if (HostWnd.vt == VT_I2||HostWnd.vt == VT_I4 || HostWnd.vt == VT_I8)
 	{
 		HWND _hWnd = NULL;
 		if(HostWnd.vt == VT_I4)
@@ -256,7 +256,9 @@ STDMETHODIMP CTangram::CreateFrame(VARIANT ParentObj, VARIANT HostWnd, BSTR bstr
 			_hWnd = (HWND)HostWnd.llVal;
 		if (_hWnd == 0)
 		{
-			_hWnd = ::GetWindow(m_hWnd, GW_CHILD);
+			_hWnd = ::FindWindowEx(m_hWnd, NULL, _T("MDIClient"), NULL);
+			if(_hWnd==NULL)
+				_hWnd = ::GetWindow(m_hWnd, GW_CHILD);
 		}
 		if (_hWnd&&::IsWindow(_hWnd))
 		{

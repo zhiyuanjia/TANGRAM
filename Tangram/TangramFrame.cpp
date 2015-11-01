@@ -83,6 +83,7 @@ CTangramFrame::~CTangramFrame()
 				delete m_pTangram;
 		}
 	}
+	m_hWnd = NULL;
 }
 
 CTangramNode* CTangramFrame::OpenXtmlDocument(CString strKey, CString strFile)

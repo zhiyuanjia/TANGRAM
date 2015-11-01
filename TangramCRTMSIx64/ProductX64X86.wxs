@@ -9,6 +9,7 @@
 
     <Feature Id="ProductFeature" Title="TangramCRTMSIx64" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
+      <MergeRef Id="MSVC140CRTX64"/>
     </Feature>
 
     <UIRef Id="WixUI_Minimal"/>
@@ -23,6 +24,7 @@
       </Directory>
       <Directory Id="ProgramFiles64Folder">
         <Directory Id="INSTALLFOLDERX64" Name="Tangram">
+          <Merge Id="MSVC140CRTX64" Language="1033" SourceFile="../VCCRTMSM/Microsoft_VC140_CRT_x64.msm" DiskId="1" />
         </Directory>
       </Directory>
       <Directory Id="SystemFolder">
@@ -34,7 +36,7 @@
 
   <Fragment>
     <ComponentGroup Id="ProductComponents">
-      <Component Id="compconcrt140Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40001}" Directory="SystemFolder"  Win64="no">
+      <!--<Component Id="compconcrt140Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40001}" Directory="SystemFolder"  Win64="no">
         <File Id="fileconcrt140DLL" Name="concrt140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT/concrt140.dll" KeyPath="yes"></File>
       </Component>
       <Component Id="msvcp140Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40002}" Directory="SystemFolder"  Win64="no">
@@ -45,7 +47,7 @@
       </Component>
       <Component Id="compvccorlib140Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40004}" Directory="SystemFolder"  Win64="no">
         <File Id="filevccorlib140DLL" Name="vccorlib140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT/vccorlib140.dll" KeyPath="yes"></File>
-      </Component>
+      </Component>-->
       <Component Id="compconcrt14064Library" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C40011}" Directory="System64Folder"  Win64="yes">
         <File Id="fileconcrt14064DLL" Name="concrt140.dll" DiskId="1" Source="../MSI/Microsoft.VC140.CRT64/concrt140.dll" KeyPath="yes"></File>
       </Component>

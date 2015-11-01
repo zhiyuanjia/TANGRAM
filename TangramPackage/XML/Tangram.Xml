@@ -9,8 +9,8 @@
     <msi>Tangram_CRT_x64.msi</msi>
   </MSI>
   <Exe>
-    <exe>TangramMFCApp.exe</exe> 
-</Exe>
+    <exe>TangramMFCApp.exe</exe>
+  </Exe>
   <CLRLibs>
     <CLR>TangramCLR.dll</CLR>
     <CLR>TangramAssemblies\TangramDotNetLib.dll</CLR>
@@ -25,4 +25,17 @@
     <CLR>Start.dll</CLR>
     <EditorScript>tangrameditor.xml</EditorScript>
   </CommonFiles>
+  <OfficePlus>
+    <ConfigFile>
+      <Config>excel.exe.config</Config>
+      <Config>powerpnt.exe.config</Config>
+      <Config>winword.exe.config</Config>
+    </ConfigFile>
+    <x86>
+      <TangramAssemblies></TangramAssemblies>
+    </x86>
+    <x64>
+      <TangramAssemblies></TangramAssemblies>
+    </x64>
+  </OfficePlus>
 </Tangram>

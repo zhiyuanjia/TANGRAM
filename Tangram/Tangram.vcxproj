@@ -395,6 +395,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TangramView.cpp" />
+    <ClCompile Include="VisualBasicPlus\VB6Plus\TangramVb6Addin.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="VisualStudioPlus\TangramVSAddin.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../stdafx.h</PrecompiledHeaderFile>
@@ -460,6 +464,7 @@
     <ClInclude Include="TangramView.h" />
     <ClInclude Include="OfficePlus\VBA\TangramVBAForm.h" />
     <ClInclude Include="OfficePlus\VisioPlus\TangramVisioAddin.h" />
+    <ClInclude Include="VisualBasicPlus\VB6Plus\TangramVb6Addin.h" />
     <ClInclude Include="VisualStudioPlus\TangramVSAddin.h" />
     <ClInclude Include="OfficePlus\WordPlus\TangramWordAddin.h" />
     <ClInclude Include="OfficePlus\WordPlus\WordPlusDoc.h" />

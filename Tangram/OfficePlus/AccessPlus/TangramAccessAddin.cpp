@@ -80,7 +80,7 @@ namespace TangramOfficePlus
 
 		CTangramAccessAddin::CTangramAccessAddin()
 		{
-			m_pMainWnd = NULL;
+			m_pMainWnd = NULL; 
 			CString strVer = theApp.GetFileVer();
 			int nPos = strVer.Find(_T("."));
 			strVer = strVer.Left(nPos);

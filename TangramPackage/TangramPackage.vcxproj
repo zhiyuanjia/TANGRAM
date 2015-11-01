@@ -181,6 +181,18 @@
     <PkgdefFile Include="..\Release\TangramMFCApp.exe">
       <FileType>Document</FileType>
     </PkgdefFile>
+    <PkgdefFile Include="OfficePlus\excel.exe.config">
+      <FileType>Document</FileType>
+      <VSIXSubPath>OfficePlus</VSIXSubPath>
+    </PkgdefFile>
+    <PkgdefFile Include="OfficePlus\powerpnt.exe.config">
+      <FileType>Document</FileType>
+      <VSIXSubPath>OfficePlus</VSIXSubPath>
+    </PkgdefFile>
+    <PkgdefFile Include="OfficePlus\winword.exe.config">
+      <FileType>Document</FileType>
+      <VSIXSubPath>OfficePlus</VSIXSubPath>
+    </PkgdefFile>
     <None Include="TangramEditorAutomation.inl" />
     <None Include="TangramEditorCore.inl" />
     <None Include="TangramEditorEvents.inl" />

@@ -20,77 +20,37 @@
 ********************************************************************************/
 
 #pragma once
-#include "../TangramCore.h"
-#include "dte.h"
-#include "dte80.h"
-#include "devshell.h"
+
+#include "vbe6ext.h"
 #include "../Tangram/OfficePlus/TangramAddin.h"
-namespace TangramVisualStudioPlus
+
+namespace TangramVisualBasicPlus
 {
-	namespace VisualStudioPlus
+	namespace VB6Plus
 	{
-		class CTangramVSAddin :
-			public CTangramCore
+		class CTangramVBIDEWnd :
+			public CWindowImpl<CTangramVBIDEWnd, CWindow>
 		{
 		public:
-			CTangramVSAddin();
-			virtual ~CTangramVSAddin();
-			OutputWindowPane* m_pOutputWindowPane;
-
-			HWND GetHWnd();
-			void ClearOutputPane();
-			IDispatch* GetOutputPane();
-			void PutTextToOutputPane(BSTR bstrMsg);
-		};
-
-		class CTangramVSIDEWnd :
-			public CWindowImpl<CTangramVSIDEWnd, CWindow>
-		{
-		public:
-			CTangramVSIDEWnd(void);
-			~CTangramVSIDEWnd(void);
+			CTangramVBIDEWnd(void);
+			~CTangramVBIDEWnd(void);
 			HWND					m_hClientWnd;
 			ITangram*				m_pTangram;
 			ITangramFrame*			m_pFrame;
-			BEGIN_MSG_MAP(CTangramVSIDEWnd)
+			BEGIN_MSG_MAP(CTangramVBIDEWnd)
 			END_MSG_MAP()
 			virtual void OnFinalMessage(HWND hWnd);
 		};
 
-		class CTangramDSAddin :
-			public CTangramCore,
-			public IDSAddIn
-		{
-		public:
-			CTangramDSAddin();
-			virtual ~CTangramDSAddin();
-
-			BEGIN_COM_MAP(CTangramDSAddin)
-				COM_INTERFACE_ENTRY2(IDispatch, ITangramCore)
-				COM_INTERFACE_ENTRY(ITangramCore)
-				COM_INTERFACE_ENTRY(IDSAddIn)
-			END_COM_MAP()
-
-			CString					m_strVSIDEXml;
-			CComPtr<IApplication>	m_pVSApp;
-			DWORD m_dwCookie;
-
-			// IDSAddIn Methods
-		public:
-			STDMETHOD(OnConnection)(IApplication * pApp, VARIANT_BOOL bFirstTime, long dwCookie, VARIANT_BOOL * OnConnection);
-			STDMETHOD(OnDisconnection)(VARIANT_BOOL bLastTime);
-		};
-
-		class CTangramVisualStudioAddin :
+		class CTangramVB6Addin :
 			public TangramOfficePlus::CTangramAddin,
 			public CTangramOfficePlusApp
 		{
 		public:
-			CTangramVisualStudioAddin();
-			virtual ~CTangramVisualStudioAddin();
+			CTangramVB6Addin();
+			virtual ~CTangramVB6Addin();
 
-			CComPtr<_DTE> m_pDTE;
-			CTangramVSIDEWnd* m_pMainWnd;
+			CComPtr<VBIDE::VBE> m_pVBE;
 			//CTangramOfficePlusApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
@@ -99,6 +59,5 @@ namespace TangramVisualStudioPlus
 			void WindowCreated(LPCTSTR strClassName, LPCTSTR strName, HWND hPWnd, HWND hWnd);
 		};
 	}
-}
-
+}// namespace TangramOfficePlus
 

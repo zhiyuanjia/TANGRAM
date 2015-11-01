@@ -36,6 +36,172 @@ HKCU
     {
         Microsoft
         {
+			VBA
+			{
+				'7.1'
+				{
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'TangramVSAddin'
+							val Description = s 'TangramVSAddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				}
+			}
+			VSA
+			{
+				'7.0'
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'TangramVSAddin'
+							val Description = s 'TangramVSAddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				'7.1'
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'TangramVSAddin'
+							val Description = s 'TangramVSAddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				'8.0'
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'TangramVSAddin'
+							val Description = s 'TangramVSAddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				'9.0'
+				{
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'TangramVSAddin'
+							val Description = s 'TangramVSAddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				}
+			}
+			'VisualStudio'
+			{
+				'7.0'
+				{
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'Tangram for Visual Studio ddin'
+							val Description = s 'Tangram for Visual Studio ddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				}
+				'7.1'
+				{
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'Tangram for Visual Studio ddin'
+							val Description = s 'Tangram for Visual Studio ddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				}
+				'8.0'
+				{
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'Tangram for Visual Studio ddin'
+							val Description = s 'Tangram for Visual Studio ddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				}
+				'9.0'
+				{
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'Tangram for Visual Studio ddin'
+							val Description = s 'Tangram for Visual Studio ddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				}
+			}
+			'Visual Basic'
+			{
+				'6.0'
+				{
+					AddIns
+					{
+						'Tangram.Tangram'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 1
+							val FriendlyName = s 'Tangram for Visual Basic ddin'
+							val Description = s 'Tangram for Visual Basic ddin'
+							val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+						}
+					}
+				}
+			}
             Office
             {
                 Project

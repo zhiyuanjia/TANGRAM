@@ -98,6 +98,9 @@
     <None Include="TangramEditorWindowing.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="OfficePlus\excel.exe.config" />
+    <None Include="OfficePlus\powerpnt.exe.config" />
+    <None Include="OfficePlus\winword.exe.config" />
   </ItemGroup>
   <ItemGroup>
     <PkgdefFile Include="TangramPackage.pkgdef">

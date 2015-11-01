@@ -73,6 +73,7 @@ void CTangramHelperWnd::OnFinalMessage(HWND hWnd)
 }
 
 // CTangramCore
+
 CTangramCore::CTangramCore()
 {
 	m_pFrame = NULL;
