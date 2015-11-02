@@ -53,7 +53,7 @@ namespace TangramOfficePlus
 			virtual ~CTangramExcelAddin();
 
 			CTangramExcelPlusWBWnd*			m_pActiveWnd;
-			CComPtr<Excel::_Application>	m_pApplication;
+			CComPtr<Excel::_Application>	m_pExcelApplication;
 
 			//CTangramExcelPlusAppEvents:
 			void __stdcall OnNewWorkbook(_Workbook* Wb);

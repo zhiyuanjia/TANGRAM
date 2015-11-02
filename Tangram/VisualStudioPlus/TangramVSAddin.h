@@ -69,6 +69,7 @@ namespace TangramVisualStudioPlus
 				COM_INTERFACE_ENTRY2(IDispatch, ITangramCore)
 				COM_INTERFACE_ENTRY(ITangramCore)
 				COM_INTERFACE_ENTRY(IDSAddIn)
+				COM_INTERFACE_ENTRY(IConnectionPointContainer)
 			END_COM_MAP()
 
 			CString					m_strVSIDEXml;

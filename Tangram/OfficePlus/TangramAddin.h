@@ -39,6 +39,7 @@ namespace TangramOfficePlus
 			COM_INTERFACE_ENTRY(AddInDesignerObjects::IDTExtensibility2)
 			COM_INTERFACE_ENTRY(IRibbonExtensibility)
 			COM_INTERFACE_ENTRY(ICustomTaskPaneConsumer)
+			COM_INTERFACE_ENTRY(IConnectionPointContainer)
 		END_COM_MAP()
 
 	public:
@@ -75,7 +76,7 @@ namespace TangramOfficePlus
 		CString					m_strAddinID;
 		CString					m_strTemplateXML;
 		ITangram*				m_pTangram;
-		IDispatch*				m_pApplication;
+		//IDispatch*				m_pApplication;
 		CComQIPtr<IRibbonUI>	m_spRibbonUI;
 		CTangramAddinApp*	m_pTangramOfficeApp;
 	};

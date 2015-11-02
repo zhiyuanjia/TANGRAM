@@ -33,6 +33,8 @@
       <Directory Id="SystemFolder">
       </Directory>
     </Directory>
+    <DirectoryRef Id="TARGETDIR">
+    </DirectoryRef>
   </Fragment>
 
   <Fragment>
@@ -53,6 +55,95 @@
       <!--END Visual Studio 2015 Runtime Component-->
       <Component Id="compTangramLibrary" Guid="{4714AE31-169D-4177-91C9-1EB0422B522C}" Directory="INSTALLFOLDER">
         <File Id="fileTangramDLL" Name="Tangram.dll" DiskId="1" Source="../Release/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
+      </Component>
+      <Component Id="compTangramLibraryReg" Guid="{4714AE31-169D-4177-91C9-1EB0422B52EE}" Directory="INSTALLFOLDER">
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VSA\7.0\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" KeyPath="yes" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="TangramVSAddin"/>
+          <RegistryValue Type="string" Name="Description" Value="TangramVSAddin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VSA\7.1\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="TangramVSAddin"/>
+          <RegistryValue Type="string" Name="Description" Value="TangramVSAddin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VSA\8.0\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="TangramVSAddin"/>
+          <RegistryValue Type="string" Name="Description" Value="TangramVSAddin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VSA\9.0\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="TangramVSAddin"/>
+          <RegistryValue Type="string" Name="Description" Value="TangramVSAddin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VisualStudio\7.0\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Tangram for Visual Studio Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram for Visual Studio Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VisualStudio\7.1\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Tangram for Visual Studio Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram for Visual Studio Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VisualStudio\8.0\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Tangram for Visual Studio Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram for Visual Studio Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\VisualStudio\9.0\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Tangram for Visual Studio Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram for Visual Studio Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Visual Basic\6.0\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="1" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="integer" Name="CommandPreload" Value="1" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Tangram for Visual Basic addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram for Visual Basic addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\Word\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Word Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram Word Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\Excel\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Excel Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram Excel Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\PowerPoint\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="PowerPoint Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram PowerPoint Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\Access\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Access Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram Access Addin" />
+        </RegistryKey>
       </Component>
       <Component Id="compTangramCLRLibrary" Guid="{C4ACD4E0-AED1-4CB7-9AB1-013D80C4A3A7}" Directory="INSTALLFOLDER" >
         <File Id="fileTangramCLRDLL" Name="TangramCLR.dll" DiskId="1" Source="../Release/TangramCLR.dll" KeyPath="yes" ProcessorArchitecture="x86"  Assembly=".net"></File>
@@ -85,6 +176,8 @@
         <File Id="fileTangramAccessPlus" Name="msaccess.tangram" DiskId="1" Source="../MsOfficePlus/msaccess.tangram" KeyPath="yes"></File>
       </Component>
       <!--END Office Plus-->
+      <!--<Component Id="RegistryEntry" Guid="C26D6547-BB6B-49C3-9286-8DCDC1961B3D">
+      </Component>-->
     </ComponentGroup>
   </Fragment>
 </Wix>

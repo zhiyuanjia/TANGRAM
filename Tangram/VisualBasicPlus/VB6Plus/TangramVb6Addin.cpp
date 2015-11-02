@@ -118,7 +118,7 @@ namespace TangramVisualBasicPlus
 
 		HRESULT CTangramVB6Addin::OnDisconnection(int DisConnectMode)
 		{
-			m_pVBE.p->Release();
+			//m_pVBE.p->Release();
 			m_pVBE.Detach();
 			return S_OK;
 		}

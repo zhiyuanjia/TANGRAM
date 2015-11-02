@@ -473,6 +473,13 @@ HWND CTangramNode::CreateView(HWND hParentWnd, CString strTag)
 				strID = _T("shell.explorer.2");
 			}
 
+			if (strID.CompareNoCase(_T("about:blank")) ==0 )
+			{
+				bWebCtrl = true;
+				strURL = strID;
+				strID = _T("shell.explorer.2");
+			}
+
 			if (m_pDisp == NULL)
 			{
 				CComPtr<IDispatch> pDisp;

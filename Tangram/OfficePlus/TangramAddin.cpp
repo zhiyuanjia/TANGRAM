@@ -35,7 +35,7 @@ namespace TangramOfficePlus
 	{
 		m_strLib = _T("");
 		m_strTemplateXML = _T("");
-		m_pApplication = NULL;
+		//m_pApplication = NULL;
 		m_pTangram = NULL;
 		m_pTangramOfficeApp = NULL;
 		m_hHostWnd = NULL;
@@ -177,8 +177,8 @@ namespace TangramOfficePlus
 			_pAddInInst->put_Object(theApp.m_pTangramCore);
 		}
 
-		if (m_pApplication == NULL)
-			m_pApplication = pApplication;
+		//if (m_pApplication == NULL)
+		//	m_pApplication = pApplication;
 		m_hHostWnd = ::CreateWindowEx(NULL, L"Tangram Remote Helper Window", _T("Tangram Office Plus Addin Helper Window"), WS_OVERLAPPED | WS_CAPTION, 0, 0, 0, 0, NULL, NULL, theApp.m_hInstance, NULL);
 
 		CString strURL = _T("");

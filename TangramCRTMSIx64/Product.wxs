@@ -54,6 +54,32 @@
       <Component Id="compTangramLibraryX64" Guid="{4155CD81-BA8F-4292-8418-ECE01F1815BE}" Directory="INSTALLFOLDERX64" Win64="yes">
         <File Id="fileTangramDLLX64" Name="Tangram.dll" DiskId="1" Source="../Release/x64/Tangram.dll" SelfRegCost="1" KeyPath="yes"></File>
       </Component>
+      <Component Id="compTangramLibraryReg" Guid="{4714AE31-169D-4177-91C9-1EB0422B52EE}" Directory="INSTALLFOLDERX64">
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\Word\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3"  KeyPath="yes"/>
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Word Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram Word Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\Excel\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Excel Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram Excel Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\PowerPoint\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="PowerPoint Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram PowerPoint Addin" />
+        </RegistryKey>
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\Access\Addins\Tangram.Tangram">
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="integer" Name="CommandLineSafe" Value="0" />
+          <RegistryValue Type="string" Name="FriendlyName" Value="Access Plus Addin"/>
+          <RegistryValue Type="string" Name="Description" Value="Tangram Access Addin" />
+        </RegistryKey>
+      </Component>
       <Component Id="compTangramCLRLibraryX64" Guid="*" Directory="INSTALLFOLDERX64" Win64="yes">
         <File Id="fileTangramCLRDLLX64" Name="TangramCLR.dll" DiskId="1" Source="../Release/x64/TangramCLR.dll" KeyPath="yes" ProcessorArchitecture="x64"  Assembly=".net"></File>
       </Component>

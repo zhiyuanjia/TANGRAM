@@ -42,7 +42,7 @@ CTangramCLRProxy::CTangramCLRProxy()
 	theApp.m_pTangramCore = pTangramCore.Detach();
 	if (theApp.m_pTangramCore)
 	{
-		theApp.DispEventAdvise(theApp.m_pTangramCore);
+		HRESULT hr = theApp.DispEventAdvise(theApp.m_pTangramCore);
 		theApp.m_pTangramCore->ConnectCLRProxy((LONGLONG)this);
 	}
 	m_pTangramProxy = gcnew TangramProxy();

@@ -28,8 +28,8 @@
 
 CTangramFrame::CTangramFrame()
 {
-	m_x = 0;
-	m_y = 0;
+	m_x					 = 0;
+	m_y					 = 0;
 	m_left				 = 0;
 	m_top				 = 0;
 	m_right				 = 0;

@@ -80,7 +80,7 @@ namespace TangramOfficePlus
 		void CTangramExcelAddin::OnNewWorkbook(_Workbook* Wb)
 		{
 			CComPtr<Excel::Window> pWnd = NULL;
-			m_pApplication->get_ActiveWindow(&pWnd);
+			m_pExcelApplication->get_ActiveWindow(&pWnd);
 			HWND hWnd = NULL;
 			if (pWnd)
 			{
@@ -213,7 +213,7 @@ namespace TangramOfficePlus
 		void CTangramExcelAddin::OnWorkbookOpen(_Workbook* Wb)
 		{
 			CComPtr<Excel::Window> pWnd = NULL;
-			m_pApplication->get_ActiveWindow(&pWnd);
+			m_pExcelApplication->get_ActiveWindow(&pWnd);
 			HWND hWnd = NULL;
 			if (pWnd)
 			{
@@ -412,7 +412,7 @@ namespace TangramOfficePlus
 			strTag.Replace(_T("TangramButton.Cmd."), _T(""));
 			int nCmdIndex = _wtoi(strTag);
 			CComPtr<Window> pWindow;
-			m_pApplication->get_ActiveWindow(&pWindow);
+			m_pExcelApplication->get_ActiveWindow(&pWindow);
 			long hMainWnd = 0;
 			pWindow->get_Hwnd(&hMainWnd);
 			HWND hWnd = (HWND)hMainWnd;// ::GetActiveWindow();
@@ -425,7 +425,7 @@ namespace TangramOfficePlus
 			case 100:
 			{
 				Excel::_Workbook* Wb = NULL;
-				HRESULT hr = m_pApplication->get_ActiveWorkbook(&Wb);
+				HRESULT hr = m_pExcelApplication->get_ActiveWorkbook(&Wb);
 				theApp.m_hExcelEdit = ::FindWindowEx(hWnd, NULL, _T("EXCEL<"), NULL);
 
 				hr = theApp.m_pTangramCore->put_ExternalInfo(CComVariant((long)m_hClientWnd));
@@ -602,16 +602,19 @@ namespace TangramOfficePlus
 			theApp.EventTrack.cbSize = sizeof(TRACKMOUSEEVENT);
 			theApp.EventTrack.dwFlags = TME_LEAVE;
 
-			pHostApp->QueryInterface(__uuidof(IDispatch), (LPVOID*)&m_pApplication);
-			HRESULT hr = ((CTangramExcelPlusAppEvents*)this)->DispEventAdvise(m_pApplication);
+			pHostApp->QueryInterface(__uuidof(IDispatch), (LPVOID*)&m_pExcelApplication);
+			HRESULT hr = ((CTangramExcelPlusAppEvents*)this)->DispEventAdvise(m_pExcelApplication);
 			return S_OK;
 		}
 
 		HRESULT CTangramExcelAddin::OnDisconnection(int DisConnectMode)
 		{
-			HRESULT hr = ((CTangramExcelPlusAppEvents*)this)->DispEventUnadvise(m_pApplication);
-			m_pApplication.p->Release();
-			m_pApplication.Detach();
+			HRESULT hr = ((CTangramExcelPlusAppEvents*)this)->DispEventUnadvise(m_pExcelApplication);
+			if (m_pExcelApplication)
+			{
+				//m_pExcelApplication.p->Release();
+				m_pExcelApplication.Detach();
+			}
 			return S_OK;
 		}
 
@@ -632,7 +635,7 @@ namespace TangramOfficePlus
 			if (bNewDoc)
 			{
 				CComPtr<Workbooks> pWorkBooksDisp2;
-				m_pApplication->get_Workbooks(&pWorkBooksDisp2);
+				m_pExcelApplication->get_Workbooks(&pWorkBooksDisp2);
 				if (pWorkBooksDisp2)
 				{
 					CComPtr<_Workbook> pDoc;

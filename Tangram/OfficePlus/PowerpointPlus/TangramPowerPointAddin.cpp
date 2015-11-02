@@ -615,7 +615,7 @@ namespace TangramOfficePlus
 		HRESULT CTangramPowerPointAddin::OnDisconnection(int DisConnectMode)
 		{
 			HRESULT hr = DispEventUnadvise(m_pApplication);
-			m_pApplication.p->Release();
+			//m_pApplication.p->Release();
 			m_pApplication.Detach();
 			return S_OK;
 		}
