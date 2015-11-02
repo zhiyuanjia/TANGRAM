@@ -118,24 +118,6 @@ namespace TangramVisualStudioPlus
 			return NULL;
 		}
 
-		CTangramVSIDEWnd::CTangramVSIDEWnd()
-		{
-			m_hClientWnd = NULL;
-			m_pTangram = NULL;
-			m_pFrame = NULL;
-		}
-
-		CTangramVSIDEWnd::~CTangramVSIDEWnd()
-		{
-
-		}
-
-		void CTangramVSIDEWnd::OnFinalMessage(HWND hWnd)
-		{
-			CWindowImpl::OnFinalMessage(hWnd);
-			delete this;
-		}
-
 		CTangramDSAddin::CTangramDSAddin()
 		{
 			m_dwCookie = 0;
@@ -164,7 +146,7 @@ namespace TangramVisualStudioPlus
 				hWnd = ::GetParent(hWnd);
 				TRACE(_T("%x\n"), hWnd);
 			}
-			CTangramVSIDEWnd* pMainWnd = new CTangramVSIDEWnd();
+			TangramOfficePlus::CTangramIDEWnd* pMainWnd = new TangramOfficePlus::CTangramIDEWnd();
 			pMainWnd->SubclassWindow(hDevStudioWnd);
 			pMainWnd->m_hClientWnd = ::FindWindowEx(pMainWnd->m_hWnd, NULL, _T("MDIClient"), NULL);
 			theApp.m_pTangramCore->CreateTangram((LONGLONG)pMainWnd->m_hWnd, &pMainWnd->m_pTangram);
@@ -196,7 +178,6 @@ namespace TangramVisualStudioPlus
 
 		CTangramVisualStudioAddin::CTangramVisualStudioAddin()
 		{
-			m_pMainWnd = NULL;
 			CString strVer = theApp.GetFileVer();
 			int nPos = strVer.Find(_T("."));
 			strVer = strVer.Left(nPos);
@@ -242,20 +223,20 @@ namespace TangramVisualStudioPlus
 					pMainWnd->get_HWnd(&h);
 					HWND hwnd = (HWND)h;
 					//HWND hMainWnd = ::FindWindowEx(NULL, NULL, _T("wndclass_desked_gsk"), NULL);
-					if(m_pMainWnd==NULL)
+					if(m_pIDEWindow ==NULL)
 					{
-						m_pMainWnd = new CTangramVSIDEWnd();
-						m_pMainWnd->SubclassWindow(hwnd);
-						m_pMainWnd->m_hClientWnd = ::FindWindowEx(hwnd, NULL, _T("MDIClient"), NULL);
-						theApp.m_pTangramCore->CreateTangram((LONGLONG)h, &m_pMainWnd->m_pTangram);
-						if (m_pMainWnd->m_pTangram)
+						m_pIDEWindow = new TangramOfficePlus::CTangramIDEWnd();
+						m_pIDEWindow->SubclassWindow(hwnd);
+						m_pIDEWindow->m_hClientWnd = ::FindWindowEx(hwnd, NULL, _T("MDIClient"), NULL);
+						theApp.m_pTangramCore->CreateTangram((LONGLONG)h, &m_pIDEWindow->m_pTangram);
+						if (m_pIDEWindow->m_pTangram)
 						{
-							m_pMainWnd->m_pTangram->put_External(m_pDTE.p);
-							m_pMainWnd->m_pTangram->CreateFrame(CComVariant(0), CComVariant((LONGLONG)m_pMainWnd->m_hClientWnd), CComBSTR(L"VSIDE"), &m_pMainWnd->m_pFrame);
-							if (m_pMainWnd->m_pFrame)
+							m_pIDEWindow->m_pTangram->put_External(m_pDTE.p);
+							m_pIDEWindow->m_pTangram->CreateFrame(CComVariant(0), CComVariant((LONGLONG)m_pIDEWindow->m_hClientWnd), CComBSTR(L"VSIDE"), &m_pIDEWindow->m_pFrame);
+							if (m_pIDEWindow->m_pFrame)
 							{
 								CComPtr<ITangramNode> pNode;
-								m_pMainWnd->m_pFrame->Extend(CComBSTR(L""), m_strDefaultTemplateXml.AllocSysString(), &pNode);
+								m_pIDEWindow->m_pFrame->Extend(CComBSTR(L""), m_strDefaultTemplateXml.AllocSysString(), &pNode);
 							}
 						}
 					}

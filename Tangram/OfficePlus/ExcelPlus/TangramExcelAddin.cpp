@@ -602,8 +602,11 @@ namespace TangramOfficePlus
 			theApp.EventTrack.cbSize = sizeof(TRACKMOUSEEVENT);
 			theApp.EventTrack.dwFlags = TME_LEAVE;
 
-			pHostApp->QueryInterface(__uuidof(IDispatch), (LPVOID*)&m_pExcelApplication);
-			HRESULT hr = ((CTangramExcelPlusAppEvents*)this)->DispEventAdvise(m_pExcelApplication);
+			if (m_pExcelApplication == NULL)
+			{
+				pHostApp->QueryInterface(__uuidof(IDispatch), (LPVOID*)&m_pExcelApplication);
+				HRESULT hr = ((CTangramExcelPlusAppEvents*)this)->DispEventAdvise(m_pExcelApplication);
+			}
 			return S_OK;
 		}
 

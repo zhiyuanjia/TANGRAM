@@ -23,6 +23,52 @@
 #pragma once
 namespace TangramOfficePlus
 {
+	class CTangramIDEWnd :
+		public CWindowImpl<CTangramIDEWnd, CWindow>
+	{
+	public:
+		CTangramIDEWnd(void);
+		~CTangramIDEWnd(void);
+		HWND					m_hClientWnd;
+		ITangram*				m_pTangram;
+		ITangramFrame*			m_pFrame;
+		BEGIN_MSG_MAP(CTangramIDEWnd)
+		END_MSG_MAP()
+		virtual void OnFinalMessage(HWND hWnd);
+	};
+
+	//// CTangramAddin
+	//class ATL_NO_VTABLE CTangramBaseAddin : public CTangramCore,
+	//	public IDispatchImpl<AddInDesignerObjects::_IDTExtensibility2, &AddInDesignerObjects::IID__IDTExtensibility2, &AddInDesignerObjects::LIBID_AddInDesignerObjects, 1, 0>,
+	//	public IDispatchImpl<IRibbonExtensibility, &__uuidof(IRibbonExtensibility), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>,
+	//	public IDispatchImpl<ICustomTaskPaneConsumer, &__uuidof(ICustomTaskPaneConsumer), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>
+	//{
+	//public:
+	//	CTangramBaseAddin();
+	//	virtual ~CTangramBaseAddin();
+
+	//	CComPtr<VBIDE::VBE>				m_pVBE;
+	//	BEGIN_COM_MAP(CTangramBaseAddin)
+	//		COM_INTERFACE_ENTRY2(IDispatch, ITangramCore)
+	//		COM_INTERFACE_ENTRY(ITangramCore)
+	//		COM_INTERFACE_ENTRY(AddInDesignerObjects::IDTExtensibility2)
+	//	END_COM_MAP()
+
+	//public:
+	//	//IDTExtensibility2 implementation:
+	//	STDMETHOD(OnConnection)(IDispatch * Application, AddInDesignerObjects::ext_ConnectMode ConnectMode, IDispatch *AddInInst, SAFEARRAY **custom);
+	//	STDMETHOD(OnDisconnection)(AddInDesignerObjects::ext_DisconnectMode RemoveMode, SAFEARRAY **custom);
+	//	STDMETHOD(OnAddInsUpdate)(SAFEARRAY **custom);
+	//	STDMETHOD(OnStartupComplete)(SAFEARRAY **custom);
+	//	STDMETHOD(OnBeginShutdown)(SAFEARRAY **custom);
+
+	//private:
+	//	CString					m_strLib;
+	//	CString					m_strAddinID;
+	//	CString					m_strTemplateXML;
+	//	ITangram*				m_pTangram;
+	//};
+
 	// CTangramAddin
 	class ATL_NO_VTABLE CTangramAddin : public CTangramCore,
 		public IDispatchImpl<AddInDesignerObjects::_IDTExtensibility2, &AddInDesignerObjects::IID__IDTExtensibility2, &AddInDesignerObjects::LIBID_AddInDesignerObjects, 1, 0>,
@@ -33,6 +79,8 @@ namespace TangramOfficePlus
 		CTangramAddin();
 		virtual ~CTangramAddin();
 
+		CComPtr<VBIDE::VBE>				m_pVBE;
+		CTangramIDEWnd*					m_pIDEWindow;
 		BEGIN_COM_MAP(CTangramAddin)
 			COM_INTERFACE_ENTRY2(IDispatch, ITangramCore)
 			COM_INTERFACE_ENTRY(ITangramCore)
@@ -76,7 +124,6 @@ namespace TangramOfficePlus
 		CString					m_strAddinID;
 		CString					m_strTemplateXML;
 		ITangram*				m_pTangram;
-		//IDispatch*				m_pApplication;
 		CComQIPtr<IRibbonUI>	m_spRibbonUI;
 		CTangramAddinApp*	m_pTangramOfficeApp;
 	};

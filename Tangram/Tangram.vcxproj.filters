@@ -107,12 +107,6 @@
     <Filter Include="Source Files\TangramOfficePlus\VBA">
       <UniqueIdentifier>{33a1aada-71a0-4428-9270-8a6aee603e4a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\TangramVisualBasicPlus">
-      <UniqueIdentifier>{02598fd1-31ba-4f87-99fa-3efb6870054d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\TangramVisualBasicPlus">
-      <UniqueIdentifier>{4896098a-1fe2-4bf3-8402-12e24664330d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -246,9 +240,6 @@
     </ClCompile>
     <ClCompile Include="EclipsePlus\jni\Variant.cpp">
       <Filter>Source Files\TangramEclipsePlus</Filter>
-    </ClCompile>
-    <ClCompile Include="VisualBasicPlus\VB6Plus\TangramVb6Addin.cpp">
-      <Filter>Source Files\TangramVisualBasicPlus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -437,9 +428,6 @@
     </ClInclude>
     <ClInclude Include="EclipsePlus\jni\Variant.h">
       <Filter>Header Files\TangramEclipsePlus</Filter>
-    </ClInclude>
-    <ClInclude Include="VisualBasicPlus\VB6Plus\TangramVb6Addin.h">
-      <Filter>Header Files\TangramVisualBasicPlus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

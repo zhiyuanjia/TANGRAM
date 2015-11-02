@@ -27,15 +27,42 @@
 #include "wordplus\msword.h"
 #include "outlookplus\msoutl.h"
 #include "../TangramUtilities\TangramDownLoad.h"
-
+/*
+Private Sub MDIForm_Load()
+Set TangramCore = CreateObject("tangram.tangram")
+Dim tangram As Object
+Set tangram = TangramCore.CreateTangram(Me.hWnd)
+Dim frameX As Object
+Set frameX = tangram.CreateFrame(0, 0, "test")
+frameX.Extend "", "d:\AppDoc1.APPXml"
+End Sub
+*/
 namespace TangramOfficePlus
 {
+	CTangramIDEWnd::CTangramIDEWnd()
+	{
+		m_hClientWnd = NULL;
+		m_pTangram = NULL;
+		m_pFrame = NULL;
+	}
+
+	CTangramIDEWnd::~CTangramIDEWnd()
+	{
+
+	}
+
+	void CTangramIDEWnd::OnFinalMessage(HWND hWnd)
+	{
+		CWindowImpl::OnFinalMessage(hWnd);
+		delete this;
+	}
+
 	// CTangramAddin
 	CTangramAddin::CTangramAddin()
 	{
 		m_strLib = _T("");
 		m_strTemplateXML = _T("");
-		//m_pApplication = NULL;
+		m_pIDEWindow = NULL;
 		m_pTangram = NULL;
 		m_pTangramOfficeApp = NULL;
 		m_hHostWnd = NULL;
@@ -179,7 +206,49 @@ namespace TangramOfficePlus
 
 		//if (m_pApplication == NULL)
 		//	m_pApplication = pApplication;
-		m_hHostWnd = ::CreateWindowEx(NULL, L"Tangram Remote Helper Window", _T("Tangram Office Plus Addin Helper Window"), WS_OVERLAPPED | WS_CAPTION, 0, 0, 0, 0, NULL, NULL, theApp.m_hInstance, NULL);
+
+		if (theApp.m_strExeName.CompareNoCase(_T("vb6")) == 0)
+			pApplication->QueryInterface(__uuidof(IDispatch), (LPVOID*)&m_pVBE);
+		else
+			pApplication->QueryInterface(__uuidof(VBIDE::VBE), (LPVOID*)&m_pVBE);
+		if (m_pVBE)
+		{
+			BSTR bstrCap = L"";
+			HWND hMainWnd = NULL;
+			CComPtr<VBIDE::Window> pMainWnd;
+			m_pVBE->get_MainWindow(&pMainWnd);
+			if (pMainWnd)
+			{
+				pMainWnd->get_Caption(&bstrCap);
+				::SysFreeString(bstrCap);
+				if(theApp.m_strExeName.CompareNoCase(_T("vb6"))==0)
+					hMainWnd = ::FindWindowEx(NULL, NULL, _T("wndclass_desked_gsk"), NULL);
+				else
+					pMainWnd->get_HWnd((long*)&hMainWnd);
+				m_pIDEWindow = new CTangramIDEWnd();
+				m_pIDEWindow->SubclassWindow(hMainWnd);
+				m_pIDEWindow->m_hClientWnd = ::FindWindowEx(hMainWnd, NULL, _T("MDIClient"), NULL);
+				theApp.m_pTangramCore->CreateTangram((LONGLONG)m_pIDEWindow->m_hWnd, &m_pIDEWindow->m_pTangram);
+				if (m_pIDEWindow->m_pTangram)
+				{
+					m_pIDEWindow->m_pTangram->put_External(m_pVBE.p);
+					m_pIDEWindow->m_pTangram->CreateFrame(CComVariant(0), CComVariant((LONGLONG)m_pIDEWindow->m_hClientWnd), CComBSTR(L"VBE"), &m_pIDEWindow->m_pFrame);
+					if (m_pIDEWindow->m_pFrame)
+					{
+						CComPtr<ITangramNode> pNode;
+						m_pIDEWindow->m_pFrame->Extend(CComBSTR(L""), CComBSTR(L"VBAIDE.xml"), &pNode);
+					}
+				}
+				return S_OK;
+			}
+			else 
+			{
+				m_pVBE.Detach();
+			}
+		}
+
+		if (::IsWindow(m_hHostWnd) == FALSE)
+			m_hHostWnd = ::CreateWindowEx(NULL, L"Tangram Remote Helper Window", _T("Tangram Office Plus Addin Helper Window"), WS_OVERLAPPED | WS_CAPTION, 0, 0, 0, 0, NULL, NULL, theApp.m_hInstance, NULL);
 
 		CString strURL = _T("");
 		TCHAR szPath[MAX_PATH] = { 0 };
@@ -236,6 +305,24 @@ namespace TangramOfficePlus
 
 	STDMETHODIMP CTangramAddin::OnDisconnection(AddInDesignerObjects::ext_DisconnectMode RemoveMode, SAFEARRAY ** /*custom*/)
 	{
+		if (m_pIDEWindow&&::IsWindow(m_pIDEWindow->m_hWnd))
+		{
+			if (theApp.m_nAppID == -1)
+			{
+				if (::IsWindow(m_hHostWnd))
+					::DestroyWindow(m_hHostWnd);
+			}
+			HWND hWnd = ::GetActiveWindow();
+			if (m_pIDEWindow->m_hWnd == hWnd)
+			{
+				if (m_pVBE)
+				{
+					//m_pExcelApplication.p->Release();
+					m_pVBE.Detach();
+				}
+				return S_OK;
+			}
+		}
 		if (m_pTangramOfficeApp)
 		{
 			if (m_pTangramOfficeApp->m_pCTPFactory)
@@ -246,6 +333,12 @@ namespace TangramOfficePlus
 		if (::IsWindow(m_hHostWnd))
 			::DestroyWindow(m_hHostWnd);
 
+		
+		if (m_pVBE)
+		{
+			//m_pExcelApplication.p->Release();
+			m_pVBE.Detach();
+		}
 		m_hHostWnd = NULL;
 
 		return S_OK;

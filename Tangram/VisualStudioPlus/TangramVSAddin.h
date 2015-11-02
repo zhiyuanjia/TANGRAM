@@ -43,19 +43,19 @@ namespace TangramVisualStudioPlus
 			void PutTextToOutputPane(BSTR bstrMsg);
 		};
 
-		class CTangramVSIDEWnd :
-			public CWindowImpl<CTangramVSIDEWnd, CWindow>
-		{
-		public:
-			CTangramVSIDEWnd(void);
-			~CTangramVSIDEWnd(void);
-			HWND					m_hClientWnd;
-			ITangram*				m_pTangram;
-			ITangramFrame*			m_pFrame;
-			BEGIN_MSG_MAP(CTangramVSIDEWnd)
-			END_MSG_MAP()
-			virtual void OnFinalMessage(HWND hWnd);
-		};
+		//class CTangramVSIDEWnd :
+		//	public CWindowImpl<CTangramVSIDEWnd, CWindow>
+		//{
+		//public:
+		//	CTangramVSIDEWnd(void);
+		//	~CTangramVSIDEWnd(void);
+		//	HWND					m_hClientWnd;
+		//	ITangram*				m_pTangram;
+		//	ITangramFrame*			m_pFrame;
+		//	BEGIN_MSG_MAP(CTangramVSIDEWnd)
+		//	END_MSG_MAP()
+		//	virtual void OnFinalMessage(HWND hWnd);
+		//};
 
 		class CTangramDSAddin :
 			public CTangramCore,
@@ -91,7 +91,7 @@ namespace TangramVisualStudioPlus
 			virtual ~CTangramVisualStudioAddin();
 
 			CComPtr<_DTE> m_pDTE;
-			CTangramVSIDEWnd* m_pMainWnd;
+
 			//CTangramAddinApp:
 			HRESULT Tangram_Command(IDispatch* RibbonControl);
 			HRESULT OnConnection(IDispatch* pHostApp, int ConnectMode);
