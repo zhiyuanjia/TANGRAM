@@ -46,7 +46,6 @@ namespace TangramVisualStudioPlus
 				theApp.m_pTangramCore->get_TangramExtender(bstrDTE, &pDisp);
 				if (pDisp)
 				{
-					//pDisp.p->Release();
 					CComQIPtr<DTE2> pDTE2(pDisp);
 					CComPtr<VxDTE::Window> pWnd;
 					pDTE2->get_MainWindow(&pWnd);
@@ -69,7 +68,6 @@ namespace TangramVisualStudioPlus
 							pRetDisp = pPane.p;
 							pRetDisp->AddRef();
 							m_pOutputWindowPane = pPane.Detach();
-							//m_pOutputWindowPane->AddRef();
 						}
 					}
 				}

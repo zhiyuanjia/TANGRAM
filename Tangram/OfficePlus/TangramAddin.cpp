@@ -57,8 +57,8 @@ namespace TangramOfficePlus
 		delete this;
 	}
 
-	// CTangramAddin
-	CTangramAddin::CTangramAddin()
+	// CTangramBaseAddin
+	CTangramBaseAddin::CTangramBaseAddin()
 	{
 		m_strLib = _T("");
 		m_strTemplateXML = _T("");
@@ -82,11 +82,190 @@ namespace TangramOfficePlus
 		RegisterClassEx(&wcex);
 	}
 
-	CTangramAddin::~CTangramAddin()
+	CTangramBaseAddin::~CTangramBaseAddin()
 	{
 		m_strLib = _T("");
 		m_pTangramOfficeApp = NULL;
 		ATLTRACE(_T("**********CTangramAddin::~CTangramAddin: %x*********************\n"), this);
+	}
+
+	STDMETHODIMP CTangramBaseAddin::OnConnection(IDispatch *pApplication, AddInDesignerObjects::ext_ConnectMode ConnectMode, IDispatch *pAddInInst, SAFEARRAY ** /*custom*/)
+	{
+		CComQIPtr<COMAddIn> _pAddInInst(pAddInInst);
+		if (_pAddInInst)
+		{
+			CComBSTR bstrID(L"");
+			_pAddInInst->get_ProgId(&bstrID);
+			m_strAddinID = OLE2T(bstrID);
+			_pAddInInst->put_Object(theApp.m_pTangramCore);
+		}
+
+		//if (m_pApplication == NULL)
+		//	m_pApplication = pApplication;
+
+		if (theApp.m_strExeName.CompareNoCase(_T("vb6")) == 0)
+			pApplication->QueryInterface(__uuidof(IDispatch), (LPVOID*)&m_pVBE);
+		else
+			pApplication->QueryInterface(__uuidof(VBIDE::VBE), (LPVOID*)&m_pVBE);
+		if (m_pVBE)
+		{
+			BSTR bstrCap = L"";
+			HWND hMainWnd = NULL;
+			CComPtr<VBIDE::Window> pMainWnd;
+			m_pVBE->get_MainWindow(&pMainWnd);
+			if (pMainWnd)
+			{
+				pMainWnd->get_Caption(&bstrCap);
+				::SysFreeString(bstrCap);
+				if (theApp.m_strExeName.CompareNoCase(_T("vb6")) == 0)
+					hMainWnd = ::FindWindowEx(NULL, NULL, _T("wndclass_desked_gsk"), NULL);
+				else
+					pMainWnd->get_HWnd((long*)&hMainWnd);
+				m_pIDEWindow = new CTangramIDEWnd();
+				m_pIDEWindow->SubclassWindow(hMainWnd);
+				m_pIDEWindow->m_hClientWnd = ::FindWindowEx(hMainWnd, NULL, _T("MDIClient"), NULL);
+				theApp.m_pTangramCore->CreateTangram((LONGLONG)m_pIDEWindow->m_hWnd, &m_pIDEWindow->m_pTangram);
+				if (m_pIDEWindow->m_pTangram)
+				{
+					m_pIDEWindow->m_pTangram->put_External(m_pVBE.p);
+					m_pIDEWindow->m_pTangram->CreateFrame(CComVariant(0), CComVariant((LONGLONG)m_pIDEWindow->m_hClientWnd), CComBSTR(L"VBE"), &m_pIDEWindow->m_pFrame);
+					if (m_pIDEWindow->m_pFrame)
+					{
+						CComPtr<ITangramNode> pNode;
+						m_pIDEWindow->m_pFrame->Extend(CComBSTR(L""), CComBSTR(L"VBAIDE.xml"), &pNode);
+					}
+				}
+				return S_OK;
+			}
+			else
+			{
+				m_pVBE.Detach();
+			}
+		}
+
+		if (::IsWindow(m_hHostWnd) == FALSE)
+			m_hHostWnd = ::CreateWindowEx(NULL, L"Tangram Remote Helper Window", _T("Tangram Office Plus Addin Helper Window"), WS_OVERLAPPED | WS_CAPTION, 0, 0, 0, 0, NULL, NULL, theApp.m_hInstance, NULL);
+
+		CString strURL = _T("");
+		TCHAR szPath[MAX_PATH] = { 0 };
+		HRESULT hr = SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES, NULL, 0, szPath);
+		TCHAR szFilename[MAX_PATH] = { 0 };
+		TCHAR szDriver[MAX_PATH] = { 0 };
+		TCHAR szDir[MAX_PATH] = { 0 };
+		TCHAR szFile[MAX_PATH] = { 0 };
+		TCHAR szExt[MAX_PATH] = { 0 };
+		CTangramXmlParse m_Parse;
+		DWORD dwLen = GetModuleFileName(NULL, szFilename, MAX_PATH);
+		_tsplitpath_s(szFilename, szDriver, szDir, szFile, szExt);
+		CString strLib = _T("");
+		CString strFile = szPath;
+		strFile += _T("\\tangram\\MsOfficePlus\\");
+		strFile += szFile;
+		strFile += _T("\\");
+		strFile += szFile;
+		strLib = strFile;
+		strFile += _T(".tangram");
+		BOOL bLoad = m_Parse.LoadFile(strFile);
+		if (m_strAddinID.CompareNoCase(_T("tangram.tangram")) == 0)
+		{
+			strURL = m_Parse.attr(_T(""), _T(""));
+			CComVariant var;
+			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"TangramAddinApp"), &var);
+			m_pTangramOfficeApp = (CTangramAddinApp*)var.lVal;
+			var.Clear();
+			if (m_pTangramOfficeApp)
+			{
+				m_pTangramOfficeApp->m_strConfigFile = m_Parse.xml();
+				m_pTangramOfficeApp->OnConnection(pApplication, ConnectMode);
+			}
+			return S_OK;
+		}
+		strLib += _T(".dll");
+		m_strLib = strLib;
+		if (bLoad)
+		{
+			strURL = m_Parse.attr(_T(""), _T(""));
+			theApp.m_hPlugInModule = ::LoadLibrary(strLib);
+			CComVariant var;
+			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"TangramAddinApp"), &var);
+			m_pTangramOfficeApp = (CTangramAddinApp*)var.lVal;
+			var.Clear();
+			if (m_pTangramOfficeApp)
+			{
+				m_pTangramOfficeApp->m_strConfigFile = m_Parse.xml();
+				m_pTangramOfficeApp->OnConnection(pApplication, ConnectMode);
+			}
+		}
+		return S_OK;
+	}
+
+	STDMETHODIMP CTangramBaseAddin::OnDisconnection(AddInDesignerObjects::ext_DisconnectMode RemoveMode, SAFEARRAY ** /*custom*/)
+	{
+		if (m_pIDEWindow&&::IsWindow(m_pIDEWindow->m_hWnd))
+		{
+			if (theApp.m_nAppID == -1)
+			{
+				if (::IsWindow(m_hHostWnd))
+					::DestroyWindow(m_hHostWnd);
+			}
+			HWND hWnd = ::GetActiveWindow();
+			if (m_pIDEWindow->m_hWnd == hWnd)
+			{
+				if (m_pVBE)
+				{
+					//m_pExcelApplication.p->Release();
+					m_pVBE.Detach();
+				}
+				return S_OK;
+			}
+		}
+		if (m_pTangramOfficeApp)
+		{
+			if (m_pTangramOfficeApp->m_pCTPFactory)
+				m_pTangramOfficeApp->m_pCTPFactory.Detach();
+			m_pTangramOfficeApp->OnDisconnection(RemoveMode);
+		}
+
+		if (::IsWindow(m_hHostWnd))
+			::DestroyWindow(m_hHostWnd);
+
+
+		if (m_pVBE)
+		{
+			//m_pExcelApplication.p->Release();
+			m_pVBE.Detach();
+		}
+		m_hHostWnd = NULL;
+
+		return S_OK;
+	}
+
+	STDMETHODIMP CTangramBaseAddin::OnAddInsUpdate(SAFEARRAY ** /*custom*/)
+	{
+		if (m_pTangramOfficeApp)
+			m_pTangramOfficeApp->OnUpdate();
+		return S_OK;
+	}
+
+	STDMETHODIMP CTangramBaseAddin::OnStartupComplete(SAFEARRAY ** /*custom*/)
+	{
+		if (m_pTangramOfficeApp)
+			m_pTangramOfficeApp->StartupComplete();
+		return S_OK;
+	}
+
+	STDMETHODIMP CTangramBaseAddin::OnBeginShutdown(SAFEARRAY ** /*custom*/)
+	{
+		return S_OK;
+	}
+
+	// CTangramAddin
+	CTangramAddin::CTangramAddin()
+	{
+	}
+
+	CTangramAddin::~CTangramAddin()
+	{
 	}
 
 	void CTangramAddin::_AddTangramXml(Office::_CustomXMLParts* pCustomXMLParts, BSTR bstrXml, BSTR bstrKey, BSTR* bstrRet, VARIANT_BOOL* bSuccess)
@@ -191,176 +370,6 @@ namespace TangramOfficePlus
 				}
 			}
 		}
-	}
-
-	STDMETHODIMP CTangramAddin::OnConnection(IDispatch *pApplication, AddInDesignerObjects::ext_ConnectMode ConnectMode, IDispatch *pAddInInst, SAFEARRAY ** /*custom*/)
-	{
-		CComQIPtr<COMAddIn> _pAddInInst(pAddInInst);
-		if (_pAddInInst)
-		{
-			CComBSTR bstrID(L"");
-			_pAddInInst->get_ProgId(&bstrID);
-			m_strAddinID = OLE2T(bstrID);
-			_pAddInInst->put_Object(theApp.m_pTangramCore);
-		}
-
-		//if (m_pApplication == NULL)
-		//	m_pApplication = pApplication;
-
-		if (theApp.m_strExeName.CompareNoCase(_T("vb6")) == 0)
-			pApplication->QueryInterface(__uuidof(IDispatch), (LPVOID*)&m_pVBE);
-		else
-			pApplication->QueryInterface(__uuidof(VBIDE::VBE), (LPVOID*)&m_pVBE);
-		if (m_pVBE)
-		{
-			BSTR bstrCap = L"";
-			HWND hMainWnd = NULL;
-			CComPtr<VBIDE::Window> pMainWnd;
-			m_pVBE->get_MainWindow(&pMainWnd);
-			if (pMainWnd)
-			{
-				pMainWnd->get_Caption(&bstrCap);
-				::SysFreeString(bstrCap);
-				if(theApp.m_strExeName.CompareNoCase(_T("vb6"))==0)
-					hMainWnd = ::FindWindowEx(NULL, NULL, _T("wndclass_desked_gsk"), NULL);
-				else
-					pMainWnd->get_HWnd((long*)&hMainWnd);
-				m_pIDEWindow = new CTangramIDEWnd();
-				m_pIDEWindow->SubclassWindow(hMainWnd);
-				m_pIDEWindow->m_hClientWnd = ::FindWindowEx(hMainWnd, NULL, _T("MDIClient"), NULL);
-				theApp.m_pTangramCore->CreateTangram((LONGLONG)m_pIDEWindow->m_hWnd, &m_pIDEWindow->m_pTangram);
-				if (m_pIDEWindow->m_pTangram)
-				{
-					m_pIDEWindow->m_pTangram->put_External(m_pVBE.p);
-					m_pIDEWindow->m_pTangram->CreateFrame(CComVariant(0), CComVariant((LONGLONG)m_pIDEWindow->m_hClientWnd), CComBSTR(L"VBE"), &m_pIDEWindow->m_pFrame);
-					if (m_pIDEWindow->m_pFrame)
-					{
-						CComPtr<ITangramNode> pNode;
-						m_pIDEWindow->m_pFrame->Extend(CComBSTR(L""), CComBSTR(L"VBAIDE.xml"), &pNode);
-					}
-				}
-				return S_OK;
-			}
-			else 
-			{
-				m_pVBE.Detach();
-			}
-		}
-
-		if (::IsWindow(m_hHostWnd) == FALSE)
-			m_hHostWnd = ::CreateWindowEx(NULL, L"Tangram Remote Helper Window", _T("Tangram Office Plus Addin Helper Window"), WS_OVERLAPPED | WS_CAPTION, 0, 0, 0, 0, NULL, NULL, theApp.m_hInstance, NULL);
-
-		CString strURL = _T("");
-		TCHAR szPath[MAX_PATH] = { 0 };
-		HRESULT hr = SHGetFolderPath(NULL, CSIDL_PROGRAM_FILES, NULL, 0, szPath);
-		TCHAR szFilename[MAX_PATH] = { 0 };
-		TCHAR szDriver[MAX_PATH] = { 0 };
-		TCHAR szDir[MAX_PATH] = { 0 };
-		TCHAR szFile[MAX_PATH] = { 0 };
-		TCHAR szExt[MAX_PATH] = { 0 };
-		CTangramXmlParse m_Parse;
-		DWORD dwLen = GetModuleFileName(NULL, szFilename, MAX_PATH);
-		_tsplitpath_s(szFilename, szDriver, szDir, szFile, szExt);
-		CString strLib = _T("");
-		CString strFile = szPath;
-		strFile += _T("\\tangram\\MsOfficePlus\\");
-		strFile += szFile;
-		strFile += _T("\\");
-		strFile += szFile;
-		strLib = strFile;
-		strFile += _T(".tangram");
-		BOOL bLoad = m_Parse.LoadFile(strFile);
-		if (m_strAddinID.CompareNoCase(_T("tangram.tangram")) == 0)
-		{
-			strURL = m_Parse.attr(_T(""), _T(""));
-			CComVariant var;
-			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"TangramAddinApp"), &var);
-			m_pTangramOfficeApp = (CTangramAddinApp*)var.lVal;
-			var.Clear();
-			if (m_pTangramOfficeApp)
-			{
-				m_pTangramOfficeApp->m_strConfigFile = m_Parse.xml();
-				m_pTangramOfficeApp->OnConnection(pApplication, ConnectMode);
-			}
-			return S_OK;
-		}
-		strLib += _T(".dll");
-		m_strLib = strLib;
-		if (bLoad)
-		{
-			strURL = m_Parse.attr(_T(""), _T(""));
-			theApp.m_hPlugInModule = ::LoadLibrary(strLib);
-			CComVariant var;
-			theApp.m_pTangramCore->get_TangramVal(CComBSTR(L"TangramAddinApp"),&var);
-			m_pTangramOfficeApp = (CTangramAddinApp*)var.lVal;
-			var.Clear();
-			if (m_pTangramOfficeApp)
-			{
-				m_pTangramOfficeApp->m_strConfigFile = m_Parse.xml();
-				m_pTangramOfficeApp->OnConnection(pApplication, ConnectMode);
-			}
-		}
-		return S_OK;
-	}
-
-	STDMETHODIMP CTangramAddin::OnDisconnection(AddInDesignerObjects::ext_DisconnectMode RemoveMode, SAFEARRAY ** /*custom*/)
-	{
-		if (m_pIDEWindow&&::IsWindow(m_pIDEWindow->m_hWnd))
-		{
-			if (theApp.m_nAppID == -1)
-			{
-				if (::IsWindow(m_hHostWnd))
-					::DestroyWindow(m_hHostWnd);
-			}
-			HWND hWnd = ::GetActiveWindow();
-			if (m_pIDEWindow->m_hWnd == hWnd)
-			{
-				if (m_pVBE)
-				{
-					//m_pExcelApplication.p->Release();
-					m_pVBE.Detach();
-				}
-				return S_OK;
-			}
-		}
-		if (m_pTangramOfficeApp)
-		{
-			if (m_pTangramOfficeApp->m_pCTPFactory)
-				m_pTangramOfficeApp->m_pCTPFactory.Detach();
-			m_pTangramOfficeApp->OnDisconnection(RemoveMode);
-		}	
-	
-		if (::IsWindow(m_hHostWnd))
-			::DestroyWindow(m_hHostWnd);
-
-		
-		if (m_pVBE)
-		{
-			//m_pExcelApplication.p->Release();
-			m_pVBE.Detach();
-		}
-		m_hHostWnd = NULL;
-
-		return S_OK;
-	}
-
-	STDMETHODIMP CTangramAddin::OnAddInsUpdate(SAFEARRAY ** /*custom*/)
-	{
-		if (m_pTangramOfficeApp)
-			m_pTangramOfficeApp->OnUpdate();
-		return S_OK;
-	}
-
-	STDMETHODIMP CTangramAddin::OnStartupComplete(SAFEARRAY ** /*custom*/)
-	{
-		if (m_pTangramOfficeApp)
-			m_pTangramOfficeApp->StartupComplete();
-		return S_OK;
-	}
-
-	STDMETHODIMP CTangramAddin::OnBeginShutdown(SAFEARRAY ** /*custom*/)
-	{
-		return S_OK;
 	}
 
 	// ICustomTaskPaneConsumer Methods

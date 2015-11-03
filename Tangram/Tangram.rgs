@@ -58,6 +58,28 @@ HKCU
 					}
 				}
 			}
+			VBA
+			{
+				VBE
+				{
+					6.0
+					{
+						Addins64
+						{
+							'Tangram.Tangram'
+							{
+								val LoadBehavior = d 1
+								val CommandLineSafe = d 0
+								val CommandPreload = d 1
+								val FriendlyName = s 'TangramVSAddin'
+								val Description = s 'TangramVSAddin'
+								val AboutBoxDetails = s 'For more information about Tangram Team, see the Tangram Team website at\r\nhttp://www.tangramfx.com\r\nFor customer support, call 1-800-xxx-xxxx.\r\nCopyright (c) 2015 Tangram Team Inc.'
+								val AboutBoxIcon = s '%MODULE%,1'
+							}
+						}
+					}
+				}
+			}
 			VSA
 			{
 				'7.0'

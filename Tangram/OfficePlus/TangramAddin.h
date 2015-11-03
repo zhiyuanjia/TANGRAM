@@ -37,56 +37,20 @@ namespace TangramOfficePlus
 		virtual void OnFinalMessage(HWND hWnd);
 	};
 
-	//// CTangramAddin
-	//class ATL_NO_VTABLE CTangramBaseAddin : public CTangramCore,
-	//	public IDispatchImpl<AddInDesignerObjects::_IDTExtensibility2, &AddInDesignerObjects::IID__IDTExtensibility2, &AddInDesignerObjects::LIBID_AddInDesignerObjects, 1, 0>,
-	//	public IDispatchImpl<IRibbonExtensibility, &__uuidof(IRibbonExtensibility), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>,
-	//	public IDispatchImpl<ICustomTaskPaneConsumer, &__uuidof(ICustomTaskPaneConsumer), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>
-	//{
-	//public:
-	//	CTangramBaseAddin();
-	//	virtual ~CTangramBaseAddin();
-
-	//	CComPtr<VBIDE::VBE>				m_pVBE;
-	//	BEGIN_COM_MAP(CTangramBaseAddin)
-	//		COM_INTERFACE_ENTRY2(IDispatch, ITangramCore)
-	//		COM_INTERFACE_ENTRY(ITangramCore)
-	//		COM_INTERFACE_ENTRY(AddInDesignerObjects::IDTExtensibility2)
-	//	END_COM_MAP()
-
-	//public:
-	//	//IDTExtensibility2 implementation:
-	//	STDMETHOD(OnConnection)(IDispatch * Application, AddInDesignerObjects::ext_ConnectMode ConnectMode, IDispatch *AddInInst, SAFEARRAY **custom);
-	//	STDMETHOD(OnDisconnection)(AddInDesignerObjects::ext_DisconnectMode RemoveMode, SAFEARRAY **custom);
-	//	STDMETHOD(OnAddInsUpdate)(SAFEARRAY **custom);
-	//	STDMETHOD(OnStartupComplete)(SAFEARRAY **custom);
-	//	STDMETHOD(OnBeginShutdown)(SAFEARRAY **custom);
-
-	//private:
-	//	CString					m_strLib;
-	//	CString					m_strAddinID;
-	//	CString					m_strTemplateXML;
-	//	ITangram*				m_pTangram;
-	//};
-
-	// CTangramAddin
-	class ATL_NO_VTABLE CTangramAddin : public CTangramCore,
-		public IDispatchImpl<AddInDesignerObjects::_IDTExtensibility2, &AddInDesignerObjects::IID__IDTExtensibility2, &AddInDesignerObjects::LIBID_AddInDesignerObjects, 1, 0>,
-		public IDispatchImpl<IRibbonExtensibility, &__uuidof(IRibbonExtensibility), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>,
-		public IDispatchImpl<ICustomTaskPaneConsumer, &__uuidof(ICustomTaskPaneConsumer), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>
+	// CTangramBaseAddin
+	class ATL_NO_VTABLE CTangramBaseAddin : public CTangramCore,
+		public IDispatchImpl<AddInDesignerObjects::_IDTExtensibility2, &AddInDesignerObjects::IID__IDTExtensibility2, &AddInDesignerObjects::LIBID_AddInDesignerObjects, 1, 0>
 	{
 	public:
-		CTangramAddin();
-		virtual ~CTangramAddin();
+		CTangramBaseAddin();
+		virtual ~CTangramBaseAddin();
 
 		CComPtr<VBIDE::VBE>				m_pVBE;
 		CTangramIDEWnd*					m_pIDEWindow;
-		BEGIN_COM_MAP(CTangramAddin)
+		BEGIN_COM_MAP(CTangramBaseAddin)
 			COM_INTERFACE_ENTRY2(IDispatch, ITangramCore)
 			COM_INTERFACE_ENTRY(ITangramCore)
 			COM_INTERFACE_ENTRY(AddInDesignerObjects::IDTExtensibility2)
-			COM_INTERFACE_ENTRY(IRibbonExtensibility)
-			COM_INTERFACE_ENTRY(ICustomTaskPaneConsumer)
 			COM_INTERFACE_ENTRY(IConnectionPointContainer)
 		END_COM_MAP()
 
@@ -98,6 +62,33 @@ namespace TangramOfficePlus
 		STDMETHOD(OnStartupComplete)(SAFEARRAY **custom);
 		STDMETHOD(OnBeginShutdown)(SAFEARRAY **custom);
 
+	protected:
+		CString					m_strLib;
+		CString					m_strAddinID;
+		CString					m_strTemplateXML;
+		ITangram*				m_pTangram;
+		CTangramAddinApp*		m_pTangramOfficeApp;
+	};
+
+	// CTangramAddin
+	class ATL_NO_VTABLE CTangramAddin : public CTangramBaseAddin,
+		public IDispatchImpl<IRibbonExtensibility, &__uuidof(IRibbonExtensibility), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>,
+		public IDispatchImpl<ICustomTaskPaneConsumer, &__uuidof(ICustomTaskPaneConsumer), &LIBID_Office, /* wMajor = */ 2, /* wMinor = */ 4>
+	{
+	public:
+		CTangramAddin();
+		virtual ~CTangramAddin();
+
+		BEGIN_COM_MAP(CTangramAddin)
+			COM_INTERFACE_ENTRY2(IDispatch, ITangramCore)
+			COM_INTERFACE_ENTRY(ITangramCore)
+			COM_INTERFACE_ENTRY(AddInDesignerObjects::IDTExtensibility2)
+			COM_INTERFACE_ENTRY(IRibbonExtensibility)
+			COM_INTERFACE_ENTRY(ICustomTaskPaneConsumer)
+			COM_INTERFACE_ENTRY(IConnectionPointContainer)
+		END_COM_MAP()
+
+	public:
 		//IRibbonExtensibility implementation
 		STDMETHOD(GetCustomUI)(BSTR RibbonID, BSTR * RibbonXml);
 
@@ -120,12 +111,7 @@ namespace TangramOfficePlus
 		void _GetTangramXml(Office::_CustomXMLParts* pCustomXMLParts, BSTR bstrKey, BSTR* pbstrXml);
 
 	private:
-		CString					m_strLib;
-		CString					m_strAddinID;
-		CString					m_strTemplateXML;
-		ITangram*				m_pTangram;
 		CComQIPtr<IRibbonUI>	m_spRibbonUI;
-		CTangramAddinApp*	m_pTangramOfficeApp;
 	};
 }
 
